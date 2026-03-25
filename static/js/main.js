@@ -17,15 +17,7 @@ const timing30 = document.getElementById("timing30");
 const timing70 = document.getElementById("timing70");
 
 const outputs = {
-  wristbandsNeeded: document.getElementById("wristbandsNeeded"),
-  costPerBand: document.getElementById("costPerBand"),
-  bandCost: document.getElementById("bandCost"),
-  transportCost: document.getElementById("transportCost"),
-  upsellTotal: document.getElementById("upsellTotal"),
-  totalCost: document.getElementById("totalCost"),
   pricePerGuest: document.getElementById("pricePerGuest"),
-  revenue: document.getElementById("revenue"),
-  marginPercent: document.getElementById("marginPercent"),
 };
 
 function toMoney(value) {
@@ -122,13 +114,7 @@ async function refreshPricing() {
     return;
   }
   const data = await response.json();
-  outputs.wristbandsNeeded.textContent = data.wristbands_needed;
-  outputs.costPerBand.textContent = toMoney(data.cost_per_band);
-  outputs.bandCost.textContent = toMoney(data.band_cost);
-  outputs.transportCost.textContent = toMoney(data.transport_cost);
-  outputs.upsellTotal.textContent = toMoney(data.upsell_total);
-  outputs.totalCost.textContent = toMoney(data.total_cost);
-  outputs.pricePerGuest.textContent = toMoney(data.cost_per_guest);
+  if (outputs.pricePerGuest) outputs.pricePerGuest.textContent = toMoney(data.cost_per_guest);
 }
 
 [
