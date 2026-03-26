@@ -36,7 +36,13 @@ class CheckoutRequest(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.event_name or 'Untitled'} ({self.event_date or 'No date'})"
+        if self.event_name and self.event_date:
+            return f"{self.event_name} ({self.event_date})"
+        if self.event_name:
+            return self.event_name
+        if self.event_date:
+            return str(self.event_date)
+        return f"Checkout #{self.pk}"
 
 
 class StripeWebhookEvent(models.Model):

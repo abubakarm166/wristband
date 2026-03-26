@@ -20,6 +20,7 @@ def home(request):
     context = {
         "stripe_publishable_key": settings.STRIPE_PUBLISHABLE_KEY,
         "wristband_choices": WRISTBAND_CHOICES,
+        "paid_status": (request.GET.get("paid") or "").strip().lower(),
     }
     return render(request, "website/home.html", context)
 
@@ -82,7 +83,8 @@ def create_checkout_session(request):
         return JsonResponse({"error": form.errors}, status=400)
 
     cd = form.cleaned_data
-    event_name = (cd.get("event_name") or "").strip() or "Untitled Event"
+    # Keep blank if user didn't provide it (don't store "Untitled Event")
+    event_name = (cd.get("event_name") or "").strip()
     event_date = cd.get("event_date")
     experience = cd.get("experience") or "pro"
     event_timing = cd.get("event_timing") or "30"
@@ -230,22 +232,25 @@ def stripe_webhook(request):
             ):
                 to_email = (getattr(settings, "NOTIFY_ORDERS_TO_EMAIL", "") or "").strip()
                 if to_email:
-                    subject = f"New paid order: {checkout_request.event_name or 'Untitled Event'}"
-                    message = "\n".join(
-                        [
-                            f"Event: {checkout_request.event_name}",
-                            f"Date: {checkout_request.event_date}",
-                            f"Guests: {checkout_request.guests}",
-                            f"Shows: {checkout_request.shows}",
-                            f"Wristband: {checkout_request.wristband_type}",
-                            f"Total (calculated): €{checkout_request.total_cost}",
-                            f"Stripe session: {checkout_request.stripe_session_id}",
-                            f"Payment intent: {checkout_request.stripe_payment_intent_id}",
-                            f"Amount paid: {checkout_request.amount_total_cents} {checkout_request.currency}",
-                            f"Customer email: {checkout_request.stripe_customer_email}",
-                            f"Paid at: {checkout_request.paid_at}",
-                        ]
-                    )
+                    subject = f"New paid order: {checkout_request.event_name or f'Checkout #{checkout_request.pk}'}"
+                    lines = [
+                        f"Checkout ID: {checkout_request.pk}",
+                        f"Guests: {checkout_request.guests}",
+                        f"Shows: {checkout_request.shows}",
+                        f"Wristband: {checkout_request.wristband_type}",
+                        f"Total (calculated): €{checkout_request.total_cost}",
+                        f"Stripe session: {checkout_request.stripe_session_id}",
+                        f"Payment intent: {checkout_request.stripe_payment_intent_id}",
+                        f"Amount paid: {checkout_request.amount_total_cents} {checkout_request.currency}",
+                        f"Customer email: {checkout_request.stripe_customer_email}",
+                        f"Paid at: {checkout_request.paid_at}",
+                    ]
+                    if checkout_request.event_name:
+                        lines.insert(1, f"Event: {checkout_request.event_name}")
+                    if checkout_request.event_date:
+                        insert_at = 2 if checkout_request.event_name else 1
+                        lines.insert(insert_at, f"Date: {checkout_request.event_date}")
+                    message = "\n".join(lines)
                     try:
                         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [to_email], fail_silently=True)
                         checkout_request.order_email_sent_at = timezone.now()

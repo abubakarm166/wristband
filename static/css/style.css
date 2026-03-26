@@ -4,6 +4,19 @@ body {
     font-family: "Inter", "Segoe UI", sans-serif;
 }
 
+#paymentAlertWrap {
+    position: fixed;
+    top: 78px; /* just below fixed navbar */
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+#paymentAlertWrap .alert {
+    pointer-events: auto;
+}
+
 .section-dark {
     background: #05070d;
 }
@@ -405,8 +418,8 @@ input[type="file"].form-control {
     color: #94a2bd;
     font-size: 0.82rem;
     width: 100%;
-    padding: 0 10px;
-    margin-top: 6px;
+    padding: 0 4px;
+    margin-top: 8px;
     letter-spacing: 0.2px;
 }
 
@@ -418,8 +431,17 @@ input[type="file"].form-control {
     font-size: 0.82rem;
     padding: 0;
     cursor: pointer;
-    min-width: 3ch;
+    min-width: 0;
+    flex: 1 1 0;
     text-align: center;
+}
+
+.slider-tick:first-child {
+    text-align: left;
+}
+
+.slider-tick:last-child {
+    text-align: right;
 }
 
 .slider-tick:hover {
@@ -621,21 +643,24 @@ input[type="file"].form-control {
 
 .experience-card {
     position: relative;
-    border-radius: 12px;
-    border: 2px solid #1f2a43;
-    background: #0b101c;
-    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid #2a344b;
+    background: #0b0f18;
+    padding: 14px;
     cursor: pointer;
-    min-height: 120px;
+    min-height: 220px;
+    overflow: hidden;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .experience-img {
     width: 100%;
-    height: 98px;
+    height: 132px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #2a344b;
 }
 
 .experience-meta {
@@ -644,37 +669,49 @@ input[type="file"].form-control {
 }
 
 .experience-price {
-    font-weight: 700;
+    font-weight: 800;
     color: #eaf0ff;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    letter-spacing: 0.2px;
 }
 
 .experience-title {
-    font-weight: 650;
+    font-weight: 800;
     color: #f5f7ff;
+    font-size: 1.05rem;
 }
 
 .experience-desc {
     color: #a8b1c2;
-    font-size: 0.9rem;
-    margin-top: 6px;
+    font-size: 0.88rem;
+    margin-top: 8px;
     line-height: 1.35;
 }
 
 .experience-pill {
+    position: absolute;
+    top: 12px;
+    right: 12px;
     display: inline-block;
     padding: 3px 10px;
     border-radius: 999px;
     background: #f5f7ff;
     color: #0b101c;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.78rem;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
 }
 
 #expEssentials:checked + label,
 #expPro:checked + label {
     border-color: #3f7be8;
     box-shadow: 0 0 0 4px rgba(63, 123, 232, 0.18);
+    transform: translateY(-1px);
+}
+
+.experience-card:hover {
+    border-color: #3a4766;
+    box-shadow: 0 0 0 4px rgba(63, 123, 232, 0.10);
 }
 
 .option-box {
@@ -700,6 +737,58 @@ input[type="file"].form-control {
 
 .option-box .form-check-input:checked ~ .form-check-label {
     color: #ffffff;
+}
+
+.timing-box {
+    padding: 12px;
+}
+
+.timing-item {
+    display: grid;
+    grid-template-columns: 26px 1fr 1.2fr;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.timing-item + .timing-item {
+    margin-top: 6px;
+}
+
+.timing-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.timing-radio {
+    margin: 0;
+}
+
+.timing-left {
+    line-height: 1.1;
+}
+
+.timing-title {
+    color: #eaf0ff;
+    font-weight: 750;
+}
+
+.timing-sub {
+    color: #9aa6bf;
+    font-size: 0.86rem;
+    margin-top: 4px;
+}
+
+.timing-right {
+    color: #eaf0ff;
+    font-weight: 650;
+    text-align: right;
+}
+
+.timing-item:has(.timing-radio:checked) {
+    background: rgba(63, 123, 232, 0.10);
+    box-shadow: inset 0 0 0 1px rgba(63, 123, 232, 0.45);
 }
 
 .investment-list .panel-item {
@@ -902,6 +991,33 @@ input[type="file"].form-control {
 
 .feature-info:hover {
     opacity: 1;
+}
+
+.info-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(63, 123, 232, 0.9);
+    background: #0f1524;
+    color: #3f7be8;
+    font-size: 0.75rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.95;
+    padding: 0;
+    font-weight: 800;
+}
+
+.info-icon:hover {
+    opacity: 1;
+}
+
+.info-icon:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(63, 123, 232, 0.18);
 }
 
 #calculator .panel-item {

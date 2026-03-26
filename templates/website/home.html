@@ -10,8 +10,14 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<div id="paymentAlertWrap" class="container pt-3 d-none">
-    <div id="paymentAlert" class="alert mb-0" role="alert"></div>
+<div id="paymentAlertWrap" class="container pt-3 {% if paid_status == 'success' or paid_status == 'cancel' %}{% else %}d-none{% endif %}">
+    {% if paid_status == 'success' %}
+        <div id="paymentAlert" class="alert mb-0 alert-success" role="alert">Payment successful. Your order is confirmed.</div>
+    {% elif paid_status == 'cancel' %}
+        <div id="paymentAlert" class="alert mb-0 alert-warning" role="alert">Payment was cancelled. You can try again anytime.</div>
+    {% else %}
+        <div id="paymentAlert" class="alert mb-0" role="alert"></div>
+    {% endif %}
 </div>
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark nav-blur">
     <div class="container nav-inner">
@@ -195,7 +201,16 @@
 
                         <div class="slider-group mb-3">
                             <label class="form-label d-flex justify-content-between align-items-center mb-2">
-                                <span>How many total guests are expected?</span>
+                                <span class="d-flex align-items-center gap-2">
+                                    <span>How many total guests are expected?</span>
+                                    <button
+                                            type="button"
+                                            class="info-icon"
+                                            aria-label="Guests info"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-title="This is the total number of guests expected at your event."
+                                    >i</button>
+                                </span>
                                 <span class="slider-value" id="guestsValue">1,000</span>
                             </label>
                             <input type="hidden" id="guests" name="guests" value="1000">
@@ -249,17 +264,17 @@
                         <div class="experience-grid mb-3" role="radiogroup" aria-label="Choose your experience">
                             <input class="experience-radio" type="radio" name="experience" id="expEssentials" value="essentials">
                             <label class="experience-card" for="expEssentials">
-                                <img class="experience-img" src="{% static 'images/wristband_purple.png' %}" alt="Essentials preview">
+                                <img class="experience-img" src="{% static 'images/grid1.jpeg' %}" alt="Essentials preview">
                                 <div class="experience-meta">
-                                    <div class="experience-price">Free</div>
+                                    <div class="experience-price">Included</div>
                                     <div class="experience-title">Essentials</div>
-                                    <div class="experience-desc">Simple plug &amp; play setup</div>
+                                    <div class="experience-desc">Simple plug &amp; play<br>setup</div>
                                 </div>
                             </label>
 
                             <input class="experience-radio" type="radio" name="experience" id="expPro" value="pro" checked>
                             <label class="experience-card" for="expPro">
-                                <img class="experience-img" src="{% static 'images/wristband_blue.png' %}" alt="Pro experience preview">
+                                <img class="experience-img" src="{% static 'images/grid2.jpeg' %}" alt="Pro experience preview">
                                 <div class="experience-pill">Recommended</div>
                                 <div class="experience-meta">
                                     <div class="experience-price">+€4,42 per guest</div>
@@ -279,26 +294,55 @@
                                 <input class="form-check-input" type="radio" name="delivery_type" id="deliveryVenue" value="venue">
                                 <label class="form-check-label" for="deliveryVenue">
                                     Delivery to the venue
-                                    <span class="ms-1 text-primary" data-bs-toggle="tooltip" data-bs-title="On-site delivery is charged via the calculator upsell.">(i)</span>
+                                    <button
+                                            type="button"
+                                            class="info-icon ms-2"
+                                            aria-label="Delivery info"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-title="On-site delivery is charged via the calculator upsell."
+                                    >i</button>
                                 </label>
                             </div>
                             <input class="form-check-input d-none pricing-toggle" id="delivery" type="checkbox" name="delivery_to_venue">
                         </div>
 
-                        <label class="form-label">When is your event?</label>
-                        <div class="option-box">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="event_timing" id="timing14" value="14" checked>
-                                <label class="form-check-label" for="timing14">Delivered 14 days <span class="text-muted">(€0.30 per guest)</span></label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="event_timing" id="timing30" value="30">
-                                <label class="form-check-label" for="timing30">Delivered 30-60 days <span class="text-muted">(€0.20 per guest)</span></label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="event_timing" id="timing70" value="70">
-                                <label class="form-check-label" for="timing70">Delivered 70+ days <span class="text-muted">(Free)</span></label>
-                            </div>
+                        <label class="form-label d-flex align-items-center gap-2">
+                            <span>When do you need your wristbands?</span>
+                            <button
+                                    type="button"
+                                    class="info-icon"
+                                    aria-label="Timing info"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-title="Earlier delivery increases the price (based on your guests)."
+                            >i</button>
+                        </label>
+                        <div class="option-box timing-box">
+                            <label class="timing-item" for="timing14">
+                                <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing14" value="14" checked>
+                                <div class="timing-left">
+                                    <div class="timing-title">Express:</div>
+                                    <div class="timing-sub">(+€50)</div>
+                                </div>
+                                <div class="timing-right">Delivered in 14 days</div>
+                            </label>
+
+                            <label class="timing-item" for="timing30">
+                                <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing30" value="30">
+                                <div class="timing-left">
+                                    <div class="timing-title">Standard:</div>
+                                    <div class="timing-sub">(+€30)</div>
+                                </div>
+                                <div class="timing-right">Delivered in 30-60 days</div>
+                            </label>
+
+                            <label class="timing-item" for="timing70">
+                                <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing70" value="70">
+                                <div class="timing-left">
+                                    <div class="timing-title">Flex:</div>
+                                    <div class="timing-sub">(Free)</div>
+                                </div>
+                                <div class="timing-right">Flexible Timing</div>
+                            </label>
                         </div>
                     </div>
                 </div>
