@@ -147,3 +147,22 @@ document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
   // eslint-disable-next-line no-undef
   new bootstrap.Tooltip(el);
 });
+
+// Testimonial swiper
+if (typeof Swiper !== "undefined" && document.querySelector(".testimonial-swiper")) {
+  // eslint-disable-next-line no-undef
+  new Swiper(".testimonial-swiper", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 24,
+    grabCursor: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".testimonial-next",
+      prevEl: ".testimonial-prev",
+    },
+  });
+}
