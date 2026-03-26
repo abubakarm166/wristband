@@ -163,6 +163,15 @@ body {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
+.demo-video {
+    color-scheme: dark;
+    accent-color: #ffffff;
+}
+
+.demo-ps {
+    color: #ffffff;
+}
+
 .gallery-img {
     width: 100%;
     border: 1px solid #384158;
@@ -507,6 +516,69 @@ input[type="file"].form-control {
     display: block;
 }
 
+.wristband-card--upload {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wristband-upload-btn {
+    width: 100%;
+    height: 130px;
+    border-radius: 10px;
+    background: #0b0f18;
+    border: 1px solid #2a344b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 750;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.wristband-upload-preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.wristband-upload-text {
+    position: relative;
+    z-index: 1;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0b0f18;
+    font-weight: 800;
+}
+
+.wristband-card--upload.has-preview .wristband-upload-preview {
+    display: block;
+}
+
+.wristband-card--upload.has-preview .wristband-upload-text {
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+}
+
+.wristband-upload-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+.wristband-card--upload .wristband-meta {
+    margin-top: 10px;
+}
+
 .wristband-meta {
     margin-top: 10px;
     color: #c8d0df;
@@ -634,20 +706,77 @@ input[type="file"].form-control {
     font-size: 0.95rem;
 }
 
+.investment-divider {
+    height: 6px;
+    width: 100%;
+    margin: 6px 0 14px;
+    background: #ffffff;
+    border-radius: 999px;
+    opacity: 0.95;
+}
+
+.investment-pill-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.investment-pill {
+    border: 1px solid #2a344b;
+    border-radius: 12px;
+    background: #0b101c;
+    padding: 10px 14px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: #eaf0ff;
+    width: min(330px, 100%);
+    justify-content: space-between;
+}
+
+.investment-pill-sub {
+    background: #0f1524;
+}
+
+.investment-pill strong {
+    font-weight: 800;
+}
+
+.investment-note {
+    text-align: center;
+    color: #a8b1c2;
+    font-size: 0.9rem;
+    line-height: 1.35;
+}
+
 .big-metric {
     border: 1px solid #2d364b;
     border-radius: 12px;
     background: #0f1524;
-    padding: 14px 12px;
+    padding: 16px 12px 14px;
     text-align: center;
-    font-size: 2rem;
-    font-weight: 750;
+}
+
+.big-metric-value {
+    font-size: 2.05rem;
+    font-weight: 800;
 }
 
 .big-metric-sub {
     font-size: 1.2rem;
     font-weight: 650;
     color: #c8d0df;
+}
+
+.big-metric-note {
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: #c8d0df;
+    line-height: 1.3;
+}
+
+.refund-highlight {
+    color: #46d37a;
+    font-weight: 750;
 }
 
 .contact-strip {
@@ -666,7 +795,7 @@ input[type="file"].form-control {
 
 .contact-strip-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 
@@ -708,20 +837,71 @@ input[type="file"].form-control {
     font-weight: 650;
 }
 
+#calculator .feature-list {
+    border: 1px solid #27324b;
+    border-radius: 14px;
+    background: #0f1524;
+    padding: 14px;
+}
+
 #calculator .feature-box {
-    background: #1a2234;
-    border-color: #34415f;
-    border-radius: 10px;
+    background: #141a26;
+    border: 1px solid #2d364b;
+    border-radius: 12px;
+    padding: 12px 12px;
+    margin-bottom: 12px;
+}
+
+#calculator .feature-box:last-child {
+    margin-bottom: 0;
 }
 
 #calculator .feature-box strong {
-    font-size: 1.22rem;
+    font-size: 1.05rem;
     letter-spacing: 0.1px;
+    color: #f5f7ff;
 }
 
 #calculator .feature-box p {
-    font-size: 1.01rem;
-    line-height: 1.45;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 6px;
+}
+
+#calculator .feature-box--highlight {
+    background: #1a2f64;
+    border-color: #2f5fdb;
+}
+
+#calculator .feature-box--highlight p {
+    color: #eaf0ff;
+}
+
+#calculator .feature-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.feature-info {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.75rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.feature-info:hover {
+    opacity: 1;
 }
 
 #calculator .panel-item {

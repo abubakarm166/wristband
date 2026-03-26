@@ -4,11 +4,13 @@ import stripe
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
+from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
 
 from .calculator import calculate_pricing
 from .forms import CheckoutForm, WRISTBAND_CHOICES
-from .models import CheckoutRequest
+from .models import CheckoutRequest, StripeWebhookEvent
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -77,6 +79,7 @@ def create_checkout_session(request):
         guests=cd["guests"],
         shows=cd["shows"],
         wristband_type=cd["wristband_type"],
+        upload_design=cd.get("upload_design"),
         transport_per_band=pricing["transport_per_band"],
         wristbands_needed=pricing["wristbands_needed"],
         cost_per_band=pricing["cost_per_band"],
@@ -136,3 +139,62 @@ def create_checkout_session(request):
     checkout_request.stripe_session_id = session.id
     checkout_request.save(update_fields=["stripe_session_id"])
     return redirect(session.url, permanent=False)
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get("HTTP_STRIPE_SIGNATURE", "")
+
+    if not settings.STRIPE_WEBHOOK_SECRET:
+        return JsonResponse({"error": "Missing STRIPE_WEBHOOK_SECRET"}, status=500)
+
+    try:
+        event = stripe.Webhook.construct_event(payload, sig_header, settings.STRIPE_WEBHOOK_SECRET)
+    except ValueError:
+        return JsonResponse({"error": "Invalid payload"}, status=400)
+    except stripe.error.SignatureVerificationError:
+        return JsonResponse({"error": "Invalid signature"}, status=400)
+
+    # Idempotency: ignore duplicates
+    if StripeWebhookEvent.objects.filter(stripe_event_id=event["id"]).exists():
+        return JsonResponse({"status": "duplicate"}, status=200)
+    StripeWebhookEvent.objects.create(stripe_event_id=event["id"], event_type=event["type"])
+
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
+        session_id = session.get("id", "")
+        payment_intent = session.get("payment_intent") or ""
+        payment_status = session.get("payment_status") or ""
+        amount_total = session.get("amount_total") or 0
+        currency = (session.get("currency") or "eur").lower()
+        customer_details = session.get("customer_details") or {}
+        customer_email = customer_details.get("email") or ""
+
+        try:
+            checkout_request = CheckoutRequest.objects.get(stripe_session_id=session_id)
+        except CheckoutRequest.DoesNotExist:
+            # Fallback to metadata id if present
+            meta = session.get("metadata") or {}
+            req_id = meta.get("checkout_request_id")
+            checkout_request = CheckoutRequest.objects.filter(id=req_id).first()
+
+        if checkout_request:
+            checkout_request.stripe_payment_intent_id = payment_intent
+            checkout_request.payment_status = payment_status or "paid"
+            checkout_request.amount_total_cents = int(amount_total or 0)
+            checkout_request.currency = currency
+            checkout_request.stripe_customer_email = customer_email
+            checkout_request.paid_at = timezone.now()
+            checkout_request.save(
+                update_fields=[
+                    "stripe_payment_intent_id",
+                    "payment_status",
+                    "amount_total_cents",
+                    "currency",
+                    "stripe_customer_email",
+                    "paid_at",
+                ]
+            )
+
+    return JsonResponse({"status": "ok"}, status=200)

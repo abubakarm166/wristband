@@ -26,7 +26,19 @@ class CheckoutRequest(models.Model):
     upsell_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     stripe_session_id = models.CharField(max_length=255, blank=True)
+    stripe_payment_intent_id = models.CharField(max_length=255, blank=True)
+    stripe_customer_email = models.EmailField(blank=True, default="")
+    currency = models.CharField(max_length=10, blank=True, default="eur")
+    amount_total_cents = models.PositiveIntegerField(default=0)
+    payment_status = models.CharField(max_length=40, blank=True, default="unpaid")
+    paid_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.event_name or 'Untitled'} ({self.event_date or 'No date'})"
+
+
+class StripeWebhookEvent(models.Model):
+    stripe_event_id = models.CharField(max_length=255, unique=True)
+    event_type = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)

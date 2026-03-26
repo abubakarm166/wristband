@@ -73,11 +73,11 @@
         <div class="demo-box">
             <h3 class="text-center mb-4">Good Festivals Have Great Lighting<br>The Best Festivals Turn The Crowd Into The Show</h3>
             <div class="ratio ratio-16x9 mb-3">
-                <video class="w-100 h-100" controls playsinline preload="metadata">
+                <video class="w-100 h-100 demo-video" controls playsinline preload="metadata">
                     <source src="https://player.vimeo.com/external/368763732.sd.mp4?s=5684e20f3f30195f4d46d77f82f6f4f66a5fdfde&profile_id=165" type="video/mp4">
                 </video>
             </div>
-            <p class="text-center text-muted mb-0">PS: It’s already happening. Most festivals are falling behind.</p>
+            <p class="text-center demo-ps mb-0">PS: It’s already happening. Most festivals are falling behind.</p>
         </div>
     </div>
 </section>
@@ -170,7 +170,7 @@
 
 <section id="calculator" class="section-dark pb-5">
     <div class="container">
-        <h2 class="text-center mb-4">Plan Your Show, See Your Cost Instantly</h2>
+        <h2 class="text-center mb-4">Plan. Price. Pay.</h2>
         <form action="{% url 'create_checkout_session' %}" method="post" enctype="multipart/form-data" id="checkoutForm">
             {% csrf_token %}
             <div class="row g-4">
@@ -216,16 +216,20 @@
                         </div>
                         <div class="wristband-grid wristband-grid-2 mb-3" role="radiogroup" aria-label="Choose Wristband Design">
                             <input class="wristband-radio" type="radio" name="wristband_type" id="bandBlue" value="blue-led" checked>
-                            <label class="wristband-card" for="bandBlue" title="Blue LED Wristband">
-                                <img src="{% static 'images/wristband_blue.png' %}" alt="Blue LED wristband">
+                            <label class="wristband-card wristband-card--free" for="bandBlue" title="Free">
+                                <img src="{% static 'images/free.jpeg' %}" alt="Free wristband design">
                                 <div class="wristband-meta">
                                     <div class="wristband-price">Free</div>
                                 </div>
                             </label>
 
                             <input class="wristband-radio" type="radio" name="wristband_type" id="bandPink" value="pink-led">
-                            <label class="wristband-card" for="bandPink" title="Pink LED Wristband">
-                                <img src="{% static 'images/wristband_pink.png' %}" alt="Pink LED wristband">
+                            <label class="wristband-card wristband-card--upload" for="bandPink" title="Make it yours">
+                                <div class="wristband-upload-btn">
+                                    <img class="wristband-upload-preview" alt="" />
+                                    <span class="wristband-upload-text">[Upload]</span>
+                                </div>
+                                <input id="wristbandUpload" name="upload_design" class="wristband-upload-input" type="file" accept="image/*">
                                 <div class="wristband-meta">
                                     <div class="wristband-price">+€0,15 per wristband</div>
                                 </div>
@@ -299,37 +303,44 @@
                 <div class="col-lg-4">
                     <div class="panel h-100">
                         <h4>This is what you get</h4>
-                        <div class="feature-box">
-                            <strong>100% Show Guarantee</strong>
-                            <p>If your crowd doesn’t light up, you don’t pay.</p>
-                        </div>
-                        <div class="feature-box">
-                            <strong>Instant Crowd Activation System</strong>
-                            <p>Your entire crowd reacts in perfect sync.</p>
-                        </div>
-                        <div class="feature-box">
-                            <strong>Viral Content Blueprint</strong>
-                            <p>Designed for moments people share.<br>Built for drops, crowd shots &amp; aftermovies.</p>
-                        </div>
-                        <div class="feature-box">
-                            <strong>Aftermovie Content Pack</strong>
-                            <p>Photo &amp; video of your biggest crowd moment.<br>Captured on-site. Delivered within 72 hours.</p>
-                        </div>
-                        <div class="feature-box">
-                            <strong>Fail-Safe Backup System</strong>
-                            <p>Your show never stops.<br>Includes backup antenna.</p>
-                        </div>
-                        <div class="feature-box">
-                            <strong>Universal Lighting Desk Integration</strong>
-                            <p>Works with any lighting desk.<br>Ready to go. No setup stress.</p>
-                        </div>
-                        <div class="feature-box">
-                            <strong>On-site Support</strong>
-                            <p>On-site setup support.<br>Ensuring a smooth and stable connection.</p>
-                        </div>
-                        <div class="feature-box">
-                            <strong>Only pay for what you use</strong>
-                            <p>€0,10 refund per returned wristband</p>
+                        <div class="feature-list">
+                            <div class="feature-box">
+                                <div class="feature-title">
+                                    <strong>100% Show Guarantee</strong>
+                                    <button
+                                            type="button"
+                                            class="feature-info"
+                                            aria-label="Guarantee info"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-title="If your crowd doesn’t light up, you don’t pay."
+                                    >i</button>
+                                </div>
+                                <p>If your crowd doesn’t light up, you don’t pay.</p>
+                            </div>
+                            <div class="feature-box">
+                                <strong>Instant Crowd Activation System</strong>
+                                <p>Your entire crowd reacts in perfect sync.</p>
+                            </div>
+                            <div class="feature-box">
+                                <strong>Viral Content Blueprint</strong>
+                                <p>Designed for moments people share.<br>Built for drops, crowd shots &amp; aftermovies.</p>
+                            </div>
+                            <div class="feature-box">
+                                <strong>Aftermovie Content Pack</strong>
+                                <p>Photo &amp; video of your biggest crowd moment.<br>Captured on-site. Delivered within 72 hours.</p>
+                            </div>
+                            <div class="feature-box">
+                                <strong>Fail-Safe Backup System</strong>
+                                <p>Your show never stops.<br>Includes backup antenna.</p>
+                            </div>
+                            <div class="feature-box">
+                                <strong>Universal Lighting Desk Integration</strong>
+                                <p>Works with any lighting desk.<br>Ready to go. No setup stress.</p>
+                            </div>
+                            <div class="feature-box">
+                                <strong>On-site Support</strong>
+                                <p>On-site setup support.<br>Ensuring a smooth and stable connection.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -349,15 +360,32 @@
                             <li class="list-group-item panel-item d-flex justify-content-between"><span>Universal Lighting Desk Integration</span><strong>€<span class="feat-cost" data-base="1000" data-mult="shows">1000</span></strong></li>
                             <li class="list-group-item panel-item d-flex justify-content-between"><span>On-site setup support</span><strong>€<span class="feat-cost" data-base="1000" data-mult="shows">1000</span></strong></li>
                         </ul>
-                        <div class="summary-total mb-3">Total Value <span>€<span id="totalValue">0.00</span></span></div>
-                        <div class="big-metric mb-3">€<span id="pricePerGuest">1.50</span> <span class="big-metric-sub">per guest.</span></div>
+                        <div class="investment-pill-row mb-3">
+                            <div class="investment-pill">
+                                <span>Total Value</span>
+                                <strong>€ <span id="totalValue">0.00</span></strong>
+                            </div>
+                        </div>
+                        <div class="investment-divider"></div>
+                        <div class="investment-pill-row mb-3">
+                            <div class="investment-pill investment-pill-sub">
+                                <span>Your Show Price today:</span>
+                                <strong>€ <span id="showPriceToday">0.00</span></strong>
+                            </div>
+                        </div>
+                        <div class="big-metric mb-3">
+                            <div class="big-metric-value">€<span id="pricePerGuest">1.50</span> <span class="big-metric-sub">per guest.</span></div>
+                            <div class="big-metric-note">
+                                Only pay for what you use<br>
+                                €0,10 <span class="refund-highlight">refunded</span> per returned wristband
+                            </div>
+                        </div>
                         <button class="btn btn-primary w-100 btn-lg mb-3" type="submit">Launch your show</button>
                         <div class="contact-strip">
                             <div class="contact-strip-title">Contact us directly:</div>
                             <div class="contact-strip-grid">
-                                <div class="contact-chip">xxx-xxxxxx</div>
-                                <div class="contact-chip">xxx-xxxxxx</div>
-                                <div class="contact-chip">hello@email.com</div>
+                                <div class="contact-chip"><strong>TEL:</strong><br>+31 6 83630667</div>
+                                <div class="contact-chip"><strong>EMAIL:</strong><br>info@motionvolume.com</div>
                             </div>
                         </div>
                     </div>

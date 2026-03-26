@@ -7,9 +7,16 @@ const whiteLabelInput = document.getElementById("whiteLabel");
 const customSkinInput = document.getElementById("customSkin");
 const deliveryInput = document.getElementById("delivery");
 const bandPink = document.getElementById("bandPink");
+const bandBlue = document.getElementById("bandBlue");
+const wristbandUpload = document.getElementById("wristbandUpload");
+const uploadBtn = document.querySelector(".wristband-upload-btn");
+const uploadPreview = document.querySelector(".wristband-upload-preview");
+const uploadText = document.querySelector(".wristband-upload-text");
+const uploadCard = document.querySelector(".wristband-card--upload");
 const deliveryPickup = document.getElementById("deliveryPickup");
 const deliveryVenue = document.getElementById("deliveryVenue");
 const totalValueEl = document.getElementById("totalValue");
+const showPriceTodayEl = document.getElementById("showPriceToday");
 const experienceEssentials = document.getElementById("expEssentials");
 const experiencePro = document.getElementById("expPro");
 const timing14 = document.getElementById("timing14");
@@ -22,6 +29,12 @@ const outputs = {
 
 function toMoney(value) {
   return Number(value).toFixed(2);
+}
+
+function formatEURNumber(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "0,00";
+  return new Intl.NumberFormat("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
 }
 
 function setSliderFill(sliderEl) {
@@ -94,9 +107,9 @@ async function refreshPricing() {
       const mult = el.getAttribute("data-mult") === "shows" ? shows : 1;
       const value = base * mult;
       total += value;
-      el.textContent = String(value);
+      el.textContent = formatEURNumber(value);
     });
-    totalValueEl.textContent = toMoney(total);
+    totalValueEl.textContent = formatEURNumber(total);
   }
 
   const query = new URLSearchParams({
@@ -114,7 +127,80 @@ async function refreshPricing() {
     return;
   }
   const data = await response.json();
-  if (outputs.pricePerGuest) outputs.pricePerGuest.textContent = toMoney(data.cost_per_guest);
+  if (outputs.pricePerGuest) outputs.pricePerGuest.textContent = formatEURNumber(data.cost_per_guest);
+  if (showPriceTodayEl) showPriceTodayEl.textContent = formatEURNumber(data.total_cost);
+}
+
+function wireWristbandUpload() {
+  if (!wristbandUpload || !bandPink || !bandBlue) return;
+
+  let lastObjectUrl = null;
+
+  const clearUpload = () => {
+    wristbandUpload.value = "";
+    if (lastObjectUrl) {
+      URL.revokeObjectURL(lastObjectUrl);
+      lastObjectUrl = null;
+    }
+    if (uploadPreview) uploadPreview.removeAttribute("src");
+    if (uploadCard) uploadCard.classList.remove("has-preview");
+    if (uploadText) uploadText.textContent = "[Upload]";
+    wristbandUpload.removeAttribute("required");
+  };
+
+  const requireUpload = () => {
+    wristbandUpload.setAttribute("required", "required");
+  };
+
+  const openPickerIfNeeded = () => {
+    if (bandPink.checked) {
+      requireUpload();
+      wristbandUpload.click();
+    } else {
+      clearUpload();
+    }
+  };
+
+  bandPink.addEventListener("change", openPickerIfNeeded);
+  bandBlue.addEventListener("change", openPickerIfNeeded);
+
+  if (uploadBtn) {
+    uploadBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (!bandPink.checked) bandPink.checked = true;
+      requireUpload();
+      wristbandUpload.click();
+    });
+  }
+
+  wristbandUpload.addEventListener("change", () => {
+    const file = wristbandUpload.files?.[0];
+    if (!file) {
+      clearUpload();
+      return;
+    }
+    if (lastObjectUrl) URL.revokeObjectURL(lastObjectUrl);
+    lastObjectUrl = URL.createObjectURL(file);
+    if (uploadPreview) uploadPreview.src = lastObjectUrl;
+    if (uploadCard) uploadCard.classList.add("has-preview");
+    if (uploadText) uploadText.textContent = "[Change]";
+  });
+
+  // On first load, enforce correct state
+  if (bandPink.checked) requireUpload();
+  else clearUpload();
+
+  // Prevent submit if pink selected but no file
+  const form = document.getElementById("checkoutForm");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      if (bandPink.checked && !(wristbandUpload.files && wristbandUpload.files.length)) {
+        e.preventDefault();
+        wristbandUpload.focus();
+        alert("Please upload an image to continue.");
+      }
+    });
+  }
 }
 
 [
@@ -141,6 +227,7 @@ if (deliveryVenue) deliveryVenue.addEventListener("change", refreshPricing);
 
 wireSliderTicks();
 refreshPricing();
+wireWristbandUpload();
 
 // Bootstrap tooltips
 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
