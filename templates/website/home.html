@@ -193,7 +193,7 @@
                         <h4>Event Setup</h4>
                         <div class="slider-group mb-3">
                             <label class="form-label d-flex justify-content-between align-items-center mb-2">
-                                <span>How many shows are you planning?</span>
+                                <span>Number of Shows</span>
                                 <span class="slider-value" id="showsValue">1</span>
                             </label>
                             <input required type="range" min="1" max="25" value="1" id="shows" name="shows" class="form-range slider">
@@ -207,7 +207,7 @@
                         <div class="slider-group mb-3">
                             <label class="form-label d-flex justify-content-between align-items-center mb-2">
                                 <span class="d-flex align-items-center gap-2">
-                                    <span>How many total guests are expected?</span>
+                                    <span>How many guests will be wearing wristbands?</span>
                                     <button
                                             type="button"
                                             class="info-icon"
@@ -232,10 +232,10 @@
                                 <button type="button" class="slider-tick" data-for="guestsSlider" data-index="8">80k</button>
                             </div>
                         </div>
-                        <label class="form-label">Choose Wristband Design</label>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="small text-muted">Choose Your Design</div>
-                            <a class="small text-primary text-decoration-none" href="#contact">Download template</a>
+                        <div class="d-flex justify-content-between align-items-center mb-2">  
+                                                  <label class="form-label">Choose Wristband Design</label>
+
+                            <a class="small text-primary text-decoration-none" href="https://drive.google.com/drive/folders/1WC4gaBupo-m8Rvrn_nJdYvfTjS4eYgnK" target="_blank" rel="noopener noreferrer">Download template</a>
                         </div>
                         <div class="wristband-grid wristband-grid-2 mb-3" role="radiogroup" aria-label="Choose Wristband Design">
                             <input class="wristband-radio" type="radio" name="wristband_type" id="bandBlue" value="blue-led" checked>
@@ -282,7 +282,7 @@
                                 <img class="experience-img" src="{% static 'images/grid2.jpeg' %}" alt="Pro experience preview">
                                 <div class="experience-pill">Recommended</div>
                                 <div class="experience-meta">
-                                    <div class="experience-price">+€4,42 per guest</div>
+                                    <div class="experience-price" id="proExperiencePrice">+€5,00 per guest</div>
                                     <div class="experience-title">Pro experience</div>
                                     <div class="experience-desc">Full control over your crowd lighting.</div>
                                 </div>
@@ -293,19 +293,12 @@
                         <div class="option-box mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="delivery_type" id="deliveryPickup" value="pickup" checked>
-                                <label class="form-check-label" for="deliveryPickup">Pickup at 24/7 locker Eindhoven</label>
+                                <label class="form-check-label" for="deliveryPickup">Pickup at 24/7 locker Eindhoven(Free)</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="delivery_type" id="deliveryVenue" value="venue">
                                 <label class="form-check-label" for="deliveryVenue">
-                                    Delivery to the venue
-                                    <button
-                                            type="button"
-                                            class="info-icon ms-2"
-                                            aria-label="Delivery info"
-                                            data-bs-toggle="tooltip"
-                                            data-bs-title="On-site delivery is charged via the calculator upsell."
-                                    >i</button>
+                                    Delivery to your venue (+€60)
                                 </label>
                             </div>
                             <input class="form-check-input d-none pricing-toggle" id="delivery" type="checkbox" name="delivery_to_venue">
@@ -326,7 +319,7 @@
                                 <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing14" value="14" checked>
                                 <div class="timing-left">
                                     <div class="timing-title">Express:</div>
-                                    <div class="timing-sub">(+€50)</div>
+                                    <div class="timing-sub">(€0.30 per guest)</div>
                                 </div>
                                 <div class="timing-right">Delivered in 14 days</div>
                             </label>
@@ -335,7 +328,7 @@
                                 <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing30" value="30">
                                 <div class="timing-left">
                                     <div class="timing-title">Standard:</div>
-                                    <div class="timing-sub">(+€30)</div>
+                                    <div class="timing-sub">(€0.20 per guest)</div>
                                 </div>
                                 <div class="timing-right">Delivered in 30-60 days</div>
                             </label>
@@ -361,11 +354,13 @@
                                     <strong>100% Show Guarantee</strong>
                                     <button
                                             type="button"
-                                            class="feature-info"
+                                            class="info-icon ms-2"
+
                                             aria-label="Guarantee info"
                                             data-bs-toggle="tooltip"
                                             data-bs-title="If your crowd doesn’t light up, you don’t pay."
                                     >i</button>
+                                   
                                 </div>
                                 <p>If your crowd doesn’t light up, you don’t pay.</p>
                             </div>
@@ -399,18 +394,15 @@
 
                 <div class="col-lg-4">
                     <div class="panel h-100">
-                        <h4>Your Event Investment</h4>
-                        <div class="small text-muted mb-2">
-                            <a class="text-primary text-decoration-none" href="#contact">Download our terms &amp; services here.</a>
-                        </div>
+                        <h4>Your Event Investment</h4> 
                         <ul class="list-group bg-transparent mb-3 investment-list">
                             <li class="list-group-item panel-item d-flex justify-content-between"><span>100% Show guarantee</span><strong>€<span class="feat-cost" data-base="1000" data-mult="shows">1000</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Instant Crowd Activation system</span><strong>€<span class="feat-cost" data-base="1050" data-mult="shows">1050</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Viral Content Blueprint</span><strong>€<span class="feat-cost" data-base="4000" data-mult="shows">4000</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Aftermovie Content Pack</span><strong>€<span class="feat-cost" data-base="3000" data-mult="shows">3000</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Fail-Safe Backup System</span><strong>€<span class="feat-cost" data-base="1000" data-mult="shows">1000</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Universal Lighting Desk Integration</span><strong>€<span class="feat-cost" data-base="1000" data-mult="shows">1000</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between"><span>On-site setup support</span><strong>€<span class="feat-cost" data-base="1000" data-mult="shows">1000</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Instant Crowd Activation system</span><strong>€<span class="feat-cost" data-base="2.5" data-mult="guests">2500</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Viral Content Blueprint</span><strong>€<span class="feat-cost" data-base="3200" data-mult="none">3200</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Aftermovie Content Pack</span><strong>€<span class="feat-cost" data-base="400" data-mult="shows">400</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Fail-Safe Backup System</span><strong>€<span class="feat-cost" data-base="350" data-mult="shows">350</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between"><span>Universal Lighting Desk Integration</span><strong>€<span class="feat-cost" data-base="200" data-mult="none">200</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between"><span>On-site setup support</span><strong>€<span class="feat-cost" data-base="400" data-mult="shows">400</span></strong></li>
                         </ul>
                         <div class="investment-pill-row mb-3">
                             <div class="investment-pill">
@@ -449,6 +441,14 @@
 
 <section id="contact" class="footer-section py-5">
     <div class="container">
+        <div class="footer-terms-wrap">
+            <a
+                    class="footer-terms-link"
+                    href="https://drive.google.com/drive/folders/1skpPjpSQ1FbE8EYe1aOQ41po31gQdj5G"
+                    target="_blank"
+                    rel="noopener noreferrer"
+            >[TERMS OF SERVICES]</a>
+        </div>
         <div class="row g-4">
             <div class="col-lg-5">
                 <h3 class="footer-title">Join Our <span class="text-primary">Newsletter</span></h3>

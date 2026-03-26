@@ -731,7 +731,7 @@ input[type="file"].form-control {
 }
 
 .option-box .text-muted {
-    color: #9aa6bf !important;
+    color: white !important;
     opacity: 1;
 }
 
@@ -813,12 +813,14 @@ input[type="file"].form-control {
     border: 1px solid #2a344b;
     border-radius: 12px;
     background: #0b101c;
-    padding: 10px 14px;
+    padding: 8px 12px;
     display: flex;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
     color: #eaf0ff;
-    width: min(330px, 100%);
+    width: fit-content;
+    min-width: 230px;
+    max-width: 100%;
     justify-content: space-between;
 }
 
@@ -1045,6 +1047,26 @@ input[type="file"].form-control {
 .footer-section {
     background: #05070d;
     border-top: 2px solid #1f8fff;
+}
+
+.footer-terms-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: -14px;
+    margin-bottom: 18px;
+}
+
+.footer-terms-link {
+    font-size: 0.64rem;
+    letter-spacing: 0.6px;
+    color: #d6deef;
+    text-decoration: none;
+    background: #05070d;
+    padding: 0 10px;
+}
+
+.footer-terms-link:hover {
+    color: #ffffff;
 }
 
 .footer-title {

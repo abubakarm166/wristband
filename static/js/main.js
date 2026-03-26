@@ -19,6 +19,7 @@ const totalValueEl = document.getElementById("totalValue");
 const showPriceTodayEl = document.getElementById("showPriceToday");
 const experienceEssentials = document.getElementById("expEssentials");
 const experiencePro = document.getElementById("expPro");
+const proExperiencePrice = document.getElementById("proExperiencePrice");
 const timing14 = document.getElementById("timing14");
 const timing30 = document.getElementById("timing30");
 const timing70 = document.getElementById("timing70");
@@ -104,12 +105,19 @@ async function refreshPricing() {
     let total = 0;
     document.querySelectorAll(".feat-cost").forEach((el) => {
       const base = Number(el.getAttribute("data-base") || "0");
-      const mult = el.getAttribute("data-mult") === "shows" ? shows : 1;
+      const multType = el.getAttribute("data-mult");
+      const mult = multType === "shows" ? shows : multType === "guests" ? guests : 1;
       const value = base * mult;
       total += value;
       el.textContent = formatEURNumber(value);
     });
     totalValueEl.textContent = formatEURNumber(total);
+  }
+
+  // Pro card display: 5000 / guests (per guest)
+  if (proExperiencePrice) {
+    const perGuest = guests > 0 ? 5000 / guests : 0;
+    proExperiencePrice.textContent = `+€${formatEURNumber(perGuest)} per guest`;
   }
 
   const query = new URLSearchParams({
@@ -142,7 +150,10 @@ function wireWristbandUpload() {
       URL.revokeObjectURL(lastObjectUrl);
       lastObjectUrl = null;
     }
-    if (uploadPreview) uploadPreview.removeAttribute("src");
+    if (uploadPreview) {
+      uploadPreview.removeAttribute("src");
+      uploadPreview.style.display = "none";
+    }
     if (uploadCard) uploadCard.classList.remove("has-preview");
     if (uploadText) uploadText.textContent = "[Upload]";
     wristbandUpload.removeAttribute("required");
@@ -159,6 +170,7 @@ function wireWristbandUpload() {
     } else {
       clearUpload();
     }
+    refreshPricing();
   };
 
   bandPink.addEventListener("change", openPickerIfNeeded);
@@ -167,8 +179,11 @@ function wireWristbandUpload() {
   if (uploadBtn) {
     uploadBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      if (!bandPink.checked) bandPink.checked = true;
+      if (!bandPink.checked) {
+        bandPink.checked = true;
+      }
       requireUpload();
+      refreshPricing();
       wristbandUpload.click();
     });
   }
@@ -181,9 +196,13 @@ function wireWristbandUpload() {
     }
     if (lastObjectUrl) URL.revokeObjectURL(lastObjectUrl);
     lastObjectUrl = URL.createObjectURL(file);
-    if (uploadPreview) uploadPreview.src = lastObjectUrl;
+    if (uploadPreview) {
+      uploadPreview.src = lastObjectUrl;
+      uploadPreview.style.display = "block";
+    }
     if (uploadCard) uploadCard.classList.add("has-preview");
     if (uploadText) uploadText.textContent = "[Change]";
+    refreshPricing();
   });
 
   // On first load, enforce correct state

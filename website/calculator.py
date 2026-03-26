@@ -3,9 +3,10 @@ from decimal import Decimal, ROUND_HALF_UP
 
 TRANSPORT_PER_BAND = Decimal("0.40")
 BUFFER_RATIO = Decimal("1.05")
-EXPERIENCE_PRO_PER_GUEST = Decimal("4.42")
-TIMING_14_DAYS_PER_GUEST = Decimal("0.30")
-TIMING_30_60_DAYS_PER_GUEST = Decimal("0.20")
+EXPERIENCE_PRO_FLAT = Decimal("5000")
+TIMING_14_DAYS_FLAT = Decimal("50")
+TIMING_30_60_DAYS_FLAT = Decimal("30")
+DELIVERY_TO_VENUE_FLAT = Decimal("60")
 
 BAND_COST_TABLE = [
     (0, Decimal("0.80")),
@@ -63,20 +64,21 @@ def calculate_pricing(
 
     upsell_white_label = Decimal(bands_needed) * Decimal("0.05") if white_label else Decimal("0")
     upsell_custom_skin = Decimal(bands_needed) * Decimal("0.15") if custom_skin else Decimal("0")
-    upsell_delivery = Decimal("80") * Decimal(shows) if delivery_to_venue else Decimal("0")
-    upsell_experience = (Decimal(guests) * EXPERIENCE_PRO_PER_GUEST) if experience == "pro" else Decimal("0")
+    upsell_delivery = DELIVERY_TO_VENUE_FLAT if delivery_to_venue else Decimal("0")
+    upsell_experience = EXPERIENCE_PRO_FLAT if experience == "pro" else Decimal("0")
     if event_timing == "14":
-        upsell_timing = Decimal(guests) * TIMING_14_DAYS_PER_GUEST
+        upsell_timing = TIMING_14_DAYS_FLAT
     elif event_timing == "30":
-        upsell_timing = Decimal(guests) * TIMING_30_60_DAYS_PER_GUEST
+        upsell_timing = TIMING_30_60_DAYS_FLAT
     else:
         upsell_timing = Decimal("0")
 
     upsell_total = upsell_white_label + upsell_custom_skin + upsell_delivery + upsell_experience + upsell_timing
 
-    total_cost = base_total_cost + upsell_total
-    profit = revenue - total_cost
-    margin_percent = (profit / revenue * Decimal("100")) if revenue else Decimal("0")
+    # "Your Show Price today" in the new formula set.
+    total_cost = revenue + upsell_total
+    profit = total_cost - base_total_cost
+    margin_percent = (profit / total_cost * Decimal("100")) if total_cost else Decimal("0")
     cost_per_guest = (total_cost / Decimal(guests)) if guests else Decimal("0")
 
     return {
