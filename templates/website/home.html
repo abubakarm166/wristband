@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+<div id="paymentAlertWrap" class="container pt-3 d-none">
+    <div id="paymentAlert" class="alert mb-0" role="alert"></div>
+</div>
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark nav-blur">
     <div class="container nav-inner">
         <a class="navbar-brand" href="#hero">
@@ -400,9 +403,9 @@
         <div class="row g-4">
             <div class="col-lg-5">
                 <h3 class="footer-title">Join Our <span class="text-primary">Newsletter</span></h3>
-                <form class="d-flex gap-2 mb-4">
-                    <input class="form-control footer-input" placeholder="Enter Your Email">
-                    <button class="btn btn-primary px-4">Subscribe</button>
+                <form id="newsletterForm" class="d-flex gap-2 mb-4" autocomplete="off">
+                    <input id="newsletterEmail" name="email" type="email" class="form-control footer-input" placeholder="Enter Your Email" required>
+                    <button class="btn btn-primary px-4" type="submit">Subscribe</button>
                 </form>
                 <img src="{% static 'images/Company_Logo.png' %}" alt="Company logo" class="footer-logo mb-2">
                 <p class="footer-muted mb-2">Lorem ipsum dolor sit amet<br>dolor sit amet</p>

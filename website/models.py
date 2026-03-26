@@ -32,6 +32,7 @@ class CheckoutRequest(models.Model):
     amount_total_cents = models.PositiveIntegerField(default=0)
     payment_status = models.CharField(max_length=40, blank=True, default="unpaid")
     paid_at = models.DateTimeField(blank=True, null=True)
+    order_email_sent_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -42,3 +43,11 @@ class StripeWebhookEvent(models.Model):
     stripe_event_id = models.CharField(max_length=255, unique=True)
     event_type = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class NewsletterSignup(models.Model):
+    email = models.EmailField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email

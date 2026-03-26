@@ -229,6 +229,52 @@ wireSliderTicks();
 refreshPricing();
 wireWristbandUpload();
 
+// Newsletter (footer)
+const newsletterForm = document.getElementById("newsletterForm");
+const newsletterEmail = document.getElementById("newsletterEmail");
+if (newsletterForm && newsletterEmail) {
+  newsletterForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = (newsletterEmail.value || "").trim();
+    if (!email) return;
+
+    const body = new URLSearchParams({ email });
+    const res = await fetch("/api/newsletter/subscribe/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString(),
+    });
+
+    if (res.ok) {
+      newsletterEmail.value = "";
+      alert("Thanks! You're subscribed.");
+    } else {
+      alert("Sorry, something went wrong. Please try again.");
+    }
+  });
+}
+
+// Payment success/cancel banner (Stripe redirect)
+const paymentAlertWrap = document.getElementById("paymentAlertWrap");
+const paymentAlert = document.getElementById("paymentAlert");
+if (paymentAlertWrap && paymentAlert) {
+  const params = new URLSearchParams(window.location.search);
+  const paid = params.get("paid");
+
+  const showBanner = (type, msg) => {
+    paymentAlert.className = `alert mb-0 alert-${type}`;
+    paymentAlert.textContent = msg;
+    paymentAlertWrap.classList.remove("d-none");
+    window.setTimeout(() => paymentAlertWrap.classList.add("d-none"), 8000);
+  };
+
+  if (paid === "success") {
+    showBanner("success", "Payment successful. Your order is confirmed.");
+  } else if (paid === "cancel") {
+    showBanner("warning", "Payment was cancelled. You can try again anytime.");
+  }
+}
+
 // Bootstrap tooltips
 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
   // eslint-disable-next-line no-undef

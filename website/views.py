@@ -2,6 +2,7 @@ from decimal import Decimal
 
 import stripe
 from django.conf import settings
+from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.utils import timezone
@@ -10,7 +11,7 @@ from django.views.decorators.http import require_GET, require_POST
 
 from .calculator import calculate_pricing
 from .forms import CheckoutForm, WRISTBAND_CHOICES
-from .models import CheckoutRequest, StripeWebhookEvent
+from .models import CheckoutRequest, NewsletterSignup, StripeWebhookEvent
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -50,6 +51,28 @@ def calculate_api(request):
         event_timing=event_timing,
     )
     return JsonResponse(result)
+
+
+@require_POST
+def newsletter_subscribe(request):
+    # Accept normal form POSTs or fetch() form submissions
+    email = (request.POST.get("email") or "").strip().lower()
+    if not email:
+        return JsonResponse({"ok": False, "error": "Email is required."}, status=400)
+
+    signup, created = NewsletterSignup.objects.get_or_create(email=email)
+
+    to_email = (getattr(settings, "NOTIFY_NEWSLETTER_TO_EMAIL", "") or "").strip()
+    if to_email:
+        subject = "New newsletter signup"
+        message = f"Email: {signup.email}\nCreated: {signup.created_at}\nNew: {created}"
+        try:
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [to_email], fail_silently=True)
+        except Exception:
+            # Never block the user flow if SMTP fails
+            pass
+
+    return JsonResponse({"ok": True, "created": created})
 
 
 @require_POST
@@ -180,6 +203,8 @@ def stripe_webhook(request):
             checkout_request = CheckoutRequest.objects.filter(id=req_id).first()
 
         if checkout_request:
+            was_unpaid = (checkout_request.payment_status or "") != "paid"
+
             checkout_request.stripe_payment_intent_id = payment_intent
             checkout_request.payment_status = payment_status or "paid"
             checkout_request.amount_total_cents = int(amount_total or 0)
@@ -196,5 +221,36 @@ def stripe_webhook(request):
                     "paid_at",
                 ]
             )
+
+            # Email admin once per paid order (idempotent)
+            if (
+                (checkout_request.payment_status or "") == "paid"
+                and checkout_request.order_email_sent_at is None
+                and (was_unpaid or checkout_request.paid_at)
+            ):
+                to_email = (getattr(settings, "NOTIFY_ORDERS_TO_EMAIL", "") or "").strip()
+                if to_email:
+                    subject = f"New paid order: {checkout_request.event_name or 'Untitled Event'}"
+                    message = "\n".join(
+                        [
+                            f"Event: {checkout_request.event_name}",
+                            f"Date: {checkout_request.event_date}",
+                            f"Guests: {checkout_request.guests}",
+                            f"Shows: {checkout_request.shows}",
+                            f"Wristband: {checkout_request.wristband_type}",
+                            f"Total (calculated): €{checkout_request.total_cost}",
+                            f"Stripe session: {checkout_request.stripe_session_id}",
+                            f"Payment intent: {checkout_request.stripe_payment_intent_id}",
+                            f"Amount paid: {checkout_request.amount_total_cents} {checkout_request.currency}",
+                            f"Customer email: {checkout_request.stripe_customer_email}",
+                            f"Paid at: {checkout_request.paid_at}",
+                        ]
+                    )
+                    try:
+                        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [to_email], fail_silently=True)
+                        checkout_request.order_email_sent_at = timezone.now()
+                        checkout_request.save(update_fields=["order_email_sent_at"])
+                    except Exception:
+                        pass
 
     return JsonResponse({"status": "ok"}, status=200)
