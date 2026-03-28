@@ -6,7 +6,8 @@ BUFFER_RATIO = Decimal("1.05")
 EXPERIENCE_PRO_FLAT = Decimal("5000")
 TIMING_14_DAYS_FLAT = Decimal("50")
 TIMING_30_60_DAYS_FLAT = Decimal("30")
-DELIVERY_TO_VENUE_FLAT = Decimal("60")
+# Per show day: venue delivery = 60 × number of shows
+DELIVERY_TO_VENUE_PER_SHOW = Decimal("60")
 
 BAND_COST_TABLE = [
     (0, Decimal("0.80")),
@@ -64,7 +65,9 @@ def calculate_pricing(
 
     upsell_white_label = Decimal(bands_needed) * Decimal("0.05") if white_label else Decimal("0")
     upsell_custom_skin = Decimal(bands_needed) * Decimal("0.15") if custom_skin else Decimal("0")
-    upsell_delivery = DELIVERY_TO_VENUE_FLAT if delivery_to_venue else Decimal("0")
+    upsell_delivery = (
+        (DELIVERY_TO_VENUE_PER_SHOW * Decimal(shows)) if delivery_to_venue else Decimal("0")
+    )
     upsell_experience = EXPERIENCE_PRO_FLAT if experience == "pro" else Decimal("0")
     if event_timing == "14":
         upsell_timing = TIMING_14_DAYS_FLAT

@@ -51,6 +51,8 @@ function formatInt(n) {
 }
 
 const GUEST_STEPS = [500, 750, 1000, 2500, 5000, 10000, 20000, 40000, 80000];
+/** Must match `DELIVERY_TO_VENUE_PER_SHOW` in website/calculator.py */
+const DELIVERY_PER_SHOW_EUR = 60;
 
 function syncGuestSliderToHidden() {
   if (!guestsSlider || !guestsInput) return;
@@ -81,6 +83,16 @@ async function refreshPricing() {
   const guests = parseInt(guestsInput.value || "0", 10);
   const shows = parseInt(showsInput.value || "1", 10);
 
+  const deliveryVenuePriceDisplay = document.getElementById("deliveryVenuePriceDisplay");
+  if (deliveryVenuePriceDisplay && Number.isFinite(shows) && shows >= 1) {
+    deliveryVenuePriceDisplay.textContent = formatInt(DELIVERY_PER_SHOW_EUR * shows);
+  }
+
+  const showControlKitBandCount = document.getElementById("showControlKitBandCount");
+  if (showControlKitBandCount && Number.isFinite(guests) && guests >= 1) {
+    showControlKitBandCount.textContent = formatInt(guests);
+  }
+
   if (!guests || !shows || guests < 1 || shows < 1) {
     return;
   }
@@ -100,16 +112,30 @@ async function refreshPricing() {
     customSkinInput.checked = bandPink.checked;
   }
 
-  // Update "Total Value" list (visual only)
+  // Normal show price breakdown (visual line items; sum -> #totalValue)
+  // 100% Show Guarantee = 10% of Show Control Kit + 10% of (10% of Fail-safe Backup)
+  //   Show Control Kit = 2.5 * guests, Fail-safe Backup = 350 * shows
   if (totalValueEl) {
     let total = 0;
     document.querySelectorAll(".feat-cost").forEach((el) => {
-      const base = Number(el.getAttribute("data-base") || "0");
-      const multType = el.getAttribute("data-mult");
-      const mult = multType === "shows" ? shows : multType === "guests" ? guests : 1;
-      const value = base * mult;
+      const derive = el.getAttribute("data-derive");
+      let value;
+      if (derive === "show-guarantee") {
+        const showControlKit = 2.5 * guests;
+        const failBackup = 350 * shows;
+        value = 0.1 * showControlKit + 0.1 * (0.1 * failBackup);
+      } else {
+        const base = Number(el.getAttribute("data-base") || "0");
+        const multType = el.getAttribute("data-mult");
+        const mult = multType === "shows" ? shows : multType === "guests" ? guests : 1;
+        value = base * mult;
+      }
       total += value;
-      el.textContent = formatEURNumber(value);
+      if (el.getAttribute("data-display") === "infinity") {
+        el.textContent = "∞";
+      } else {
+        el.textContent = formatEURNumber(value);
+      }
     });
     totalValueEl.textContent = formatEURNumber(total);
   }
@@ -155,7 +181,7 @@ function wireWristbandUpload() {
       uploadPreview.style.display = "none";
     }
     if (uploadCard) uploadCard.classList.remove("has-preview");
-    if (uploadText) uploadText.textContent = "[Upload]";
+    if (uploadText) uploadText.textContent = "[UPLOAD]";
     wristbandUpload.removeAttribute("required");
   };
 
@@ -294,10 +320,14 @@ if (paymentAlertWrap && paymentAlert) {
   }
 }
 
-// Bootstrap tooltips
+// Bootstrap tooltips (HTML allowed where data-bs-html="true")
 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+  const useHtml = el.getAttribute("data-bs-html") === "true";
   // eslint-disable-next-line no-undef
-  new bootstrap.Tooltip(el);
+  new bootstrap.Tooltip(el, {
+    html: useHtml,
+    sanitize: false,
+  });
 });
 
 // Testimonial swiper
@@ -317,4 +347,132 @@ if (typeof Swiper !== "undefined" && document.querySelector(".testimonial-swiper
       prevEl: ".testimonial-prev",
     },
   });
+}
+
+// Crowd-ways GIFs: play on demand, pause by clearing src (stops animation)
+function wireCrowdWayGifs() {
+  document.querySelectorAll(".crowd-ways-gif-wrap").forEach((wrap) => {
+    const img = wrap.querySelector(".crowd-ways-gif");
+    const btn = wrap.querySelector(".crowd-ways-play-btn");
+    const iconPlay = wrap.querySelector(".crowd-ways-btn-play");
+    const iconPause = wrap.querySelector(".crowd-ways-btn-pause");
+    const gifUrl = (img && img.getAttribute("data-animated-src")) || "";
+    if (!img || !btn) return;
+    if (!gifUrl) {
+      // eslint-disable-next-line no-console
+      console.warn("Crowd-ways GIF missing data-animated-src", wrap);
+      return;
+    }
+
+    const setPlaying = (playing) => {
+      wrap.classList.toggle("is-playing", playing);
+      btn.setAttribute("aria-pressed", playing ? "true" : "false");
+      btn.setAttribute("aria-label", playing ? "Pause animation" : "Play animation");
+      if (iconPlay) iconPlay.classList.toggle("d-none", playing);
+      if (iconPause) iconPause.classList.toggle("d-none", !playing);
+      if (playing) {
+        img.addEventListener(
+          "error",
+          () => {
+            setPlaying(false);
+          },
+          { once: true },
+        );
+        img.src = gifUrl;
+        img.alt = img.dataset.imgAlt || img.getAttribute("data-img-alt") || "";
+      } else {
+        img.removeAttribute("src");
+        img.alt = "";
+      }
+    };
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setPlaying(!wrap.classList.contains("is-playing"));
+    });
+  });
+}
+
+function wireCrowdWaysLightbox() {
+  const lb = document.getElementById("crowdWaysLightbox");
+  const lbImg = document.getElementById("crowdWaysLightboxImg");
+  const backdrop = document.querySelector(".crowd-ways-lightbox-backdrop");
+  if (!lb || !lbImg || !backdrop) return;
+
+  const closeLightbox = () => {
+    lb.classList.add("d-none");
+    lbImg.removeAttribute("src");
+    lb.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  const openLightbox = (src, alt) => {
+    if (!src) return;
+    lbImg.src = src;
+    lbImg.alt = alt || "";
+    lb.classList.remove("d-none");
+    lb.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  backdrop.addEventListener("click", closeLightbox);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !lb.classList.contains("d-none")) {
+      e.preventDefault();
+      closeLightbox();
+    }
+  });
+
+  document.querySelectorAll(".crowd-ways-gif-inner").forEach((inner) => {
+    inner.addEventListener("click", (e) => {
+      if (e.target.closest(".crowd-ways-play-btn")) return;
+      const wrap = inner.closest(".crowd-ways-gif-wrap");
+      if (!wrap) return;
+      const thumb = wrap.querySelector(".crowd-ways-thumb");
+      const gif = wrap.querySelector(".crowd-ways-gif");
+      const isPlaying = wrap.classList.contains("is-playing");
+      let src = "";
+      if (isPlaying && gif && gif.getAttribute("src")) {
+        src = gif.currentSrc || gif.src;
+      } else if (thumb && thumb.src) {
+        src = thumb.src;
+      }
+      if (!src) return;
+      const alt = thumb ? thumb.getAttribute("alt") || "" : "";
+      openLightbox(src, alt);
+    });
+  });
+
+  document.querySelectorAll(".experience-card .experience-img").forEach((img) => {
+    img.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const src = img.currentSrc || img.src;
+      if (!src) return;
+      openLightbox(src, img.getAttribute("alt") || "");
+    });
+  });
+
+  document.querySelectorAll(".wristband-card--free .wristband-thumb-frame img").forEach((img) => {
+    img.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const src = img.currentSrc || img.src;
+      if (!src) return;
+      openLightbox(src, img.getAttribute("alt") || "");
+    });
+  });
+}
+
+function initCrowdWays() {
+  wireCrowdWayGifs();
+  wireCrowdWaysLightbox();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCrowdWays);
+} else {
+  initCrowdWays();
 }
