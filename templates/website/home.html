@@ -31,11 +31,10 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link" href="#hero">System</a></li>
-                <li class="nav-item"><a class="nav-link" href="#demo">Use cases</a></li>
-                <li class="nav-item"><a class="nav-link" href="#bands">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
+                <li class="nav-item"><a class="nav-link" href="#crowd-ways">Experience</a></li>
                 <li class="nav-item"><a class="nav-link" href="#calculator">Pricing</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
             <a href="#contact" class="btn btn-primary px-4">Contact Us</a>
         </div>
@@ -58,9 +57,9 @@
     <div class="container position-relative hero-inner">
         <div class="text-center hero-content">
             <div class="hero-headline-bar mx-auto">
-                <h1 class="mb-0">This is what Dutch organisers are missing.</h1>
+                <h1 class="mb-0">Most Dutch Events are missing this.</h1>
+                <a href="#demo" class="hero-pill-cta mt-3">Turn your crowd into the show</a>
             </div>
-            <a href="#demo" class="btn btn-primary btn-lg mt-4">Explore</a>
         </div>
     </div>
 </section>
@@ -98,8 +97,8 @@ Do not delete; remove this comment wrapper to show the section again.
 <section id="demo" class="section-dark py-5">
     <div class="container">
         <div class="demo-box">
-            <h3 class="text-center mb-4">Good Festivals Have Great Lighting<br>The Best Festivals Turn The Crowd Into The Show</h3>
-            <div class="ratio ratio-16x9 mb-3">
+            <h3 class="text-center demo-title mb-3">Concert &amp; Festival Organisers. This is for you.</h3>
+            <div class="ratio ratio-16x9 demo-video-wrap">
                 <iframe
                         class="w-100 h-100 demo-video"
                         src="https://player.vimeo.com/video/1177364786?dnt=1&title=0&byline=0&portrait=0"
@@ -109,7 +108,7 @@ Do not delete; remove this comment wrapper to show the section again.
                         allowfullscreen
                 ></iframe>
             </div>
-            <p class="text-center demo-ps mb-0">PS: It’s already happening. Most festivals are falling behind.</p>
+            <div class="demo-ps-bar">PS: Give it 30 seconds.</div>
         </div>
     </div>
 </section>
@@ -303,10 +302,12 @@ Do not delete; remove this comment wrapper to show the section again.
                                 <span class="slider-value" id="showsValue">3</span>
                             </label>
                             <input required type="range" min="1" max="25" value="3" id="shows" name="shows" class="form-range slider">
-                            <div class="slider-scale">
-                                <button type="button" class="slider-tick" data-for="shows" data-value="1">1</button>
-                                <button type="button" class="slider-tick" data-for="shows" data-value="3">3</button>
-                                <button type="button" class="slider-tick" data-for="shows" data-value="25">25</button>
+                            <div class="slider-scale slider-scale--shows">
+                                <button type="button" class="slider-tick" style="--pos: 0%" data-for="shows" data-value="1">1</button>
+                                <button type="button" class="slider-tick" style="--pos: 8.333%" data-for="shows" data-value="3">3</button>
+                                <button type="button" class="slider-tick" style="--pos: 16.667%" data-for="shows" data-value="5">5</button>
+                                <button type="button" class="slider-tick" style="--pos: 37.5%" data-for="shows" data-value="10">10</button>
+                                <button type="button" class="slider-tick" style="--pos: 100%" data-for="shows" data-value="25">25</button>
                             </div>
                         </div>
 
@@ -511,14 +512,14 @@ Do not delete; remove this comment wrapper to show the section again.
                             <div class="feature-box feature-box--show-kit">
                                 <div class="feature-title">
                                     <strong>Show Control Kit</strong>
-                                    <button
+                                    <!-- <button
                                             type="button"
                                             class="info-icon"
                                             aria-label="Show Control Kit info"
                                             data-bs-toggle="tooltip"
                                             data-bs-html="true"
                                             data-bs-title="<strong>+5% extra wristbands included.</strong><br>Just in case."
-                                    >i</button>
+                                    >i</button> -->
                                 </div>
                                 <p class="feature-body-lg">Perfect Color - Perfect Timing</p>
                                 <p class="feature-body-lg">Controlled from your Lighting Desk</p>
@@ -550,14 +551,25 @@ Do not delete; remove this comment wrapper to show the section again.
                                 <p class="feature-subhead">Backup Antenna included</p>
                                 <p class="feature-tagline"><em>Your show never stops.</em></p>
                             </div>
-                            <div class="feature-box feature-box--stacked">
-                                <strong class="feature-headline">Total Crowd Control</strong>
+                            
+                            <div class="feature-box feature-box--stacked" data-show-when="essentials">
+                                <strong class="feature-headline">Plug in. Go Live.</strong>
                                 <p class="feature-subhead">Works with any Lighting Desk</p>
                                 <p class="feature-tagline"><em>Setup done in minutes.</em></p>
+                            </div>
+                            <div class="feature-box feature-box--stacked" data-show-when="pro">
+                                <strong class="feature-headline">Total Crowd Control</strong>
+                                <p class="feature-subhead">Maximum crowd impact</p>
+                                <p class="feature-tagline"><em>Precision control</em></p>
                             </div>
                             <div class="feature-box feature-box--stacked">
                                 <strong class="feature-headline">On-site Show Guidance</strong>
                                 <p class="feature-subhead">Your operator gets the most out of every drop</p>
+                            </div>
+                            <div class="feature-box feature-box--stacked">
+                                <strong class="feature-headline">No Shortages</strong>
+                                <p class="feature-subhead">+5% extra wristbands included.</p>
+                                <p class="feature-tagline"><em>NMB: <span id="nmbValue">0</span> extra bands</em></p>
                             </div>
                         </div>
                     </div>
@@ -568,12 +580,15 @@ Do not delete; remove this comment wrapper to show the section again.
                         <h4 class="show-price-title">Your Show Price</h4>
                         <ul class="list-group bg-transparent investment-list investment-list--show-price">
                             <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>100% Show Guarantee</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="show-guarantee">0,00</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Show Control Kit</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="2.5" data-mult="guests">2500</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Show Control Kit</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="show-control-kit" data-normal="true">0,00</span></strong></li>
                             <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Motion Volume&rsquo;s Viral Blueprint</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="3200" data-mult="none" data-display="infinity">∞</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Aftermovie Content Pack</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows">400</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Fail-Safe Backup System</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="350" data-mult="shows">350</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Total Crowd Control</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="200" data-mult="none" data-display="infinity">∞</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>On-site Show Guidance</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows">400</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Aftermovie Content Pack</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows" data-normal="true">400</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Fail-Safe Backup System</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="350" data-mult="shows" data-normal="true">350</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center" data-show-when="essentials"><span>Plug in. Go Live.</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="0" data-mult="none" data-display="infinity">∞</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center" data-show-when="pro"><span>Total Crowd Control</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="200" data-mult="none" data-display="infinity">∞</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>On-site Show Guidance</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows" data-normal="true">400</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>No Shortages</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="no-shortages" data-normal="true">0,00</span></strong></li>
+                        
                         </ul> 
                         <div class="investment-pill-row investment-pill-row--show-price investment-pill-row--final">
                             <div class="investment-pill investment-pill--block investment-pill--normal">
@@ -581,19 +596,21 @@ Do not delete; remove this comment wrapper to show the section again.
                                 <strong>€ <span id="totalValue">0.00</span></strong>
                             </div>
                         </div>
+                        
                         <div class="investment-divider investment-divider--show-price"></div>
-                        <div class="big-metric big-metric--show-price my-2">
-                            <div class="big-metric-value">€<span id="pricePerGuest">1.50</span> <span class="big-metric-sub">per guest.</span></div>
-                            <div class="big-metric-note">
-                                €0,10 <span class="refund-highlight">refunded</span> per returned wristband
-                            </div>
-                        </div> 
                         <div class="investment-pill-row investment-pill-row--show-price investment-pill-row--final my-2">
                             <div class="investment-pill investment-pill--block investment-pill--final-total">
                                 <span>Your Show Price</span>
                                 <strong>€ <span id="showPriceToday">0.00</span></strong>
                             </div>
                         </div> 
+                        <div class="big-metric big-metric--show-price my-2">
+                            <div class="big-metric-value">€<span id="pricePerGuest">1.50</span> <span class="big-metric-sub">per guest.</span></div>
+                            <div class="big-metric-note">
+                                €0,10 <span class="refund-highlight">refunded</span> per returned wristband
+                            </div>
+                        </div> 
+                        
                         <button class="btn btn-primary w-100 btn-lg show-price-cta mb-3" type="submit">Activate your crowd</button>
                         <div class="investment-divider investment-divider--show-price"></div>
                         <div class="contact-strip contact-strip--show-price">

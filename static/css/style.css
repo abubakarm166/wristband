@@ -139,12 +139,12 @@ body {
 .hero-headline-bar {
     display: block;
     width: fit-content;
-    max-width: min(920px, 100%);
     margin-left: auto;
     margin-right: auto;
-    background: rgba(0, 0, 0, 0.78);
-    padding: 1rem 1.5rem;
-    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1.35rem 1.75rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
 }
 
 .hero-content .btn {
@@ -152,9 +152,32 @@ body {
 }
 
 .hero-content h1 {
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 700;
+    font-size: clamp(2.2rem, 5.8vw, 4.6rem);
+    font-weight: 750;
     line-height: 1.2;
+    letter-spacing: -0.03em;
+}
+
+.hero-pill-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.05rem;
+    border-radius: 999px;
+    background: #3f7be8;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(63, 123, 232, 0.35);
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hero-pill-cta:hover {
+    background: #5b9cff;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(63, 123, 232, 0.35);
 }
 
 .partners-section {
@@ -222,7 +245,7 @@ body {
     background: #0b101c;
     aspect-ratio: 1 / 1;
     max-height: min(420px, 85vw);
-    cursor: zoom-in;
+    cursor: pointer;
 }
 
 /* Keep square frame while playing — the GIF is position:absolute and does not
@@ -248,7 +271,6 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    vertical-align: middle;
     position: relative;
     z-index: 0;
 }
@@ -482,13 +504,44 @@ body {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
+.demo-box {
+    padding: 18px;
+    background: linear-gradient(180deg, #161c28 0%, #0f1524 100%);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.45);
+}
+
+.demo-title {
+    font-size: clamp(1.8rem, 4.2vw, 3.15rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.demo-video-wrap {
+    border: 1px solid #2f3a52;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 0;
+    background: #05070d;
+}
+
 .demo-video {
     color-scheme: dark;
     accent-color: #ffffff;
 }
 
-.demo-ps {
+.demo-ps-bar {
+    margin-top: 14px;
+    padding: 14px 14px;
+    border-radius: 14px;
+    background: #101620;
+    border: 1px solid #2f3a52;
     color: #ffffff;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
 }
 
 .gallery-img {
@@ -727,6 +780,36 @@ input[type="file"].form-control {
     padding: 0 4px;
     margin-top: 8px;
     letter-spacing: 0.2px;
+}
+
+.slider-scale--shows {
+    position: relative;
+    display: block;
+    height: 16px;
+    padding: 0 4px;
+}
+
+.slider-scale--shows .slider-tick {
+    position: absolute;
+    left: var(--pos);
+    top: 0;
+    transform: translateX(-50%);
+    flex: none;
+    width: auto;
+    text-align: center;
+}
+
+.slider-scale--shows .slider-tick:first-child {
+    transform: none;
+    left: 0;
+    text-align: left;
+}
+
+.slider-scale--shows .slider-tick:last-child {
+    transform: none;
+    left: auto;
+    right: 0;
+    text-align: right;
 }
 
 .slider-tick {
@@ -1113,8 +1196,7 @@ a.info-icon--link:hover {
     margin-bottom: 12px;
     border: 1px solid #323c52;
     background: #121722;
-    cursor: zoom-in;
-}
+ }
 
 .experience-meta {
     color: #c8d0df;

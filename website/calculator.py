@@ -4,8 +4,9 @@ from decimal import Decimal, ROUND_HALF_UP
 TRANSPORT_PER_BAND = Decimal("0.40")
 BUFFER_RATIO = Decimal("1.05")
 EXPERIENCE_PRO_FLAT = Decimal("5000")
-TIMING_14_DAYS_FLAT = Decimal("50")
-TIMING_30_60_DAYS_FLAT = Decimal("30")
+# Delivery speed is priced per guest (NOT flat)
+TIMING_14_DAYS_PER_GUEST = Decimal("0.30")
+TIMING_30_DAYS_PER_GUEST = Decimal("0.10")
 # Per show day: venue delivery = 60 × number of shows
 DELIVERY_TO_VENUE_PER_SHOW = Decimal("60")
 
@@ -70,9 +71,9 @@ def calculate_pricing(
     )
     upsell_experience = EXPERIENCE_PRO_FLAT if experience == "pro" else Decimal("0")
     if event_timing == "14":
-        upsell_timing = TIMING_14_DAYS_FLAT
+        upsell_timing = Decimal(guests) * TIMING_14_DAYS_PER_GUEST
     elif event_timing == "30":
-        upsell_timing = TIMING_30_60_DAYS_FLAT
+        upsell_timing = Decimal(guests) * TIMING_30_DAYS_PER_GUEST
     else:
         upsell_timing = Decimal("0")
 
