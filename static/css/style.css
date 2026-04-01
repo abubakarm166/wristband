@@ -967,6 +967,11 @@ input[type="file"].form-control {
     border-radius: 8px;
     display: block;
     cursor: zoom-in;
+    transition: opacity 180ms ease;
+}
+
+#includedWristbandPreview.is-swapping {
+    opacity: 0;
 }
 
 .wristband-card--upload {

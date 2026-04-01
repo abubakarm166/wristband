@@ -355,7 +355,13 @@ Do not delete; remove this comment wrapper to show the section again.
                                 <input class="wristband-radio" type="radio" name="wristband_type" id="bandBlue" value="blue-led" checked>
                                 <label class="wristband-card wristband-card--free" for="bandBlue" title="Included design">
                                     <div class="wristband-thumb-frame">
-                                        <img src="{% static 'images/free.jpeg' %}" alt="Included wristband design">
+                                        <img
+                                                id="includedWristbandPreview"
+                                                src="{% static 'images/WristbandRenderA.jpeg' %}"
+                                                data-src-a="{% static 'images/WristbandRenderA.jpeg' %}"
+                                                data-src-b="{% static 'images/WristbandRenderB.jpeg' %}"
+                                                alt="Included wristband design"
+                                        >
                                     </div>
                                     <div class="wristband-meta">
                                         <div class="wristband-price">Included</div>

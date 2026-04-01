@@ -26,6 +26,7 @@ const timing14 = document.getElementById("timing14");
 const timing30 = document.getElementById("timing30");
 const timing70 = document.getElementById("timing70");
 const nmbValueEl = document.getElementById("nmbValue");
+const includedWristbandPreviewEl = document.getElementById("includedWristbandPreview");
 
 const outputs = {
   pricePerGuest: document.getElementById("pricePerGuest"),
@@ -57,6 +58,26 @@ function applyExperienceVisibility() {
     // so toggling inline `style.display` won't reliably hide them. Use `d-none`.
     el.classList.toggle("d-none", when !== experience);
   });
+}
+
+function applyIncludedWristbandPreview() {
+  if (!includedWristbandPreviewEl) return;
+  if (!bandBlue?.checked) return;
+  const srcA = includedWristbandPreviewEl.getAttribute("data-src-a") || "";
+  const srcB = includedWristbandPreviewEl.getAttribute("data-src-b") || "";
+  const nextSrc = whiteLabelInput?.checked ? srcB : srcA;
+  if (nextSrc && includedWristbandPreviewEl.getAttribute("src") !== nextSrc) {
+    includedWristbandPreviewEl.classList.add("is-swapping");
+    const swap = () => {
+      includedWristbandPreviewEl.setAttribute("src", nextSrc);
+      includedWristbandPreviewEl.removeEventListener("load", onLoad);
+      includedWristbandPreviewEl.addEventListener("load", onLoad, { once: true });
+      // If the image is cached and load doesn't fire, still fade back in.
+      window.setTimeout(() => includedWristbandPreviewEl.classList.remove("is-swapping"), 250);
+    };
+    const onLoad = () => includedWristbandPreviewEl.classList.remove("is-swapping");
+    window.setTimeout(swap, 120);
+  }
 }
 
 const GUEST_STEPS = [500, 750, 1000, 2500, 5000, 10000, 20000, 40000, 80000];
@@ -92,6 +113,7 @@ async function refreshPricing() {
   const guests = parseInt(guestsInput?.value || "0", 10);
   const shows = parseInt(showsInput?.value || "1", 10);
   applyExperienceVisibility();
+  applyIncludedWristbandPreview();
 
   const deliveryVenuePriceDisplay = document.getElementById("deliveryVenuePriceDisplay");
   if (deliveryVenuePriceDisplay && Number.isFinite(shows) && shows >= 1) {
