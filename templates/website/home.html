@@ -31,12 +31,17 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
-                <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
-                <li class="nav-item"><a class="nav-link" href="#crowd-ways">Experience</a></li>
-                <li class="nav-item"><a class="nav-link" href="#calculator">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link" href="#demo" data-i18n="nav.demo">Demo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#how-it-works" data-i18n="nav.howItWorks">How it works</a></li>
+                <li class="nav-item"><a class="nav-link" href="#crowd-ways" data-i18n="nav.experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#calculator" data-i18n="nav.pricing">Pricing</a></li>
             </ul>
-            <a href="#contact" class="btn btn-primary px-4">Contact Us</a>
+            <div class="d-flex align-items-center gap-2">
+                <button id="langToggle" type="button" class="btn btn-outline-light btn-sm px-3" aria-label="Toggle language">
+                    <span data-i18n="nav.langShort">NL</span>
+                </button>
+                <a href="#contact" class="btn btn-primary px-4" data-i18n="nav.contact">Contact Us</a>
+            </div>
         </div>
     </div>
 </nav>
@@ -57,8 +62,8 @@
     <div class="container position-relative hero-inner">
         <div class="text-center hero-content">
             <div class="hero-headline-bar mx-auto">
-                <h1 class="mb-0">Most Dutch Events are missing this.</h1>
-                <a href="#demo" class="hero-pill-cta mt-3">Turn your crowd into the show</a>
+                <h1 class="mb-0" data-i18n="hero.headline">Most Dutch Events are missing this.</h1>
+                <a href="#demo" class="hero-pill-cta mt-3" data-i18n="hero.cta">Turn your crowd into the show</a>
             </div>
         </div>
     </div>
@@ -97,7 +102,7 @@ Do not delete; remove this comment wrapper to show the section again.
 <section id="demo" class="section-dark py-5">
     <div class="container">
         <div class="demo-box">
-            <h3 class="text-center demo-title mb-3">Concert &amp; Festival Organisers. This is for you.</h3>
+            <h3 class="text-center demo-title mb-3" data-i18n="demo.title">Concert &amp; Festival Organisers. This is for you.</h3>
             <div class="ratio ratio-16x9 demo-video-wrap">
                 <iframe
                         class="w-100 h-100 demo-video"
@@ -108,7 +113,7 @@ Do not delete; remove this comment wrapper to show the section again.
                         allowfullscreen
                 ></iframe>
             </div>
-            <div class="demo-ps-bar">PS: Give it 30 seconds.</div>
+            <div class="demo-ps-bar" data-i18n="demo.ps">PS: Give it 30 seconds.</div>
         </div>
     </div>
 </section>
@@ -205,7 +210,7 @@ Do not delete; remove this comment wrapper to show the section again.
 
 <section id="how-it-works" class="section-dark how-it-works-section py-5">
     <div class="container">
-        <h2 class="how-it-works-title text-center mb-4 mb-lg-5">This is how it works.</h2>
+        <h2 class="how-it-works-title text-center mb-4 mb-lg-5" data-i18n="howItWorks.title">This is how it works.</h2>
         <div class="how-it-works-visual text-center">
             <img
                     src="{% static 'images/how_it_work.jpeg' %}"
@@ -219,11 +224,11 @@ Do not delete; remove this comment wrapper to show the section again.
 
 <section id="crowd-ways" class="section-dark crowd-ways-section py-5">
     <div class="container">
-        <h2 class="crowd-ways-heading text-center mb-4 mb-lg-5">Two ways to light up your crowd</h2>
+        <h2 class="crowd-ways-heading text-center mb-4 mb-lg-5" data-i18n="crowdWays.title">Two ways to light up your crowd</h2>
         <div class="row g-4 g-lg-5 justify-content-center">
             <div class="col-lg-6">
                 <div class="crowd-ways-col">
-                    <h3 class="crowd-ways-subtitle text-center">Essentials (Included)</h3>
+                    <h3 class="crowd-ways-subtitle text-center" data-i18n="crowdWays.essentialsTitle">Essentials (Included)</h3>
                     <div class="crowd-ways-gif-wrap text-center mb-3">
                         <div class="crowd-ways-gif-inner">
                             <img
@@ -243,18 +248,18 @@ Do not delete; remove this comment wrapper to show the section again.
                             </button>
                         </div>
                     </div>
-                    <p class="crowd-ways-lead text-center fw-bold mb-3">Plug In. Go Live.</p>
+                    <p class="crowd-ways-lead text-center fw-bold mb-3" data-i18n="crowdWays.essentialsLead">Plug In. Go Live.</p>
                     <ul class="crowd-ways-list list-unstyled mb-0 mx-auto">
-                        <li>Basic crowd lighting</li>
-                        <li>Perfect color. Perfect timing.</li>
-                        <li>Static &amp; random effects</li>
-                        <li>Ready to go</li>
+                        <li data-i18n="crowdWays.essentials.b1">Basic crowd lighting</li>
+                        <li data-i18n="crowdWays.essentials.b2">Perfect color. Perfect timing.</li>
+                        <li data-i18n="crowdWays.essentials.b3">Static &amp; random effects</li>
+                        <li data-i18n="crowdWays.essentials.b4">Ready to go</li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="crowd-ways-col">
-                    <h3 class="crowd-ways-subtitle text-center">Pro Experience</h3>
+                    <h3 class="crowd-ways-subtitle text-center" data-i18n="crowdWays.proTitle">Pro Experience</h3>
                     <div class="crowd-ways-gif-wrap text-center mb-3">
                         <div class="crowd-ways-gif-inner">
                             <img
@@ -274,12 +279,12 @@ Do not delete; remove this comment wrapper to show the section again.
                             </button>
                         </div>
                     </div>
-                    <p class="crowd-ways-lead text-center fw-bold mb-3">Full show control</p>
+                    <p class="crowd-ways-lead text-center fw-bold mb-3" data-i18n="crowdWays.proLead">Full show control</p>
                     <ul class="crowd-ways-list list-unstyled mb-0 mx-auto">
-                        <li>Next-level crowd control</li>
-                        <li>Perfect color. Perfect timing.</li>
-                        <li>Advanced crowd animations</li>
-                        <li>Built for high-impact shows</li>
+                        <li data-i18n="crowdWays.pro.b1">Next-level crowd control</li>
+                        <li data-i18n="crowdWays.pro.b2">Perfect color. Perfect timing.</li>
+                        <li data-i18n="crowdWays.pro.b3">Advanced crowd animations</li>
+                        <li data-i18n="crowdWays.pro.b4">Built for high-impact shows</li>
                     </ul>
                 </div>
             </div>
@@ -289,16 +294,16 @@ Do not delete; remove this comment wrapper to show the section again.
 
 <section id="calculator" class="section-dark pb-5">
     <div class="container">
-        <h2 class="text-center mb-4">Plan. Price. Pay.</h2>
+        <h2 class="text-center mb-4" data-i18n="calc.title">Plan. Price. Pay.</h2>
         <form action="{% url 'create_checkout_session' %}" method="post" enctype="multipart/form-data" id="checkoutForm">
             {% csrf_token %}
             <div class="row g-4">
                 <div class="col-lg-4">
                     <div class="panel h-100">
-                        <h4>Event Setup</h4>
+                        <h4 data-i18n="calc.eventSetup">Event Setup</h4>
                         <div class="slider-group mb-3">
                             <label class="form-label d-flex justify-content-between align-items-center mb-2">
-                                <span>Show Days</span>
+                                <span data-i18n="calc.showDays">Show Days</span>
                                 <span class="slider-value" id="showsValue">3</span>
                             </label>
                             <input required type="range" min="1" max="25" value="3" id="shows" name="shows" class="form-range slider">
@@ -314,13 +319,17 @@ Do not delete; remove this comment wrapper to show the section again.
                         <div class="slider-group mb-3">
                             <label class="form-label d-flex justify-content-between align-items-center mb-2">
                                 <span class="d-flex align-items-center gap-2">
-                                    <span>Total Guests</span>
+                                    <span data-i18n="calc.totalGuests">Total Guests</span>
                                     <button
                                             type="button"
                                             class="info-icon"
                                             aria-label="Guests info"
+                                            data-i18n-attr="aria-label"
+                                            data-i18n-attr-key="calc.guestsInfoAria"
                                             data-bs-toggle="tooltip"
                                             data-bs-title="Total guests across all shows"
+                                            data-i18n-attr="data-bs-title"
+                                            data-i18n-attr-key="calc.guestsInfoTip"
                                     >i</button>
                                 </span>
                                 <span class="slider-value" id="guestsValue">1,000</span>
@@ -341,14 +350,18 @@ Do not delete; remove this comment wrapper to show the section again.
                         </div>
                         <div class="choose-design-block">
                             <div class="choose-design-heading">
-                                <span class="choose-design-title">Choose Your Design</span>
+                                <span class="choose-design-title" data-i18n="calc.chooseDesign">Choose Your Design</span>
                                 <button
                                         type="button"
                                         class="info-icon"
                                         aria-label="Design options info"
+                                        data-i18n-attr="aria-label"
+                                        data-i18n-attr-key="calc.designInfoAria"
                                         data-bs-toggle="tooltip"
                                         data-bs-html="true"
                                         data-bs-title="Reusable wristbands.<br>No disposable festival locks."
+                                        data-i18n-attr="data-bs-title"
+                                        data-i18n-attr-key="calc.designInfoTip"
                                 >i</button>
                             </div>
                             <div class="wristband-grid wristband-grid-2" role="radiogroup" aria-label="Choose Wristband Design">
@@ -364,7 +377,7 @@ Do not delete; remove this comment wrapper to show the section again.
                                         >
                                     </div>
                                     <div class="wristband-meta">
-                                        <div class="wristband-price">Included</div>
+                                        <div class="wristband-price" data-i18n="calc.included">Included</div>
                                     </div>
                                 </label>
 
@@ -376,16 +389,16 @@ Do not delete; remove this comment wrapper to show the section again.
                                     </div>
                                     <input id="wristbandUpload" name="upload_design" class="wristband-upload-input" type="file" accept="image/*">
                                     <div class="wristband-meta">
-                                        <div class="wristband-price">+€0,15 per Guest</div>
-                                        <a class="wristband-template-link" href="https://drive.google.com/drive/folders/1WC4gaBupo-m8Rvrn_nJdYvfTjS4eYgnK" target="_blank" rel="noopener noreferrer">Download template</a>
+                                        <div class="wristband-price" data-i18n="calc.customDesignPrice">+€0,15 per Guest</div>
+                                        <a class="wristband-template-link" href="https://drive.google.com/drive/folders/1WC4gaBupo-m8Rvrn_nJdYvfTjS4eYgnK" target="_blank" rel="noopener noreferrer" data-i18n="calc.downloadTemplate">Download template</a>
                                     </div>
                                 </label>
                             </div>
                             <div class="form-check form-check--watermark">
                                 <input class="form-check-input pricing-toggle" id="whiteLabel" type="checkbox" name="white_label">
                                 <label class="form-check-label" for="whiteLabel">
-                                    <span class="watermark-label-main">Remove Motion Volume Watermark</span>
-                                    <span class="watermark-label-sub">(€0,05 per guest)</span>
+                                    <span class="watermark-label-main" data-i18n="calc.removeWatermark">Remove Motion Volume Watermark</span>
+                                    <span class="watermark-label-sub" data-i18n="calc.removeWatermarkSub">(€0,05 per guest)</span>
                                 </label>
                             </div>
                         </div>
@@ -394,13 +407,17 @@ Do not delete; remove this comment wrapper to show the section again.
 
                         <div class="experience-block">
                             <div class="experience-heading">
-                                <h3 class="experience-section-title mb-0">Choose Your Experience</h3>
+                                <h3 class="experience-section-title mb-0" data-i18n="calc.chooseExperience">Choose Your Experience</h3>
                                 <a
                                         href="#crowd-ways"
                                         class="info-icon info-icon--link"
                                         aria-label="Explore Essentials vs Pro (jump to section)"
+                                        data-i18n-attr="aria-label"
+                                        data-i18n-attr-key="calc.experienceInfoAria"
                                         data-bs-toggle="tooltip"
                                         data-bs-title="Explore the difference"
+                                        data-i18n-attr="data-bs-title"
+                                        data-i18n-attr-key="calc.experienceInfoTip"
                                 >i</a>
                             </div>
                             <div class="experience-grid mb-0" role="radiogroup" aria-label="Choose your experience">
@@ -408,20 +425,20 @@ Do not delete; remove this comment wrapper to show the section again.
                                 <label class="experience-card" for="expEssentials">
                                     <img class="experience-img" src="{% static 'images/grid1.jpeg' %}" alt="Essentials preview">
                                     <div class="experience-meta">
-                                        <div class="experience-price">Included</div>
-                                        <div class="experience-title">Essentials</div>
-                                        <div class="experience-desc">Simple plug &amp; play setup</div>
+                                        <div class="experience-price" data-i18n="calc.included">Included</div>
+                                        <div class="experience-title" data-i18n="calc.essentialsTitle">Essentials</div>
+                                        <div class="experience-desc" data-i18n="calc.essentialsDesc">Simple plug &amp; play setup</div>
                                     </div>
                                 </label>
 
                                 <input class="experience-radio" type="radio" name="experience" id="expPro" value="pro" checked>
                                 <label class="experience-card" for="expPro">
                                     <img class="experience-img" src="{% static 'images/grid2.jpeg' %}" alt="Pro experience preview">
-                                    <div class="experience-pill">Recommended</div>
+                                    <div class="experience-pill" data-i18n="calc.recommended">Recommended</div>
                                     <div class="experience-meta">
                                         <div class="experience-price" id="proExperiencePrice">+€5,00 per guest</div>
-                                        <div class="experience-title">Pro experience</div>
-                                        <div class="experience-desc">Full control over your crowd lighting.</div>
+                                        <div class="experience-title" data-i18n="calc.proTitle">Pro experience</div>
+                                        <div class="experience-desc" data-i18n="calc.proDesc">Full control over your crowd lighting.</div>
                                     </div>
                                 </label>
                             </div>
@@ -429,27 +446,31 @@ Do not delete; remove this comment wrapper to show the section again.
 
                         <div class="delivery-block mt-4">
                             <div class="delivery-heading">
-                                <h3 class="delivery-section-title">Delivery</h3>
+                                <h3 class="delivery-section-title" data-i18n="delivery.title">Delivery</h3>
                                 <button
                                         type="button"
                                         class="info-icon delivery-heading-info"
                                         aria-label="Delivery info"
+                                        data-i18n-attr="aria-label"
+                                        data-i18n-attr-key="delivery.infoAria"
                                         data-bs-toggle="tooltip"
                                         data-bs-title="We coordinate delivery timing with your production schedule."
+                                        data-i18n-attr="data-bs-title"
+                                        data-i18n-attr-key="delivery.infoTip"
                                 >i</button>
                             </div>
                             <div class="option-box option-box--delivery mb-3">
                                 <div class="form-check delivery-check">
                                     <input class="form-check-input" type="radio" name="delivery_type" id="deliveryPickup" value="pickup" checked>
                                     <label class="form-check-label" for="deliveryPickup">
-                                        <span class="delivery-line">Pick up - Eindhoven</span>
+                                        <span class="delivery-line" data-i18n="delivery.pickup">Pick up - Eindhoven</span>
                                         <span class="delivery-sub">(5653 NN, Sterkenburg 330)</span>
                                     </label>
                                 </div>
                                 <div class="form-check delivery-check">
                                     <input class="form-check-input" type="radio" name="delivery_type" id="deliveryVenue" value="venue">
                                     <label class="form-check-label" for="deliveryVenue">
-                                        <span class="delivery-line">Pre-delivered to your loading dock</span>
+                                        <span class="delivery-line" data-i18n="delivery.venue">Pre-delivered to your loading dock</span>
                                         <span class="delivery-sub">(+ €<span id="deliveryVenuePriceDisplay">60</span>)</span>
                                     </label>
                                 </div>
@@ -457,41 +478,45 @@ Do not delete; remove this comment wrapper to show the section again.
                             </div>
 
                             <div class="delivery-heading delivery-heading--follow">
-                                <h3 class="delivery-section-title">Delivery Speed</h3>
+                                <h3 class="delivery-section-title" data-i18n="deliverySpeed.title">Delivery Speed</h3>
                                 <button
                                         type="button"
                                         class="info-icon delivery-heading-info"
                                         aria-label="Delivery speed info"
+                                        data-i18n-attr="aria-label"
+                                        data-i18n-attr-key="deliverySpeed.infoAria"
                                         data-bs-toggle="tooltip"
                                         data-bs-html="true"
                                         data-bs-title="<strong>Need it faster?</strong><br>Contact sales"
+                                        data-i18n-attr="data-bs-title"
+                                        data-i18n-attr-key="deliverySpeed.infoTip"
                                 >i</button>
                             </div>
                             <div class="timing-box timing-box--cards">
                                 <label class="timing-item" for="timing14">
                                     <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing14" value="14">
                                     <div class="timing-left">
-                                        <div class="timing-title">Express</div>
-                                        <div class="timing-sub">(€0.30 per guest)</div>
+                                        <div class="timing-title" data-i18n="timing.express">Express</div>
+                                        <div class="timing-sub" data-i18n="timing.expressSub">(€0.30 per guest)</div>
                                     </div>
-                                    <div class="timing-right">14 days</div>
+                                    <div class="timing-right" data-i18n="timing.days14">14 days</div>
                                 </label>
 
                                 <label class="timing-item" for="timing30">
                                     <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing30" value="30">
                                     <div class="timing-left">
-                                        <div class="timing-title">Standard</div>
-                                        <div class="timing-sub">(€0.10 per guest)</div>
+                                        <div class="timing-title" data-i18n="timing.standard">Standard</div>
+                                        <div class="timing-sub" data-i18n="timing.standardSub">(€0.10 per guest)</div>
                                     </div>
-                                    <div class="timing-right">30 days</div>
+                                    <div class="timing-right" data-i18n="timing.days30">30 days</div>
                                 </label>
 
                                 <label class="timing-item" for="timing70">
                                     <input class="form-check-input timing-radio" type="radio" name="event_timing" id="timing70" value="70" checked>
                                     <div class="timing-left">
-                                        <div class="timing-title">Flexible Timing</div>
+                                        <div class="timing-title" data-i18n="timing.flexible">Flexible Timing</div>
                                     </div>
-                                    <div class="timing-right timing-right--accent">Free</div>
+                                    <div class="timing-right timing-right--accent" data-i18n="timing.free">Free</div>
                                 </label>
                             </div>
                         </div>
@@ -500,24 +525,28 @@ Do not delete; remove this comment wrapper to show the section again.
 
                 <div class="col-lg-4">
                     <div class="panel h-100 panel--what-you-get">
-                        <h4 class="what-you-get-title">This is what you get</h4>
+                        <h4 class="what-you-get-title" data-i18n="whatYouGet.title">This is what you get</h4>
                         <div class="feature-list">
                             <div class="feature-box">
                                 <div class="feature-title">
-                                    <strong>100% Show Guarantee</strong>
+                                    <strong data-i18n="whatYouGet.guarantee.title">100% Show Guarantee</strong>
                                     <button
                                             type="button"
                                             class="info-icon"
                                             aria-label="Guarantee info"
+                                            data-i18n-attr="aria-label"
+                                            data-i18n-attr-key="whatYouGet.guarantee.infoAria"
                                             data-bs-toggle="tooltip"
                                             data-bs-title="Full terms below"
+                                            data-i18n-attr="data-bs-title"
+                                            data-i18n-attr-key="whatYouGet.guarantee.infoTip"
                                     >i</button>
                                 </div>
-                                <p class="feature-lead">If your crowd doesn’t light up, you don’t pay.</p>
+                                <p class="feature-lead" data-i18n="whatYouGet.guarantee.lead">If your crowd doesn’t light up, you don’t pay.</p>
                             </div>
                             <div class="feature-box feature-box--show-kit">
                                 <div class="feature-title">
-                                    <strong>Show Control Kit</strong>
+                                    <strong data-i18n="whatYouGet.kit.title">Show Control Kit</strong>
                                     <!-- <button
                                             type="button"
                                             class="info-icon"
@@ -527,55 +556,69 @@ Do not delete; remove this comment wrapper to show the section again.
                                             data-bs-title="<strong>+5% extra wristbands included.</strong><br>Just in case."
                                     >i</button> -->
                                 </div>
-                                <p class="feature-body-lg">Perfect Color - Perfect Timing</p>
-                                <p class="feature-body-lg">Controlled from your Lighting Desk</p>
-                                <p class="feature-foot">Antenna &amp; <span class="feature-highlight-num" id="showControlKitBandCount">1.000</span> Wristbands included</p>
+                                <p class="feature-body-lg" data-i18n="whatYouGet.kit.b1">Perfect Color - Perfect Timing</p>
+                                <p class="feature-body-lg" data-i18n="whatYouGet.kit.b2">Controlled from your Lighting Desk</p>
+                                <p class="feature-foot">
+                                    <span data-i18n="whatYouGet.kit.footPrefix">Antenna &amp;</span>
+                                    <span class="feature-highlight-num" id="showControlKitBandCount">1.000</span>
+                                    <span data-i18n="whatYouGet.kit.footSuffix">Wristbands included</span>
+                                </p>
                             </div>
                             <div class="feature-box">
                                 <div class="feature-title feature-title--plain">
-                                    <strong>Motion Volume Viral Blueprint</strong>
+                                    <strong data-i18n="whatYouGet.blueprint.title">Motion Volume Viral Blueprint</strong>
                                 </div>
-                                <p class="feature-body-lg">Turns your crowd into shareable content</p>
-                                <p class="feature-foot">Designed to amplify user-generated content</p>
+                                <p class="feature-body-lg" data-i18n="whatYouGet.blueprint.b1">Turns your crowd into shareable content</p>
+                                <p class="feature-foot" data-i18n="whatYouGet.blueprint.foot">Designed to amplify user-generated content</p>
                             </div>
                             <div class="feature-box">
                                 <div class="feature-title">
-                                    <strong>Aftermovie Content Pack</strong>
+                                    <strong data-i18n="whatYouGet.aftermovie.title">Aftermovie Content Pack</strong>
                                     <button
                                             type="button"
                                             class="info-icon"
                                             aria-label="Aftermovie Content Pack info"
+                                            data-i18n-attr="aria-label"
+                                            data-i18n-attr-key="whatYouGet.aftermovie.infoAria"
                                             data-bs-toggle="tooltip"
                                             data-bs-title="Your biggest crowd moment, captured by our videographer."
+                                            data-i18n-attr="data-bs-title"
+                                            data-i18n-attr-key="whatYouGet.aftermovie.infoTip"
                                     >i</button>
                                 </div>
-                                <p class="feature-body-lg">Your biggest crowd moment, captured</p>
-                                <p class="feature-foot">An upgrade on your Aftermovie &amp; Socials</p>
+                                <p class="feature-body-lg" data-i18n="whatYouGet.aftermovie.b1">Your biggest crowd moment, captured</p>
+                                <p class="feature-foot" data-i18n="whatYouGet.aftermovie.foot">An upgrade on your Aftermovie &amp; Socials</p>
                             </div>
                             <div class="feature-box feature-box--stacked">
-                                <strong class="feature-headline">Fail-safe Backup System</strong>
-                                <p class="feature-subhead">Backup Antenna included</p>
-                                <p class="feature-tagline"><em>Your show never stops.</em></p>
+                                <strong class="feature-headline" data-i18n="whatYouGet.failsafe.title">Fail-safe Backup System</strong>
+                                <p class="feature-subhead" data-i18n="whatYouGet.failsafe.sub">Backup Antenna included</p>
+                                <p class="feature-tagline"><em data-i18n="whatYouGet.failsafe.tag">Your show never stops.</em></p>
                             </div>
                             
                             <div class="feature-box feature-box--stacked" data-show-when="essentials">
-                                <strong class="feature-headline">Plug in. Go Live.</strong>
-                                <p class="feature-subhead">Works with any Lighting Desk</p>
-                                <p class="feature-tagline"><em>Setup done in minutes.</em></p>
+                                <strong class="feature-headline" data-i18n="whatYouGet.essentials.title">Plug in. Go Live.</strong>
+                                <p class="feature-subhead" data-i18n="whatYouGet.essentials.sub">Works with any Lighting Desk</p>
+                                <p class="feature-tagline"><em data-i18n="whatYouGet.essentials.tag">Setup done in minutes.</em></p>
                             </div>
                             <div class="feature-box feature-box--stacked" data-show-when="pro">
-                                <strong class="feature-headline">Total Crowd Control</strong>
-                                <p class="feature-subhead">Maximum crowd impact</p>
-                                <p class="feature-tagline"><em>Precision control</em></p>
+                                <strong class="feature-headline" data-i18n="whatYouGet.pro.title">Total Crowd Control</strong>
+                                <p class="feature-subhead" data-i18n="whatYouGet.pro.sub">Maximum crowd impact</p>
+                                <p class="feature-tagline"><em data-i18n="whatYouGet.pro.tag">Precision control</em></p>
                             </div>
                             <div class="feature-box feature-box--stacked">
-                                <strong class="feature-headline">On-site Show Guidance</strong>
-                                <p class="feature-subhead">Your operator gets the most out of every drop</p>
+                                <strong class="feature-headline" data-i18n="whatYouGet.onsite.title">On-site Show Guidance</strong>
+                                <p class="feature-subhead" data-i18n="whatYouGet.onsite.sub">Your operator gets the most out of every drop</p>
                             </div>
                             <div class="feature-box feature-box--stacked">
-                                <strong class="feature-headline">No Shortages</strong>
-                                <p class="feature-subhead">+5% extra wristbands included.</p>
-                                <p class="feature-tagline"><em>NMB: <span id="nmbValue">0</span> extra bands</em></p>
+                                <strong class="feature-headline" data-i18n="whatYouGet.nmb.title">No Shortages</strong>
+                                <p class="feature-subhead" data-i18n="whatYouGet.nmb.sub">+5% extra wristbands included.</p>
+                                <p class="feature-tagline">
+                                    <em>
+                                        <span data-i18n="whatYouGet.nmb.prefix">NMB:</span>
+                                        <span id="nmbValue">0</span>
+                                        <span data-i18n="whatYouGet.nmb.suffix">extra bands</span>
+                                    </em>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -583,22 +626,22 @@ Do not delete; remove this comment wrapper to show the section again.
 
                 <div class="col-lg-4">
                     <div class="panel h-100 panel--show-price">
-                        <h4 class="show-price-title">Your Show Price</h4>
+                        <h4 class="show-price-title" data-i18n="showPrice.title">Your Show Price</h4>
                         <ul class="list-group bg-transparent investment-list investment-list--show-price">
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>100% Show Guarantee</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="show-guarantee">0,00</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Show Control Kit</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="show-control-kit" data-normal="true">0,00</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Motion Volume&rsquo;s Viral Blueprint</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="3200" data-mult="none" data-display="infinity">∞</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Aftermovie Content Pack</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows" data-normal="true">400</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>Fail-Safe Backup System</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="350" data-mult="shows" data-normal="true">350</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center" data-show-when="essentials"><span>Plug in. Go Live.</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="0" data-mult="none" data-display="infinity">∞</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center" data-show-when="pro"><span>Total Crowd Control</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="200" data-mult="none" data-display="infinity">∞</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>On-site Show Guidance</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows" data-normal="true">400</span></strong></li>
-                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span>No Shortages</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="no-shortages" data-normal="true">0,00</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span data-i18n="showPrice.line.guarantee">100% Show Guarantee</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="show-guarantee">0,00</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span data-i18n="showPrice.line.kit">Show Control Kit</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="show-control-kit" data-normal="true">0,00</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span data-i18n="showPrice.line.blueprint">Motion Volume&rsquo;s Viral Blueprint</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="3200" data-mult="none" data-display="infinity">∞</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span data-i18n="showPrice.line.aftermovie">Aftermovie Content Pack</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows" data-normal="true">400</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span data-i18n="showPrice.line.failsafe">Fail-Safe Backup System</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="350" data-mult="shows" data-normal="true">350</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center" data-show-when="essentials"><span data-i18n="showPrice.line.essentials">Plug in. Go Live.</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="0" data-mult="none" data-display="infinity">∞</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center" data-show-when="pro"><span data-i18n="showPrice.line.pro">Total Crowd Control</span><strong class="show-price-line-value show-price-line-value--infinity"><span class="feat-cost" data-base="200" data-mult="none" data-display="infinity">∞</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span data-i18n="showPrice.line.onsite">On-site Show Guidance</span><strong class="show-price-line-value">€<span class="feat-cost" data-base="400" data-mult="shows" data-normal="true">400</span></strong></li>
+                            <li class="list-group-item panel-item d-flex justify-content-between align-items-center"><span data-i18n="showPrice.line.nmb">No Shortages</span><strong class="show-price-line-value">€<span class="feat-cost" data-derive="no-shortages" data-normal="true">0,00</span></strong></li>
                         
                         </ul> 
                         <div class="investment-pill-row investment-pill-row--show-price investment-pill-row--final">
                             <div class="investment-pill investment-pill--block investment-pill--normal">
-                                <span>Normal show price:</span>
+                                <span data-i18n="showPrice.normal">Normal show price:</span>
                                 <strong>€ <span id="totalValue">0.00</span></strong>
                             </div>
                         </div>
@@ -606,24 +649,24 @@ Do not delete; remove this comment wrapper to show the section again.
                         <div class="investment-divider investment-divider--show-price"></div>
                         <div class="investment-pill-row investment-pill-row--show-price investment-pill-row--final my-2">
                             <div class="investment-pill investment-pill--block investment-pill--final-total">
-                                <span>Your Show Price</span>
+                                <span data-i18n="showPrice.total">Your Show Price</span>
                                 <strong>€ <span id="showPriceToday">0.00</span></strong>
                             </div>
                         </div> 
                         <div class="big-metric big-metric--show-price my-2">
-                            <div class="big-metric-value">€<span id="pricePerGuest">1.50</span> <span class="big-metric-sub">per guest.</span></div>
+                            <div class="big-metric-value">€<span id="pricePerGuest">1.50</span> <span class="big-metric-sub" data-i18n="showPrice.perGuest">per guest.</span></div>
                             <div class="big-metric-note">
-                                €0,10 <span class="refund-highlight">refunded</span> per returned wristband
+                                <span data-i18n="showPrice.refund">€0,10 refunded per returned wristband</span>
                             </div>
                         </div> 
                         
-                        <button class="btn btn-primary w-100 btn-lg show-price-cta mb-3" type="submit">Activate your crowd</button>
+                        <button class="btn btn-primary w-100 btn-lg show-price-cta mb-3" type="submit" data-i18n="showPrice.cta">Activate your crowd</button>
                         <div class="investment-divider investment-divider--show-price"></div>
                         <div class="contact-strip contact-strip--show-price">
-                            <div class="contact-strip-title">Contact us directly:</div>
+                            <div class="contact-strip-title" data-i18n="showPrice.contactTitle">Contact us directly:</div>
                             <div class="contact-strip-grid">
-                                <div class="contact-chip"><strong>TEL:</strong><br>+31 6 83630667</div>
-                                <div class="contact-chip"><strong>EMAIL:</strong><br>info@motionvolume.com</div>
+                                <div class="contact-chip"><strong data-i18n="showPrice.tel">TEL:</strong><br>+31 6 83630667</div>
+                                <div class="contact-chip"><strong data-i18n="showPrice.email">EMAIL:</strong><br>info@motionvolume.com</div>
                             </div>
                         </div>
                     </div>
