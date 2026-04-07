@@ -3,12 +3,13 @@ from decimal import Decimal, ROUND_HALF_UP
 
 TRANSPORT_PER_BAND = Decimal("0.40")
 BUFFER_RATIO = Decimal("1.05")
-EXPERIENCE_PRO_FLAT = Decimal("5000")
+# Pro experience priced per show day
+EXPERIENCE_PRO_PER_SHOW = Decimal("5000")
 # Delivery speed is priced per guest (NOT flat)
-TIMING_14_DAYS_PER_GUEST = Decimal("0.30")
+TIMING_14_DAYS_PER_GUEST = Decimal("0.90")
 TIMING_30_DAYS_PER_GUEST = Decimal("0.10")
-# Per show day: venue delivery = 60 × number of shows
-DELIVERY_TO_VENUE_PER_SHOW = Decimal("60")
+# Per show day: venue delivery = 249.99 × number of shows
+DELIVERY_TO_VENUE_PER_SHOW = Decimal("249.99")
 
 BAND_COST_TABLE = [
     (0, Decimal("0.80")),
@@ -66,10 +67,13 @@ def calculate_pricing(
 
     upsell_white_label = Decimal(bands_needed) * Decimal("0.05") if white_label else Decimal("0")
     upsell_custom_skin = Decimal(bands_needed) * Decimal("0.15") if custom_skin else Decimal("0")
-    upsell_delivery = (
-        (DELIVERY_TO_VENUE_PER_SHOW * Decimal(shows)) if delivery_to_venue else Decimal("0")
-    )
-    upsell_experience = EXPERIENCE_PRO_FLAT if experience == "pro" else Decimal("0")
+    # Logistics:
+    # - Pickup Eindhoven is free
+    # - Venue delivery is charged per show day
+    upsell_delivery = (DELIVERY_TO_VENUE_PER_SHOW * Decimal(shows)) if delivery_to_venue else Decimal("0")
+
+    # Pro experience is charged per show day
+    upsell_experience = (EXPERIENCE_PRO_PER_SHOW * Decimal(shows)) if experience == "pro" else Decimal("0")
     if event_timing == "14":
         upsell_timing = Decimal(guests) * TIMING_14_DAYS_PER_GUEST
     elif event_timing == "30":

@@ -6,8 +6,6 @@ const I18N = {
     "nav.howItWorks": "How it works",
     "nav.experience": "Experience",
     "nav.pricing": "Pricing",
-    "nav.contact": "Contact Us",
-    "nav.langShort": "NL",
     "hero.headline": "Most Dutch Events are missing this.",
     "hero.cta": "Turn your crowd into the show",
     "demo.title": "Concert & Festival Organisers. This is for you.",
@@ -18,17 +16,48 @@ const I18N = {
     "crowdWays.essentialsLead": "Plug In. Go Live.",
     "crowdWays.essentials.b1": "Basic crowd lighting",
     "crowdWays.essentials.b2": "Perfect color. Perfect timing.",
-    "crowdWays.essentials.b3": "Static & random effects",
-    "crowdWays.essentials.b4": "Ready to go",
+    "crowdWays.essentials.b3": "Static, Strobe, Rainbow & Sparkle effects",
+    "crowdWays.essentials.b4": "Works on any Lighting Desk",
+    "crowdWays.essentials.b5": "Ready to go",
     "crowdWays.proTitle": "Pro Experience",
     "crowdWays.proLead": "Full show control",
     "crowdWays.pro.b1": "Next-level crowd control",
     "crowdWays.pro.b2": "Perfect color. Perfect timing.",
     "crowdWays.pro.b3": "Advanced crowd animations",
-    "crowdWays.pro.b4": "Built for high-impact shows",
+    "crowdWays.pro.b4": "Works on any Lighting Desk",
+    "crowdWays.pro.b5": "Built for high-impact shows",
     "crowdWays.play": "Play animation",
     "crowdWays.pause": "Pause animation",
     "calc.title": "Plan. Price. Pay.",
+    "calc.stepPrefix": "Step",
+    "calc.step2Title": "What you get",
+    "calc.step3Title": "Choose Delivery & Timing",
+    "calc.step3GuestsEq": " guests = € ",
+    "calc.step3TotalSuffix": " total",
+    "calc.perShowSuffix": " / show",
+    "calc.step4Title": "What you pay",
+    "calc.step4SubtitleTip": "Everything in this step reflects your selections from the previous steps.",
+    "calc.step4SubtitleInfoAria": "Package info",
+    "showPrice.kitInfoAria": "Show Control Kit info",
+    "showPrice.kitInfoTip": "<strong>Perfect Color - Perfect Timing</strong><br>Controlled from your Lighting Desk",
+    "calc.deliveryStepTitle": "Delivery & timing",
+    "calc.checkoutBack": "← Back",
+    "calc.checkoutContinue": "Continue →",
+    "calc.buildYourShow": "Build Your Show",
+    "calc.step1Tagline": "No need to pay the full show price upfront. Pay per guest instead.",
+    "calc.showDaysQuestion": "How many show days are you planning?",
+    "calc.customizeWristbands": "Customize Your Wristbands",
+    "calc.selectedExperience": "Selected experience:",
+    "calc.perGuestShort": "/ guest",
+    "calc.yourTotal": "Your Total",
+    "calc.guestsWord": "guests",
+    "calc.formulaApprox": "approx.",
+    "calc.standardShowPriceLabel": "Standard show price:",
+    "calc.adjustShowHint": "Adjust your show size to see your price",
+    "calc.standardSkin": "Standard Skin",
+    "calc.removeBranding": "Remove Motion Volume Branding",
+    "calc.removeBrandingSub": "(€0,05 / guest)",
+    "calc.formulaTimes": "×",
     "calc.eventSetup": "Event Setup",
     "calc.showDays": "Show Days",
     "calc.totalGuests": "Total Guests",
@@ -38,7 +67,7 @@ const I18N = {
     "calc.designInfoAria": "Design options info",
     "calc.designInfoTip": "Reusable wristbands.<br>No disposable festival locks.",
     "calc.included": "Included",
-    "calc.customDesignPrice": "+€0,15 per Guest",
+    "calc.customDesignPrice": "(€0,15 / guest)",
     "calc.downloadTemplate": "Download template",
     "calc.removeWatermark": "Remove Motion Volume Watermark",
     "calc.removeWatermarkSub": "(€0,05 per guest)",
@@ -50,19 +79,20 @@ const I18N = {
     "calc.recommended": "Recommended",
     "calc.proTitle": "Pro experience",
     "calc.proDesc": "Full control over your crowd lighting.",
-    "delivery.title": "Delivery",
-    "delivery.infoAria": "Delivery info",
+    "delivery.title": "Logistics",
+    "delivery.infoAria": "Logistics info",
     "delivery.infoTip": "We coordinate delivery timing with your production schedule.",
     "delivery.pickup": "Pick up - Eindhoven",
+    "delivery.pickupFee": "(Free)",
     "delivery.venue": "Pre-delivered to your loading dock",
-    "deliverySpeed.title": "Delivery Speed",
-    "deliverySpeed.infoAria": "Delivery speed info",
+    "deliverySpeed.title": "Production Speed",
+    "deliverySpeed.infoAria": "Production speed info",
     "deliverySpeed.infoTip": "<strong>Need it faster?</strong><br>Contact sales",
     "timing.express": "Express",
-    "timing.expressSub": "(€0.30 per guest)",
+    "timing.expressSub": "(€0,90 / guest)",
     "timing.days14": "14 days",
     "timing.standard": "Standard",
-    "timing.standardSub": "(€0.10 per guest)",
+    "timing.standardSub": "(€0,10 / guest)",
     "timing.days30": "30 days",
     "timing.flexible": "Flexible Timing",
     "timing.free": "Free",
@@ -70,6 +100,7 @@ const I18N = {
     "form.uploadAlert": "Please upload an image to continue.",
 
     "whatYouGet.title": "This is what you get",
+    "whatYouGet.subtitle": "Everything below is included in your package",
     "whatYouGet.guarantee.title": "100% Show Guarantee",
     "whatYouGet.guarantee.infoAria": "Guarantee info",
     "whatYouGet.guarantee.infoTip": "Full terms below",
@@ -79,13 +110,19 @@ const I18N = {
     "whatYouGet.kit.b2": "Controlled from your Lighting Desk",
     "whatYouGet.kit.footPrefix": "Antenna &",
     "whatYouGet.kit.footSuffix": "Wristbands included",
+    "whatYouGet.kit.antennaEssentials": "Essentials Antenna",
+    "whatYouGet.kit.antennaPro": "Pro Antenna",
+    "whatYouGet.kit.wristbandsIncluded": "Wristbands included",
+    "whatYouGet.kit.wristbandsNonBrandedMod": "non-branded",
+    "whatYouGet.kit.wristbandsFullyBrandedMod": "Fully branded",
     "whatYouGet.blueprint.title": "Motion Volume Viral Blueprint",
-    "whatYouGet.blueprint.b1": "Turns your crowd into shareable content",
-    "whatYouGet.blueprint.foot": "Designed to amplify user-generated content",
+    "whatYouGet.blueprint.b1": "Your crowd lights up as part of the show",
+    "whatYouGet.blueprint.foot": "Creates moments people share & remember",
     "whatYouGet.aftermovie.title": "Aftermovie Content Pack",
     "whatYouGet.aftermovie.infoAria": "Aftermovie Content Pack info",
     "whatYouGet.aftermovie.infoTip": "Your biggest crowd moment, captured by our videographer.",
     "whatYouGet.aftermovie.b1": "Your biggest crowd moment, captured",
+    "whatYouGet.aftermovie.filmNote": "Filmed by our videographer",
     "whatYouGet.aftermovie.foot": "An upgrade on your Aftermovie & Socials",
     "whatYouGet.failsafe.title": "Fail-safe Backup System",
     "whatYouGet.failsafe.sub": "Backup Antenna included",
@@ -97,9 +134,11 @@ const I18N = {
     "whatYouGet.pro.sub": "Maximum crowd impact",
     "whatYouGet.pro.tag": "Precision control",
     "whatYouGet.onsite.title": "On-site Show Guidance",
-    "whatYouGet.onsite.sub": "Your operator gets the most out of every drop",
+    "whatYouGet.onsite.sub": "Your Lighting Operator gets the most out of every drop",
+    "whatYouGet.onsite.infoTip": "We don't control your lighting.<br>Your operator stays in charge.<br>We advise your operator to get the best results.",
     "whatYouGet.nmb.title": "No Shortages",
-    "whatYouGet.nmb.sub": "+5% extra wristbands included.",
+    "whatYouGet.nmb.sub": "Every visitor gets a wristband. Guaranteed.",
+    "whatYouGet.nmb.infoTip": "<strong>+5% extra wristbands included.</strong><br>Just in case.",
     "whatYouGet.nmb.prefix": "NMB:",
     "whatYouGet.nmb.suffix": "extra bands",
 
@@ -114,8 +153,14 @@ const I18N = {
     "showPrice.line.onsite": "On-site Show Guidance",
     "showPrice.line.nmb": "No Shortages",
     "showPrice.normal": "Normal show price:",
-    "showPrice.total": "Your Show Price",
-    "showPrice.perGuest": "per guest.",
+    "showPrice.standardRow": "Standard Show Price",
+    "showPrice.bonus": "Bonus",
+    "showPrice.total": "Your Total",
+    "showPrice.totalSub": "Your Show Price",
+    "showPrice.perGuest": "/ guest",
+    "showPrice.refundBefore": "€0,10 ",
+    "showPrice.refundHighlight": "refunded",
+    "showPrice.refundAfter": " per returned wristband",
     "showPrice.refund": "€0,10 refunded per returned wristband",
     "showPrice.cta": "Activate your crowd",
     "showPrice.contactTitle": "Contact us directly:",
@@ -127,8 +172,6 @@ const I18N = {
     "nav.howItWorks": "Zo werkt het live",
     "nav.experience": "Ervaring",
     "nav.pricing": "Prijzen",
-    "nav.contact": "Contact",
-    "nav.langShort": "EN",
     "hero.headline": "Dit is wat jouw event compleet maakt.",
     "hero.cta": "Activeer je publiek",
     "demo.title": "Als je events organiseert, kijk 30 seconden.",
@@ -139,17 +182,48 @@ const I18N = {
     "crowdWays.essentialsLead": "Plug & Play",
     "crowdWays.essentials.b1": "Basis publieksverlichting",
     "crowdWays.essentials.b2": "Perfecte kleur. Perfecte timing",
-    "crowdWays.essentials.b3": "Statische & willekeurige sparkle effecten",
-    "crowdWays.essentials.b4": "Klaar voor gebruik",
+    "crowdWays.essentials.b3": "Statisch, stroboscoop, regenboog & sparkle effecten",
+    "crowdWays.essentials.b4": "Werkt met elke lichttafel",
+    "crowdWays.essentials.b5": "Klaar voor gebruik",
     "crowdWays.proTitle": "Pro ervaring",
     "crowdWays.proLead": "Volledige showcontrole",
     "crowdWays.pro.b1": "Next-level publiekscontrole",
     "crowdWays.pro.b2": "Perfecte kleur. Perfecte timing",
     "crowdWays.pro.b3": "Geavanceerde crowd-animaties",
-    "crowdWays.pro.b4": "Gebouwd voor impact",
+    "crowdWays.pro.b4": "Werkt met elke lichttafel",
+    "crowdWays.pro.b5": "Gebouwd voor impact",
     "crowdWays.play": "Animatie afspelen",
     "crowdWays.pause": "Animatie pauzeren",
     "calc.title": "Plan. Prijs. Betaal.",
+    "calc.stepPrefix": "Stap",
+    "calc.step2Title": "Wat je krijgt",
+    "calc.step3Title": "Kies levering & timing",
+    "calc.step3GuestsEq": " bezoekers = €",
+    "calc.step3TotalSuffix": " totaal",
+    "calc.perShowSuffix": " / show",
+    "calc.step4Title": "Wat je betaalt",
+    "calc.step4SubtitleTip": "Alles in deze stap sluit aan op je eerdere keuzes.",
+    "calc.step4SubtitleInfoAria": "Pakket info",
+    "showPrice.kitInfoAria": "Show Control Kit info",
+    "showPrice.kitInfoTip": "<strong>Perfecte kleur - Perfecte timing</strong><br>Bestuurbaar vanaf je lichttafel",
+    "calc.deliveryStepTitle": "Levering & timing",
+    "calc.checkoutBack": "← Terug",
+    "calc.checkoutContinue": "Verder →",
+    "calc.buildYourShow": "Bouw je show",
+    "calc.step1Tagline": "Je betaalt niet het volledige showbedrag vooraf. Je betaalt per bezoeker.",
+    "calc.showDaysQuestion": "Hoeveel showdagen plan je?",
+    "calc.customizeWristbands": "Personaliseer je polsbanden",
+    "calc.selectedExperience": "Gekozen ervaring:",
+    "calc.perGuestShort": "/ bezoeker",
+    "calc.yourTotal": "Jouw totaal",
+    "calc.guestsWord": "bezoekers",
+    "calc.formulaApprox": "ca.",
+    "calc.standardShowPriceLabel": "Standaard showprijs:",
+    "calc.adjustShowHint": "Pas je showgrootte aan om je prijs te zien",
+    "calc.standardSkin": "Standaard skin",
+    "calc.removeBranding": "Verwijder Motion Volume-branding",
+    "calc.removeBrandingSub": "(€0,05 / bezoeker)",
+    "calc.formulaTimes": "×",
     "calc.eventSetup": "Jouw event",
     "calc.showDays": "Aantal dagen",
     "calc.totalGuests": "Aantal bezoekers",
@@ -159,7 +233,7 @@ const I18N = {
     "calc.designInfoAria": "Info design opties",
     "calc.designInfoTip": "Herbruikbare polsband locks.",
     "calc.included": "Inbegrepen",
-    "calc.customDesignPrice": "+€0,15 per bezoeker",
+    "calc.customDesignPrice": "(€0,15 / bezoeker)",
     "calc.downloadTemplate": "Download Template",
     "calc.removeWatermark": "Verwijder Motion Volume-logo",
     "calc.removeWatermarkSub": "(€0,05 per bezoeker)",
@@ -171,19 +245,20 @@ const I18N = {
     "calc.recommended": "Aanbevolen",
     "calc.proTitle": "Pro ervaring",
     "calc.proDesc": "Volledige belichting controle over het publiek",
-    "delivery.title": "Levering",
-    "delivery.infoAria": "Levering info",
+    "delivery.title": "Logistiek",
+    "delivery.infoAria": "Logistiek info",
     "delivery.infoTip": "We stemmen de levering af op jullie productieschema.",
     "delivery.pickup": "Ophalen - Eindhoven",
+    "delivery.pickupFee": "(Free)",
     "delivery.venue": "Vooraf afgeleverd bij jouw loading dock",
-    "deliverySpeed.title": "Levering Snelheid",
-    "deliverySpeed.infoAria": "Levering snelheid info",
+    "deliverySpeed.title": "Productiesnelheid",
+    "deliverySpeed.infoAria": "Productiesnelheid info",
     "deliverySpeed.infoTip": "Sneller nodig? Contact sales",
     "timing.express": "Express",
-    "timing.expressSub": "(€0,30 per bezoeker)",
+    "timing.expressSub": "(€0,90 / bezoeker)",
     "timing.days14": "14 dagen",
     "timing.standard": "Standaard",
-    "timing.standardSub": "(€0,10 per bezoeker)",
+    "timing.standardSub": "(€0,10 / bezoeker)",
     "timing.days30": "30 dagen",
     "timing.flexible": "Flexibele Tijd",
     "timing.free": "Gratis",
@@ -191,6 +266,7 @@ const I18N = {
     "form.uploadAlert": "Upload een afbeelding om door te gaan.",
 
     "whatYouGet.title": "Dit is wat je krijgt.",
+    "whatYouGet.subtitle": "Alles hieronder zit in je pakket",
     "whatYouGet.guarantee.title": "100% Show Garantie",
     "whatYouGet.guarantee.infoAria": "Show garantie info",
     "whatYouGet.guarantee.infoTip": "Zie algemene voorwaarden hieronder",
@@ -200,13 +276,19 @@ const I18N = {
     "whatYouGet.kit.b2": "Aangestuurd vanuit je lichttafel",
     "whatYouGet.kit.footPrefix": "Antenne &",
     "whatYouGet.kit.footSuffix": "polsbanden",
+    "whatYouGet.kit.antennaEssentials": "Essentials-antenne",
+    "whatYouGet.kit.antennaPro": "Pro-antenne",
+    "whatYouGet.kit.wristbandsIncluded": "polsbanden inbegrepen",
+    "whatYouGet.kit.wristbandsNonBrandedMod": "zonder branding",
+    "whatYouGet.kit.wristbandsFullyBrandedMod": "volledige branding",
     "whatYouGet.blueprint.title": "Motion Volume Viral Blueprint",
-    "whatYouGet.blueprint.b1": "Maakt van je publiek deelbare content",
-    "whatYouGet.blueprint.foot": "Ontworpen om user-generated content te versterken",
+    "whatYouGet.blueprint.b1": "Je publiek licht op als onderdeel van de show",
+    "whatYouGet.blueprint.foot": "Momenten die mensen delen en onthouden",
     "whatYouGet.aftermovie.title": "Aftermovie Content Pack",
     "whatYouGet.aftermovie.infoAria": "Aftermovie Content Pack info",
     "whatYouGet.aftermovie.infoTip": "Vastgelegd door onze videograaf",
     "whatYouGet.aftermovie.b1": "Jouw grootste publieksmoment, vastgelegd",
+    "whatYouGet.aftermovie.filmNote": "Gefilmd door onze videograaf",
     "whatYouGet.aftermovie.foot": "Een upgrade voor je aftermovie & socials",
     "whatYouGet.failsafe.title": "Fail-safe Backup Systeem",
     "whatYouGet.failsafe.sub": "Inclusief back-up antenne",
@@ -218,9 +300,11 @@ const I18N = {
     "whatYouGet.pro.sub": "Werkt met elke lichttafel",
     "whatYouGet.pro.tag": "Binnen enkele minuten opgezet",
     "whatYouGet.onsite.title": "On-site Show Guidance",
-    "whatYouGet.onsite.sub": "Je operator haalt het maximale uit elke drop",
+    "whatYouGet.onsite.sub": "Je licht-operator haalt het maximale uit elke drop",
+    "whatYouGet.onsite.infoTip": "Wij sturen je licht niet aan.<br>Jouw operator blijft aan de knoppen.<br>Wij adviseren voor het beste resultaat.",
     "whatYouGet.nmb.title": "Geen tekorten",
-    "whatYouGet.nmb.sub": "+5% extra polsbanden inbegrepen",
+    "whatYouGet.nmb.sub": "Elke bezoeker krijgt een polsband. Gegarandeerd.",
+    "whatYouGet.nmb.infoTip": "<strong>+5% extra polsbanden inbegrepen.</strong><br>Voor het geval dat.",
     "whatYouGet.nmb.prefix": "(NMB)",
     "whatYouGet.nmb.suffix": "",
 
@@ -235,8 +319,14 @@ const I18N = {
     "showPrice.line.onsite": "On-site Show Guidance",
     "showPrice.line.nmb": "Geen tekorten",
     "showPrice.normal": "Normale show prijs:",
-    "showPrice.total": "Jouw show prijs:",
-    "showPrice.perGuest": "per bezoeker",
+    "showPrice.standardRow": "Standaard showprijs",
+    "showPrice.bonus": "Bonus",
+    "showPrice.total": "Jouw totaal",
+    "showPrice.totalSub": "Jouw show prijs",
+    "showPrice.perGuest": "/ bezoeker",
+    "showPrice.refundBefore": "€0,10 ",
+    "showPrice.refundHighlight": "terugbetaling",
+    "showPrice.refundAfter": " per geretourneerde polsband",
     "showPrice.refund": "€0,10 terugbetaling per geretourneerde polsband",
     "showPrice.cta": "Activeer je crowd",
     "showPrice.contactTitle": "Direct contact:",
@@ -247,12 +337,184 @@ const I18N = {
 
 function getLang() {
   const saved = (window.localStorage && window.localStorage.getItem("lang")) || "";
-  return saved === "nl" ? "nl" : "en";
+  if (saved === "en" || saved === "nl") return saved;
+  return "nl"; // default language on first visit
 }
 
 function t(key) {
   const lang = getLang();
   return (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]) || "";
+}
+
+const CHECKOUT_STEP_TITLE_KEYS = ["calc.buildYourShow", "calc.step2Title", "calc.step3Title", "calc.step4Title"];
+let checkoutFlowStep = 1;
+
+function updateCheckoutFlowHeadingUI() {
+  document.querySelectorAll(".checkout-step").forEach((panel) => {
+    const s = Number(panel.getAttribute("data-checkout-step"));
+    if (!Number.isFinite(s) || s < 1 || s > 4) return;
+    const mainHeading = panel.querySelector(".checkout-flow-main-title");
+    if (mainHeading) {
+      const key = CHECKOUT_STEP_TITLE_KEYS[s - 1];
+      if (key) mainHeading.textContent = t(key);
+    }
+  });
+  const secTitle = document.getElementById("calculatorSectionTitle");
+  if (secTitle) secTitle.classList.toggle("d-none", checkoutFlowStep === 1);
+}
+
+function syncDataSyncPriceMirrors() {
+  const normal = totalValueEl?.textContent?.trim() || "0,00";
+  const today = showPriceTodayEl?.textContent?.trim() || "0,00";
+  const perGuest = outputs.pricePerGuest?.textContent?.trim() || "0,00";
+  const gc = guestsInput ? formatInt(parseInt(guestsInput.value || "0", 10)) : "0";
+  document.querySelectorAll('[data-sync-price="normal"]').forEach((el) => {
+    el.textContent = normal;
+  });
+  document.querySelectorAll('[data-sync-price="today"]').forEach((el) => {
+    el.textContent = today;
+  });
+  document.querySelectorAll('[data-sync-price="perGuest"]').forEach((el) => {
+    el.textContent = perGuest;
+  });
+  document.querySelectorAll('[data-sync-price="guestsCount"]').forEach((el) => {
+    el.textContent = gc;
+  });
+}
+
+function applyCheckoutStepUI(next) {
+  checkoutFlowStep = next;
+  const flowRoot = document.querySelector(".checkout-flow");
+  if (flowRoot) flowRoot.setAttribute("data-current-step", String(next));
+  document.querySelectorAll(".checkout-step").forEach((panel) => {
+    const s = Number(panel.getAttribute("data-checkout-step"));
+    const active = s === checkoutFlowStep;
+    panel.classList.toggle("d-none", !active);
+    panel.setAttribute("aria-hidden", active ? "false" : "true");
+  });
+  const backBtn = document.getElementById("checkoutBack");
+  const nextBtn = document.getElementById("checkoutNext");
+  const step1ContinueBtn = document.getElementById("step1ContinueBtn");
+  if (backBtn) backBtn.disabled = checkoutFlowStep === 1;
+  if (nextBtn) nextBtn.classList.toggle("d-none", checkoutFlowStep === 4 || checkoutFlowStep === 1);
+  if (step1ContinueBtn) step1ContinueBtn.classList.toggle("d-none", checkoutFlowStep !== 1);
+  const termsLink = document.getElementById("checkoutFlowTerms");
+  if (termsLink) termsLink.classList.toggle("d-none", checkoutFlowStep !== 4);
+  updateCheckoutFlowHeadingUI();
+  if (checkoutFlowStep === 4) {
+    try {
+      void refreshPricing();
+    } catch (_) {
+      // ignore if calculator DOM not ready
+    }
+  }
+}
+
+function goToCheckoutStep(step, opts = {}) {
+  const next = Math.max(1, Math.min(4, step));
+  const prev = checkoutFlowStep;
+
+  const scrollAfter = () => {
+    if (!opts.noScroll) {
+      const calcSection = document.getElementById("calculator");
+      if (calcSection) calcSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  if (next === prev) {
+    scrollAfter();
+    return;
+  }
+
+  const skipAnimate =
+    opts.skipAnimate === true ||
+    (typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  const outgoing = document.querySelector(`[data-checkout-step="${prev}"]`);
+  const incoming = document.querySelector(`[data-checkout-step="${next}"]`);
+
+  if (skipAnimate || !outgoing || !incoming) {
+    applyCheckoutStepUI(next);
+    scrollAfter();
+    return;
+  }
+
+  const backBtn = document.getElementById("checkoutBack");
+  const nextBtn = document.getElementById("checkoutNext");
+  const step1ContinueBtn = document.getElementById("step1ContinueBtn");
+  const lockNav = (v) => {
+    [backBtn, nextBtn, step1ContinueBtn].forEach((b) => {
+      if (b) b.disabled = v;
+    });
+  };
+
+  const forward = next > prev;
+  let exitTimer = null;
+  let enterTimer = null;
+  let enterPhaseStarted = false;
+  let enterDone = false;
+
+  lockNav(true);
+  outgoing.classList.remove("checkout-step--exit-forward", "checkout-step--exit-back");
+  outgoing.classList.add(forward ? "checkout-step--exit-forward" : "checkout-step--exit-back");
+
+  const runEnterPhase = () => {
+    if (enterPhaseStarted) return;
+    enterPhaseStarted = true;
+    if (exitTimer) window.clearTimeout(exitTimer);
+    outgoing.classList.remove("checkout-step--exit-forward", "checkout-step--exit-back");
+    outgoing.classList.add("d-none");
+    outgoing.setAttribute("aria-hidden", "true");
+
+    incoming.classList.remove("d-none");
+    incoming.setAttribute("aria-hidden", "false");
+    incoming.classList.remove("checkout-step--enter-forward", "checkout-step--enter-back");
+    incoming.classList.add(forward ? "checkout-step--enter-forward" : "checkout-step--enter-back");
+
+    const finish = () => {
+      if (enterDone) return;
+      enterDone = true;
+      if (enterTimer) window.clearTimeout(enterTimer);
+      incoming.classList.remove("checkout-step--enter-forward", "checkout-step--enter-back");
+      applyCheckoutStepUI(next);
+      lockNav(false);
+      scrollAfter();
+      initTooltips();
+    };
+
+    incoming.addEventListener(
+      "animationend",
+      (e) => {
+        if (e.target !== incoming) return;
+        finish();
+      },
+      { once: true }
+    );
+    enterTimer = window.setTimeout(finish, 480);
+  };
+
+  outgoing.addEventListener(
+    "animationend",
+    (e) => {
+      if (e.target !== outgoing) return;
+      runEnterPhase();
+    },
+    { once: true }
+  );
+  exitTimer = window.setTimeout(runEnterPhase, 420);
+}
+
+function initCheckoutFlow() {
+  const backBtn = document.getElementById("checkoutBack");
+  const nextBtn = document.getElementById("checkoutNext");
+  const step1ContinueBtn = document.getElementById("step1ContinueBtn");
+  if (!backBtn || !nextBtn) return;
+  backBtn.addEventListener("click", () => goToCheckoutStep(checkoutFlowStep - 1));
+  nextBtn.addEventListener("click", () => goToCheckoutStep(checkoutFlowStep + 1));
+  if (step1ContinueBtn) step1ContinueBtn.addEventListener("click", () => goToCheckoutStep(2));
+  goToCheckoutStep(1, { noScroll: true, skipAnimate: true });
 }
 
 function setLang(lang) {
@@ -281,13 +543,17 @@ function setLang(lang) {
   });
 
   // Refresh tooltips so new `data-bs-title` is picked up.
-  if (typeof bootstrap !== "undefined" && bootstrap.Tooltip) {
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-      const inst = bootstrap.Tooltip.getInstance(el);
-      if (inst) inst.dispose();
-      const useHtml = el.getAttribute("data-bs-html") === "true";
-      new bootstrap.Tooltip(el, { html: useHtml, sanitize: false });
-    });
+  try {
+    if (typeof bootstrap !== "undefined" && bootstrap.Tooltip) {
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+        const inst = bootstrap.Tooltip.getInstance(el);
+        if (inst) inst.dispose();
+        const useHtml = el.getAttribute("data-bs-html") === "true";
+        new bootstrap.Tooltip(el, { html: useHtml, sanitize: false });
+      });
+    }
+  } catch (_) {
+    // don't block language switch if tooltip init fails
   }
 
   // Keep the Crowd Ways play buttons in sync (aria-label is set dynamically).
@@ -297,12 +563,37 @@ function setLang(lang) {
     const playing = wrap.classList.contains("is-playing");
     btn.setAttribute("aria-label", playing ? t("crowdWays.pause") : t("crowdWays.play"));
   });
+
+  const langBtnEn = document.getElementById("langBtnEn");
+  const langBtnNl = document.getElementById("langBtnNl");
+  if (langBtnEn) langBtnEn.classList.toggle("is-active", next === "en");
+  if (langBtnNl) langBtnNl.classList.toggle("is-active", next === "nl");
+
+  // Update dynamic strings (e.g. "per guest" / "per bezoeker" on Pro card)
+  try {
+    void refreshPricing();
+  } catch (_) {
+    // ignore if calculator not ready yet
+  }
+  try {
+    updateCheckoutFlowHeadingUI();
+  } catch (_) {
+    // ignore before checkout flow DOM exists
+  }
 }
 
 function initLanguageToggle() {
-  const btn = document.getElementById("langToggle");
-  if (!btn) return;
-  btn.addEventListener("click", () => setLang(getLang() === "nl" ? "en" : "nl"));
+  document.addEventListener("click", (e) => {
+    const en = e.target.closest("#langBtnEn");
+    const nl = e.target.closest("#langBtnNl");
+    if (en) {
+      e.preventDefault();
+      setLang("en");
+    } else if (nl) {
+      e.preventDefault();
+      setLang("nl");
+    }
+  });
   setLang(getLang());
 }
 
@@ -386,9 +677,60 @@ function applyIncludedWristbandPreview() {
   }
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Step 2 "Show control kit" foot line — spreadsheet logic (antenna + skin + branding). */
+function applyShowControlKitFootline() {
+  const el = document.getElementById("showControlKitFootLine");
+  if (!el) return;
+  const guests = parseInt(guestsInput?.value || "0", 10);
+  const countStr = Number.isFinite(guests) && guests >= 1 ? formatInt(guests) : "—";
+  const antennaLabel = experienceEssentials?.checked ? t("whatYouGet.kit.antennaEssentials") : t("whatYouGet.kit.antennaPro");
+  const stdSkin = Boolean(bandBlue?.checked);
+  const uploadSkin = Boolean(bandPink?.checked);
+  const removeBranding = Boolean(whiteLabelInput?.checked);
+  const wi = t("whatYouGet.kit.wristbandsIncluded");
+  const a = escapeHtml(antennaLabel);
+  const c = escapeHtml(countStr);
+  const spanA = `<span class="feature-highlight-num">${a}</span>`;
+  const spanC = `<span class="feature-highlight-num">${c}</span>`;
+
+  let html;
+  if (stdSkin && !removeBranding) {
+    html = `${spanA} & ${spanC} ${escapeHtml(wi)}`;
+  } else if (stdSkin && removeBranding) {
+    const nb = escapeHtml(t("whatYouGet.kit.wristbandsNonBrandedMod"));
+    html = `${spanA} & ${spanC}, <span class="feature-highlight-num">${nb}</span> ${escapeHtml(wi)}`;
+  } else if (uploadSkin && removeBranding) {
+    const fb = escapeHtml(t("whatYouGet.kit.wristbandsFullyBrandedMod"));
+    html = `${spanA} & ${spanC}, <span class="feature-highlight-num">${fb}</span> ${escapeHtml(wi)}`;
+  } else {
+    html = `${spanA} & ${spanC} ${escapeHtml(wi)}`;
+  }
+
+  // Step 4 "Show Control Kit" tooltip: show only the last sentence from this card.
+  const kitTipText = `${antennaLabel} & ${countStr} ${wi}`;
+  document.querySelectorAll('[data-dynamic-tip="show-control-kit-included"]').forEach((btn) => {
+    btn.setAttribute("data-bs-html", "false");
+    btn.setAttribute("data-bs-title", kitTipText);
+    if (typeof bootstrap !== "undefined" && bootstrap.Tooltip) {
+      const inst = bootstrap.Tooltip.getInstance(btn);
+      if (inst) inst.dispose();
+      new bootstrap.Tooltip(btn, { html: false, sanitize: false });
+    }
+  });
+  el.innerHTML = html;
+}
+
 const GUEST_STEPS = [500, 750, 1000, 2500, 5000, 10000, 20000, 40000, 80000];
 /** Must match `DELIVERY_TO_VENUE_PER_SHOW` in website/calculator.py */
-const DELIVERY_PER_SHOW_EUR = 60;
+const DELIVERY_PER_SHOW_EUR = 249.99;
 
 function syncGuestSliderToHidden() {
   if (!guestsSlider || !guestsInput) return;
@@ -414,24 +756,71 @@ function wireSliderTicks() {
   });
 }
 
+/** Reference amounts for Step 4 delivery/timing rows (visual strikethrough + Free; charges still follow API). */
+const STEP4_REF_STRIKE_EUR = 350;
+
+function updateStep4DeliveryTimingSummary(data) {
+  const delTitle = document.getElementById("step4SummaryDeliveryTitle");
+  const delPrice = document.getElementById("step4SummaryDeliveryPrice");
+  const timeTitle = document.getElementById("step4SummaryTimingTitle");
+  const timeSub = document.getElementById("step4SummaryTimingSub");
+  const timePrice = document.getElementById("step4SummaryTimingPrice");
+  if (!delTitle || !delPrice || !timeTitle || !timePrice || !data) return;
+
+  const refStrike = formatEURNumber(STEP4_REF_STRIKE_EUR);
+  const strikeHtml = `<span class="show-price-strike-wrap">€ ${refStrike}</span>`;
+  const freePillHtml = `<span class="step4-free-pill">${t("timing.free")}</span>`;
+
+  delPrice.classList.remove("d-none", "show-price-summary__timing--free", "show-price-detail-row__price--flex");
+
+  delTitle.textContent = deliveryPickup?.checked ? t("delivery.pickup") : t("delivery.venue");
+  delPrice.textContent = `€ ${formatEURNumber(data.upsell_delivery)}`;
+
+  timePrice.classList.remove("show-price-summary__timing--free", "show-price-detail-row__price--flex");
+  if (timeSub) timeSub.classList.remove("d-none");
+
+  if (timing14?.checked) {
+    timeTitle.textContent = t("timing.express");
+    if (timeSub) timeSub.textContent = `(${t("timing.days14")})`;
+    timePrice.classList.add("show-price-detail-row__price--flex");
+    timePrice.innerHTML = `${strikeHtml}${freePillHtml}`;
+  } else if (timing30?.checked) {
+    timeTitle.textContent = t("timing.standard");
+    if (timeSub) timeSub.textContent = `(${t("timing.days30")})`;
+    timePrice.textContent = `€ ${formatEURNumber(data.upsell_timing)}`;
+  } else {
+    /* Flexible (default): same Step 4 line as Express — reference € + Free, not “Flexible Timing”. */
+    timeTitle.textContent = t("timing.express");
+    if (timeSub) {
+      timeSub.classList.remove("d-none");
+      timeSub.textContent = `(${t("timing.days14")})`;
+    }
+    timePrice.classList.add("show-price-detail-row__price--flex");
+    timePrice.innerHTML = `${strikeHtml}${freePillHtml}`;
+  }
+}
+
 async function refreshPricing() {
   syncGuestSliderToHidden();
   const guests = parseInt(guestsInput?.value || "0", 10);
   const shows = parseInt(showsInput?.value || "1", 10);
   applyExperienceVisibility();
   applyIncludedWristbandPreview();
+  applyShowControlKitFootline();
 
   const deliveryVenuePriceDisplay = document.getElementById("deliveryVenuePriceDisplay");
   if (deliveryVenuePriceDisplay && Number.isFinite(shows) && shows >= 1) {
-    deliveryVenuePriceDisplay.textContent = formatInt(DELIVERY_PER_SHOW_EUR * shows);
+    deliveryVenuePriceDisplay.textContent = formatEURNumber(DELIVERY_PER_SHOW_EUR * shows);
   }
 
-  const showControlKitBandCount = document.getElementById("showControlKitBandCount");
-  if (showControlKitBandCount && Number.isFinite(guests) && guests >= 1) {
-    showControlKitBandCount.textContent = formatInt(guests);
+  if (!guests || !shows || guests < 1 || shows < 1) {
+    const step1Exp = document.getElementById("step1ExperienceLabel");
+    if (step1Exp) {
+      step1Exp.textContent = experienceEssentials?.checked ? t("calc.essentialsTitle") : t("calc.proTitle");
+    }
+    syncDataSyncPriceMirrors();
+    return;
   }
-
-  if (!guests || !shows || guests < 1 || shows < 1) return;
 
   if (guestsValue) guestsValue.textContent = formatInt(guests);
   if (showsValue) showsValue.textContent = formatInt(shows);
@@ -528,6 +917,7 @@ async function refreshPricing() {
   }
 
   if (data) {
+    updateStep4DeliveryTimingSummary(data);
     if (outputs.pricePerGuest) outputs.pricePerGuest.textContent = formatEURNumber(data.cost_per_guest);
     if (showPriceTodayEl) showPriceTodayEl.textContent = formatEURNumber(data.total_cost);
     if (nmbValueEl) {
@@ -536,6 +926,12 @@ async function refreshPricing() {
       nmbValueEl.textContent = formatInt(extra);
     }
   }
+
+  const step1Exp = document.getElementById("step1ExperienceLabel");
+  if (step1Exp) {
+    step1Exp.textContent = experienceEssentials?.checked ? t("calc.essentialsTitle") : t("calc.proTitle");
+  }
+  syncDataSyncPriceMirrors();
 }
 
 function wireWristbandUpload() {
@@ -709,10 +1105,46 @@ function wireCrowdWaysLightbox() {
 }
 
 function initTooltips() {
+  if (typeof bootstrap === "undefined" || !bootstrap.Tooltip) return;
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+    const existing = bootstrap.Tooltip.getInstance(el);
+    if (existing) existing.dispose();
     const useHtml = el.getAttribute("data-bs-html") === "true";
-    if (typeof bootstrap === "undefined") return;
     new bootstrap.Tooltip(el, { html: useHtml, sanitize: false });
+  });
+}
+
+function initStepCompareModal() {
+  const openBtn = document.getElementById("step4CompareOpen");
+  const modalEl = document.getElementById("stepCompareModal");
+  const leftMount = document.getElementById("stepCompareLeft");
+  const rightMount = document.getElementById("stepCompareRight");
+  if (!openBtn || !modalEl || !leftMount || !rightMount) return;
+  if (typeof bootstrap === "undefined" || !bootstrap.Modal) return;
+
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl, { focus: true });
+
+  const clonePanel = (panelEl) => {
+    const clone = panelEl.cloneNode(true);
+    // Avoid duplicate IDs and interactive controls inside the modal.
+    clone.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
+    clone.querySelectorAll("button, input, select, textarea, a").forEach((n) => {
+      n.setAttribute("tabindex", "-1");
+      n.setAttribute("aria-hidden", "true");
+      n.classList.add("pointer-events-none");
+    });
+    return clone;
+  };
+
+  openBtn.addEventListener("click", () => {
+    const step4Panel = document.querySelector("#checkoutStepPanel4 .panel--step4");
+    const step2Panel = document.querySelector("#checkoutStepPanel2 .panel--what-you-get");
+    if (!step4Panel || !step2Panel) return;
+
+    leftMount.replaceChildren(clonePanel(step4Panel));
+    rightMount.replaceChildren(clonePanel(step2Panel));
+
+    modal.show();
   });
 }
 
@@ -766,9 +1198,11 @@ function initCalculator() {
 function init() {
   initLanguageToggle();
   initTooltips();
+  initStepCompareModal();
   initTestimonialSwiper();
   initCrowdWays();
   initCalculator();
+  initCheckoutFlow();
 }
 
 if (document.readyState === "loading") {

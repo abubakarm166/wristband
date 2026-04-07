@@ -4,6 +4,11 @@ from django.db import models
 class CheckoutRequest(models.Model):
     event_name = models.CharField(max_length=255, blank=True, default="")
     event_date = models.DateField(blank=True, null=True)
+    event_location = models.CharField(max_length=255, blank=True, default="")
+    venue = models.CharField(max_length=255, blank=True, default="")
+    contact_name = models.CharField(max_length=255, blank=True, default="")
+    contact_email = models.EmailField(blank=True, default="")
+    contact_phone = models.CharField(max_length=50, blank=True, default="")
     guests = models.PositiveIntegerField()
     shows = models.PositiveIntegerField(default=1)
     wristband_type = models.CharField(max_length=64)

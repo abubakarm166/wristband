@@ -8,10 +8,16 @@ WRISTBAND_CHOICES = [
 
 
 class CheckoutForm(forms.Form):
-    event_name = forms.CharField(max_length=255, required=False)
-    event_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}), required=False)
+    # Client tracking fields (sent to Stripe metadata)
+    event_name = forms.CharField(max_length=255, required=True)
+    event_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}), required=True)
+    event_location = forms.CharField(max_length=255, required=True)
+    venue = forms.CharField(max_length=255, required=False)
+    contact_name = forms.CharField(max_length=255, required=True)
+    contact_email = forms.EmailField(required=True)
+    contact_phone = forms.CharField(max_length=50, required=False)
     guests = forms.IntegerField(min_value=1)
-    shows = forms.IntegerField(min_value=1, initial=1)
+    shows = forms.IntegerField(min_value=1, initial=3)
     wristband_type = forms.ChoiceField(choices=WRISTBAND_CHOICES)
     experience = forms.ChoiceField(choices=[("essentials", "Essentials"), ("pro", "Pro")], required=False)
     event_timing = forms.ChoiceField(choices=[("14", "14 days"), ("30", "30-60 days"), ("70", "70+ days")], required=False)

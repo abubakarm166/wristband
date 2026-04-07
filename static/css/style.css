@@ -33,6 +33,23 @@ body {
     padding-bottom: 10px;
 }
 
+/* Flags + hamburger stay in the sticky bar on mobile (outside #mainNav collapse) */
+.navbar-toolbar {
+    position: relative;
+    z-index: 1050; /* above open/collapsing nav so language buttons stay clickable */
+}
+
+.navbar-toolbar .navbar-toggler {
+    margin-left: 0;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 991.98px) {
+    .nav-inner .navbar-collapse {
+        flex-basis: 100%;
+    }
+}
+
 .navbar-brand {
     padding-top: 0;
     padding-bottom: 0;
@@ -63,6 +80,49 @@ body {
     border-radius: 10px;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
+}
+
+/* Navbar language flags (UK / NL) */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lang-flag-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 26px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.lang-flag-btn:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.lang-flag-btn.is-active {
+    border-color: #4a8fd9;
+    box-shadow: 0 0 0 1px rgba(74, 143, 217, 0.35);
+}
+
+.lang-flag-btn:focus-visible {
+    outline: 2px solid #6ea8fe;
+    outline-offset: 2px;
+}
+
+.lang-flag-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 3px;
+    pointer-events: none; /* ensure clicks register on the <button> */
 }
 
 .hero-section {
@@ -356,16 +416,16 @@ body {
 }
 
 .crowd-ways-list {
-    max-width: 320px;
+    max-width: min(420px, 100%);
     color: #c8d0df;
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 1.12rem;
+    line-height: 1.5;
 }
 
 .crowd-ways-list li {
     position: relative;
-    padding-left: 1.1rem;
-    margin-bottom: 0.4rem;
+    padding-left: 1.15rem;
+    margin-bottom: 0.55rem;
 }
 
 .crowd-ways-list li::before {
@@ -1048,6 +1108,15 @@ input[type="file"].form-control {
     text-align: left;
 }
 
+.wristband-card-title {
+    font-weight: 800;
+    font-size: 1.02rem;
+    color: #f5f7ff;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
 .wristband-price {
     font-weight: 700;
     font-size: 0.95rem;
@@ -1344,7 +1413,7 @@ a.info-icon--link:hover {
     color: #eaf0ff;
 }
 
-.option-box .text-muted {
+.text-muted {
     color: white !important;
     opacity: 1;
 }
@@ -1433,6 +1502,7 @@ a.info-icon--link:hover {
     background: rgba(63, 123, 232, 0.08);
     box-shadow:
         0 0 0 1px rgba(63, 123, 232, 0.35),
+        0 0 22px rgba(63, 123, 232, 0.22),
         0 8px 24px rgba(63, 123, 232, 0.12);
 }
 
@@ -1650,6 +1720,289 @@ a.info-icon--link:hover {
     font-weight: 700;
 }
 
+/* Step 4 / 4 — “What you pay” (mockup-aligned) */
+#calculator .panel--show-price.panel--step4 {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.35rem 1.25rem 1.5rem;
+}
+
+.show-price-step-subtitle {
+    font-size: 0.88rem;
+    color: #9aa3b8 !important;
+    line-height: 1.45;
+}
+
+/* Thin rule directly under “What you pay” (mockup) */
+#calculator .panel--show-price.panel--step4 .checkout-flow-heading--step4-title {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0.85rem;
+    min-height: auto;
+}
+
+.show-price-title-rule {
+    height: 1px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 999px;
+}
+
+.show-price-free-paren {
+    color: #e8ecf5;
+    font-weight: 600;
+}
+
+.show-price-free-word {
+    color: #86efac;
+    font-weight: 800;
+    padding: 0 0.12em;
+}
+
+.show-price-delivery-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.show-price-detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #2a3548;
+    background: #0f1524;
+}
+
+.show-price-detail-row__left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.5rem;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.show-price-detail-row__title {
+    font-weight: 700;
+    color: #f5f7ff;
+    font-size: 0.95rem;
+}
+
+.show-price-detail-row__meta {
+    font-size: 0.82rem;
+}
+
+.show-price-detail-row__badge-free {
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.show-price-detail-row__price {
+    font-weight: 750;
+    color: #eaf0ff;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.show-price-detail-row__price.show-price-summary__timing--free {
+    color: #6ee7a8;
+    font-weight: 800;
+}
+
+.show-price-divider-wide {
+    height: 1px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 0;
+    border: none;
+    margin: 0;
+    border-radius: 999px;
+    opacity: 0.95;
+}
+
+.show-price-guarantee-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #3f7be8 0%, #2e6ad6 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 28px rgba(63, 123, 232, 0.35);
+}
+
+.show-price-guarantee-banner__text {
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.show-price-delivery-summary--below-list {
+    margin-top: 0.25rem;
+}
+
+.show-price-strike-wrap {
+    text-decoration: line-through;
+    text-decoration-color: rgba(200, 212, 232, 0.55);
+    color: #b8c4dc;
+    font-weight: 650;
+    font-size: 0.95rem;
+}
+
+.show-price-bonus-tag {
+    font-weight: 800;
+    color: #4ade80;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.show-price-bonus-value {
+    min-width: 0;
+}
+
+#calculator .panel--show-price .investment-pill--normal .show-price-standard-strike {
+    text-decoration: line-through;
+    text-decoration-color: rgba(200, 212, 232, 0.55);
+    color: #c8d4e8;
+    font-weight: 700;
+}
+
+#calculator .panel--show-price .investment-list--show-price-lines {
+    border: 1px solid #27324b;
+    border-radius: 14px;
+    background: rgba(10, 14, 22, 0.92);
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+#calculator .panel--show-price .investment-list--show-price-lines .list-group-item.panel-item {
+    border: 1px solid #2f3a52 !important;
+    border-radius: 10px !important;
+    margin-bottom: 8px;
+    background: #111826 !important;
+    padding: 12px 14px;
+}
+
+#calculator .panel--show-price .investment-list--show-price-lines .list-group-item:last-child {
+    margin-bottom: 0;
+}
+
+#calculator .panel--show-price .big-metric-value--per-guest {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.25rem;
+    font-size: clamp(1.95rem, 4.5vw, 2.65rem);
+    line-height: 1.12;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+}
+
+#calculator .panel--show-price .big-metric-value--per-guest .big-metric-euro {
+    font-weight: 700;
+}
+
+#calculator .panel--show-price .big-metric-value--per-guest #pricePerGuest {
+    font-weight: 700;
+}
+
+.show-price-refund-highlight {
+    color: #6ee7a8;
+    font-weight: 700;
+}
+
+#calculator .panel--show-price .investment-pill--final-total {
+    background: linear-gradient(180deg, #3f7be8 0%, #2f6ad0 100%);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 0 0 1px rgba(63, 123, 232, 0.45),
+        0 0 28px rgba(63, 123, 232, 0.35);
+}
+
+#calculator .panel--show-price .investment-pill--final-total span,
+#calculator .panel--show-price .investment-pill--final-total strong {
+    color: #ffffff;
+}
+
+#calculator .panel--show-price .investment-pill--final-total strong {
+    font-size: 1.2rem;
+}
+
+.checkout-flow-terms-link {
+    font-size: 0.92rem;
+}
+
+.checkout-flow[data-current-step="4"] .checkout-flow-nav .col-lg-8 {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 640px;
+}
+
+.show-price-detail-row__price--flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    min-width: min-content;
+    white-space: normal;
+}
+
+.step4-free-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(110, 231, 180, 0.4);
+    color: #86efac;
+    font-weight: 800;
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+#calculator .panel--show-price.panel--step4 .investment-pill-row--step4-totals {
+    margin-bottom: 0;
+}
+
+#calculator .panel--show-price.panel--step4 .investment-pill-row--step4-totals + .investment-pill-row--step4-totals {
+    margin-top: 0.75rem;
+    margin-bottom: 0.85rem;
+}
+
+#calculator .panel--show-price.panel--step4 .investment-pill--final-total {
+    padding: 14px 18px;
+}
+
+#calculator .panel--show-price.panel--step4 .investment-pill--final-total span {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+#calculator .panel--show-price.panel--step4 .investment-pill--final-total strong {
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+#calculator .panel--show-price.panel--step4 .big-metric--show-price {
+    margin-top: 0.35rem;
+}
+
 .investment-pill-row {
     display: flex;
     justify-content: flex-end;
@@ -1826,8 +2179,22 @@ a.info-icon--link:hover {
     font-size: clamp(1.25rem, 2.8vw, 1.6rem);
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.35rem;
     color: #f5f7ff;
+}
+
+#calculator .panel--what-you-get .what-you-get-subtitle {
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: #9aa3b8;
+    font-style: italic;
+}
+
+#calculator .panel--what-you-get .feature-foot--film {
+    font-size: 0.86rem;
+    color: #a8b0c4;
+    margin-top: 6px;
 }
 
 #calculator .panel--what-you-get .feature-list {
@@ -2158,6 +2525,501 @@ html {
     color: #8b9199;
     letter-spacing: 0.02em;
 }
+
+/* Checkout 4-step flow (same form / pricing as before) */
+.checkout-flow {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Step transitions: outgoing slides + fades; incoming enters from the side */
+@keyframes checkout-step-exit-left {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-2.5rem);
+    }
+}
+
+@keyframes checkout-step-exit-right {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(2.5rem);
+    }
+}
+
+@keyframes checkout-step-enter-from-right {
+    from {
+        opacity: 0;
+        transform: translateX(2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes checkout-step-enter-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.checkout-step--exit-forward {
+    animation: checkout-step-exit-left 0.38s ease forwards;
+    pointer-events: none;
+}
+
+.checkout-step--exit-back {
+    animation: checkout-step-exit-right 0.38s ease forwards;
+    pointer-events: none;
+}
+
+.checkout-step--enter-forward {
+    animation: checkout-step-enter-from-right 0.42s ease forwards;
+}
+
+.checkout-step--enter-back {
+    animation: checkout-step-enter-from-left 0.42s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .checkout-step--exit-forward,
+    .checkout-step--exit-back,
+    .checkout-step--enter-forward,
+    .checkout-step--enter-back {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+.checkout-flow-heading {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.85rem;
+    margin-bottom: 1rem;
+    min-height: 3.25rem;
+    padding-top: 0.15rem;
+}
+
+/* Main checkout title + step badge live inside each step panel */
+#calculator .panel .checkout-flow-heading--in-panel {
+    margin-top: -0.15rem;
+}
+
+.checkout-flow-main-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #f4f6fb;
+    max-width: min(100%, 36ch);
+    line-height: 1.2;
+}
+
+.checkout-flow-step-badge {
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.panel--step1 {
+    max-width: 100%;
+}
+
+.panel--step3 {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(180deg, #171f30 0%, #121a28 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem 1.35rem 1.65rem;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.15),
+        0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+#calculator .panel--step3 .delivery-heading {
+    justify-content: center;
+    text-align: center;
+    gap: 0.45rem;
+    margin-bottom: 1.15rem;
+}
+
+#calculator .panel--step3 .delivery-section-title {
+    text-align: center;
+}
+
+#calculator .panel--step3 .delivery-heading--follow {
+    margin-top: 1.75rem;
+}
+
+/* Step 3 — price strip centered; Logistics / Production Speed section titles centered above cards */
+.step3-price-summary {
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 1.2rem 1.15rem 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.step3-price-summary__micro {
+    font-size: 0.72rem;
+    font-style: italic;
+    color: #8b93a8;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.step3-price-summary__per {
+    font-size: clamp(1.75rem, 5vw, 2.35rem);
+    font-weight: 700;
+    color: #f4f6fb;
+    letter-spacing: -0.03em;
+}
+
+.step3-price-summary__per-suffix {
+    font-size: 1rem;
+    color: #c5ccdc;
+    font-weight: 500;
+}
+
+.step3-price-summary__guests-line {
+    margin-top: 0.85rem;
+    font-size: 0.92rem;
+    color: #e8ecf5;
+    line-height: 1.45;
+}
+
+#calculator .panel--step3 .feature-highlight-num,
+#calculator .panel--step3 .step3-guests-count {
+    color: #46d37a;
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* Align Back / Continue row with Step 3 card width */
+.checkout-flow[data-current-step="2"] .checkout-flow-nav .col-lg-8,
+.checkout-flow[data-current-step="3"] .checkout-flow-nav .col-lg-8 {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 640px;
+}
+
+.option-box.option-box--delivery-cards {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.option-box--delivery-cards .delivery-check--card + .delivery-check--card {
+    border-top: none;
+    margin-top: 10px;
+}
+
+.delivery-check--card {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    align-items: center;
+    gap: 0 12px;
+    padding: 12px 14px;
+    margin: 0;
+    border-radius: 12px;
+    border: 1px solid #26314a;
+    background: #0f1524;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.delivery-check--card .form-check-input {
+    margin: 0;
+    align-self: start;
+    margin-top: 2px;
+}
+
+.delivery-label-flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.delivery-copy {
+    min-width: 0;
+    text-align: left;
+}
+
+.delivery-badge--free {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 11px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #0a0d14;
+    background: #9dd49a;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Step 3 reference: dark pill, light green “Free” on the right of the pickup row */
+#calculator .panel--step3 .delivery-badge--free {
+    background: rgba(8, 12, 22, 0.85);
+    border: 1px solid rgba(70, 211, 122, 0.35);
+    color: #8fe3a8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+.delivery-check--card:has(#deliveryPickup:checked) .delivery-badge--free {
+    display: inline-flex;
+}
+
+.delivery-check--card:has(.form-check-input:checked) {
+    border-color: #3f7be8;
+    background: rgba(63, 123, 232, 0.08);
+    box-shadow:
+        0 0 0 1px rgba(63, 123, 232, 0.35),
+        0 8px 24px rgba(63, 123, 232, 0.12);
+}
+
+.delivery-check--card:hover {
+    border-color: #34415f;
+}
+
+#calculator .option-box--delivery.option-box--delivery-cards .delivery-check--card {
+    padding: 12px 14px;
+}
+
+.step1-price-hero {
+    background: linear-gradient(180deg, rgba(30, 40, 62, 0.95) 0%, rgba(22, 28, 44, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.1rem 1.15rem 1.25rem;
+    margin-bottom: 1.35rem;
+}
+
+.step1-price-hero__label {
+    font-size: 0.88rem;
+    color: #a8b0c4;
+}
+
+.step1-price-hero__amount {
+    font-size: 1.05rem;
+    color: #e8ecf5;
+}
+
+.step1-price-hero__tagline {
+    font-size: 0.82rem;
+    color: #8b93a8;
+    margin-top: 0.5rem;
+    line-height: 1.45;
+}
+
+.step1-price-hero__highlight {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+}
+
+.step1-price-hero__micro-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #8b93a8;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.35rem;
+}
+
+.step1-adjust-hint {
+    font-size: 0.88rem;
+    color: #9aa3b8;
+    line-height: 1.45;
+}
+
+.step1-price-hero__per-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.step1-price-hero__per {
+    font-size: clamp(1.75rem, 5vw, 2.35rem);
+    font-weight: 700;
+    color: #f4f6fb;
+    letter-spacing: -0.03em;
+}
+
+.step1-price-hero__per-suffix {
+    font-size: 1rem;
+    color: #c5ccdc;
+}
+
+.step1-price-hero__exp {
+    margin-top: 0.65rem;
+    font-size: 0.85rem;
+    color: #9aa3b8;
+}
+
+.step1-price-hero__exp strong {
+    color: #e8ecf5;
+    font-weight: 600;
+}
+
+.step1-footer {
+    margin-top: 1.5rem;
+    padding-top: 0;
+    border-top: none;
+}
+
+.step1-footer__card {
+    background: linear-gradient(180deg, rgba(22, 30, 48, 0.9) 0%, rgba(14, 18, 30, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.1rem 1.15rem 1.15rem;
+    margin-bottom: 1rem;
+}
+
+.step1-footer__compare {
+    font-size: 0.88rem;
+    color: #a8b0c4;
+    margin-bottom: 0.75rem;
+}
+
+.step1-footer__strike {
+    color: #6b7280;
+}
+
+.step1-footer__total-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.step1-footer__total-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8b93a8;
+}
+
+.step1-footer__total-value {
+    font-size: clamp(1.65rem, 4.5vw, 2.1rem);
+    font-weight: 700;
+    color: #f4f6fb;
+}
+
+.step1-footer__formula {
+    text-align: center;
+}
+
+.step1-continue-btn {
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.checkout-flow-nav .btn:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* Step 4 (i) compare modal (Step 4 left, Step 2 right) */
+.step-compare-modal.modal {
+    padding-left: 0 !important; /* avoid backdrop gap when scrollbar appears */
+}
+
+.step-compare-modal .modal-dialog {
+    max-width: 1100px;
+    width: min(1100px, 96vw);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-compare-modal__content {
+    background: radial-gradient(1200px 600px at 50% 0%, rgba(63, 123, 232, 0.18), transparent 60%),
+        linear-gradient(180deg, #0a0e18 0%, #070a11 100%);
+    border: 1px solid rgba(38, 49, 74, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+    height: min(90vh, 920px);
+    display: flex;
+    flex-direction: column;
+}
+
+.step-compare-modal__header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 14px 16px;
+}
+
+.step-compare-modal__title {
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.step-compare-modal__body {
+    padding: 16px;
+    flex: 1 1 auto;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.step-compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+    height: 100%;
+    min-height: 0;
+}
+
+.step-compare-col {
+    min-height: 0;
+}
+
+.step-compare-col > div {
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
+    padding-right: 6px;
+}
+
+.pointer-events-none {
+    pointer-events: none !important;
+}
+
+@media (max-width: 991px) {
+    .step-compare-grid {
+        grid-template-columns: 1fr;
+    }
+    .step-compare-col > div {
+        height: auto;
+        max-height: 70vh;
+    }
+}
+
 @media (min-width: 1400px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
         max-width: 1380px;

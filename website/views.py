@@ -83,9 +83,13 @@ def create_checkout_session(request):
         return JsonResponse({"error": form.errors}, status=400)
 
     cd = form.cleaned_data
-    # Keep blank if user didn't provide it (don't store "Untitled Event")
     event_name = (cd.get("event_name") or "").strip()
     event_date = cd.get("event_date")
+    event_location = (cd.get("event_location") or "").strip()
+    venue = (cd.get("venue") or "").strip()
+    contact_name = (cd.get("contact_name") or "").strip()
+    contact_email = (cd.get("contact_email") or "").strip().lower()
+    contact_phone = (cd.get("contact_phone") or "").strip()
     experience = cd.get("experience") or "pro"
     event_timing = cd.get("event_timing") or "30"
     pricing = calculate_pricing(
@@ -101,6 +105,11 @@ def create_checkout_session(request):
     checkout_request = CheckoutRequest.objects.create(
         event_name=event_name,
         event_date=event_date,
+        event_location=event_location,
+        venue=venue,
+        contact_name=contact_name,
+        contact_email=contact_email,
+        contact_phone=contact_phone,
         guests=cd["guests"],
         shows=cd["shows"],
         wristband_type=cd["wristband_type"],
@@ -136,6 +145,7 @@ def create_checkout_session(request):
         mode="payment",
         success_url=settings.STRIPE_SUCCESS_URL,
         cancel_url=settings.STRIPE_CANCEL_URL,
+        customer_email=contact_email or None,
         line_items=[
             {
                 "quantity": 1,
@@ -152,6 +162,11 @@ def create_checkout_session(request):
         metadata={
             "event_name": event_name,
             "event_date": event_date.isoformat() if event_date else "",
+            "event_location": event_location,
+            "venue": venue,
+            "contact_name": contact_name,
+            "contact_email": contact_email,
+            "contact_phone": contact_phone,
             "guests": str(cd["guests"]),
             "shows": str(cd["shows"]),
             "wristband_type": cd["wristband_type"],
