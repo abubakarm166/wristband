@@ -566,7 +566,7 @@ body {
 
 .demo-box {
     padding: 18px;
-    background: linear-gradient(180deg, #161c28 0%, #0f1524 100%);
+    background: #0f1524;
     box-shadow: 0 18px 46px rgba(0, 0, 0, 0.45);
 }
 
@@ -912,7 +912,7 @@ input[type="file"].form-control {
 .form-range.slider::-webkit-slider-runnable-track {
     height: 6px;
     border-radius: 999px;
-    background: linear-gradient(to right, #3f7be8 var(--fill), #2d364b var(--fill));
+    background: #2d364b;
 }
 
 .form-range.slider::-webkit-slider-thumb {
@@ -959,15 +959,17 @@ input[type="file"].form-control {
     padding: 16px 14px 14px;
     border-radius: 14px;
     border: 1px solid #26314a;
-    background: linear-gradient(165deg, #0d121f 0%, #0a0e18 100%);
+    background: #0c1018;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .choose-design-heading {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     margin-bottom: 14px;
+    text-align: center;
 }
 
 .choose-design-title {
@@ -1010,7 +1012,7 @@ input[type="file"].form-control {
     aspect-ratio: 1 / 1;
     max-height: min(200px, 38vw);
     border-radius: 12px;
-    background: linear-gradient(160deg, #2c3548 0%, #161c28 55%, #0f141f 100%);
+    background: #1a2230;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -1046,7 +1048,7 @@ input[type="file"].form-control {
     aspect-ratio: 1 / 1;
     max-height: min(200px, 38vw);
     border-radius: 12px;
-    background: linear-gradient(180deg, #121722 0%, #0a0d14 100%);
+    background: #0e131c;
     border: 1px solid #2f3a52;
     display: flex;
     align-items: center;
@@ -1383,8 +1385,14 @@ a.info-icon--link:hover {
     margin-top: 0;
 }
 
-.option-box--delivery .form-check-label {
+.option-box--delivery .form-check-label:not(.delivery-label-flex) {
     display: block;
+    color: #eaf0ff;
+    cursor: pointer;
+}
+
+.option-box--delivery .form-check-label.delivery-label-flex {
+    display: flex;
     color: #eaf0ff;
     cursor: pointer;
 }
@@ -1521,7 +1529,7 @@ a.info-icon--link:hover {
 
 /* Your Show Price column — presentation only; IDs & .feat-cost unchanged */
 #calculator .panel--show-price {
-    background: linear-gradient(180deg, #0a0e18 0%, #080b12 100%);
+    background: #0a0e18;
     border-color: #26314a;
     padding: 20px 18px 18px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
@@ -1632,7 +1640,7 @@ a.info-icon--link:hover {
 }
 
 #calculator .panel--show-price .investment-pill--final-total {
-    background: linear-gradient(180deg, #152448 0%, #101a2e 100%);
+    background: #121f38;
     border-color: rgba(63, 123, 232, 0.5);
     box-shadow:
         0 0 0 1px rgba(63, 123, 232, 0.2),
@@ -1655,7 +1663,7 @@ a.info-icon--link:hover {
 #calculator .panel--show-price .big-metric--show-price {
     border: 1px solid #334b68;
     border-radius: 14px;
-    background: linear-gradient(165deg, #0e1420 0%, #0a0e18 100%);
+    background: #0c1018;
     padding: 22px 16px 20px;
     margin-bottom: 0;
     text-align: center;
@@ -1738,7 +1746,7 @@ a.info-icon--link:hover {
 #calculator .panel--show-price.panel--step4 .checkout-flow-heading--step4-title {
     border-bottom: none;
     margin-bottom: 0;
-    padding-bottom: 0.85rem;
+    padding-bottom: 0;
     min-height: auto;
 }
 
@@ -1833,7 +1841,7 @@ a.info-icon--link:hover {
     justify-content: center;
     padding: 14px 16px;
     border-radius: 12px;
-    background: linear-gradient(180deg, #3f7be8 0%, #2e6ad6 100%);
+    background: #3f7be8;
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 10px 28px rgba(63, 123, 232, 0.35);
 }
@@ -1925,7 +1933,7 @@ a.info-icon--link:hover {
 }
 
 #calculator .panel--show-price .investment-pill--final-total {
-    background: linear-gradient(180deg, #3f7be8 0%, #2f6ad0 100%);
+    background: #3f7be8;
     border-color: rgba(255, 255, 255, 0.12);
     box-shadow:
         0 0 0 1px rgba(63, 123, 232, 0.45),
@@ -1943,6 +1951,29 @@ a.info-icon--link:hover {
 
 .checkout-flow-terms-link {
     font-size: 0.92rem;
+}
+
+/* Back (left) | Terms (true center) | Continue (right) */
+.checkout-flow-nav__bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    width: 100%;
+}
+
+.checkout-flow-nav__side--start {
+    justify-self: start;
+}
+
+.checkout-flow-nav__center {
+    justify-self: center;
+    text-align: center;
+    min-width: 0;
+}
+
+.checkout-flow-nav__side--end {
+    justify-self: end;
 }
 
 .checkout-flow[data-current-step="4"] .checkout-flow-nav .col-lg-8 {
@@ -2201,6 +2232,18 @@ a.info-icon--link:hover {
     text-align: center;
 }
 
+#calculator .panel--what-you-get .feature-list-group {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 14px;
+    background: rgba(5, 10, 18, 0.45);
+}
+
+#calculator .panel--what-you-get .feature-list-group:last-child {
+    margin-bottom: 0;
+}
+
 #calculator .panel--what-you-get .feature-box {
     padding: 16px 14px;
 }
@@ -2391,10 +2434,10 @@ html {
 }
 
 .footer-terms-link {
-    font-size: 0.64rem;
+    font-size: 1rem;
     letter-spacing: 0.6px;
     color: #d6deef;
-    text-decoration: none;
+    /* text-decoration: none; */
     background: #05070d;
     padding: 0 10px;
 }
@@ -2608,7 +2651,7 @@ html {
 
 .checkout-flow-heading {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 0.85rem;
+    padding-bottom: 0;
     margin-bottom: 1rem;
     min-height: 3.25rem;
     padding-top: 0.15rem;
@@ -2635,19 +2678,23 @@ html {
 
 .panel--step1 {
     max-width: 100%;
+    background: #111827;
+    border-color: #2d3a48;
+    border-radius: 16px;
+    padding: 1.5rem 1.35rem 1.5rem;
 }
 
 .panel--step3 {
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
-    background: linear-gradient(180deg, #171f30 0%, #121a28 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0b0e14;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    padding: 1.5rem 1.35rem 1.65rem;
+    padding: 1.35rem 1.35rem 1.65rem;
     box-shadow:
-        0 4px 6px rgba(0, 0, 0, 0.15),
-        0 18px 40px rgba(0, 0, 0, 0.35);
+        0 4px 6px rgba(0, 0, 0, 0.2),
+        0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
 #calculator .panel--step3 .delivery-heading {
@@ -2665,47 +2712,81 @@ html {
     margin-top: 1.75rem;
 }
 
-/* Step 3 — price strip centered; Logistics / Production Speed section titles centered above cards */
+/* Step 3 — title block + divider above price card (mockup) */
+#calculator .panel--step3 .checkout-flow-heading--step3 {
+    margin-bottom: 1.35rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 0;
+}
+
+/* Step 3 — price card: label top-left; per-guest hero centered; total line centered italic */
 .step3-price-summary {
-    background: rgba(0, 0, 0, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(15, 18, 26, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
-    padding: 1.2rem 1.15rem 1.25rem;
+    padding: 1.25rem 1.35rem 1.35rem;
     margin-bottom: 1.5rem;
-    text-align: center;
 }
 
 .step3-price-summary__micro {
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     font-style: italic;
-    color: #8b93a8;
-    margin-bottom: 0.5rem;
+    color: #8b95a8;
+    margin: 0 0 1rem;
     letter-spacing: 0.02em;
+    text-align: left;
+    width: 100%;
+}
+
+.step3-price-summary__per-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .step3-price-summary__per {
-    font-size: clamp(1.75rem, 5vw, 2.35rem);
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.85rem;
     font-weight: 700;
     color: #f4f6fb;
     letter-spacing: -0.03em;
 }
 
+.step3-price-summary__per-amount {
+    font-size: clamp(2.1rem, 6.5vw, 3rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.08;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
 .step3-price-summary__per-suffix {
-    font-size: 1rem;
-    color: #c5ccdc;
+    font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+    color: #9aa3b8;
     font-weight: 500;
 }
 
 .step3-price-summary__guests-line {
-    margin-top: 0.85rem;
-    font-size: 0.92rem;
+    margin-top: 1rem;
+    font-size: 0.94rem;
     color: #e8ecf5;
-    line-height: 1.45;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.step3-price-summary__guests-tail {
+    font-style: italic;
+    color: #e8ecf5;
 }
 
 #calculator .panel--step3 .feature-highlight-num,
 #calculator .panel--step3 .step3-guests-count {
-    color: #46d37a;
+    color: #2ee6a6;
     font-weight: 800;
     font-style: normal;
 }
@@ -2731,29 +2812,30 @@ html {
 
 .delivery-check--card {
     display: grid;
-    grid-template-columns: 22px 1fr;
+    grid-template-columns: 22px minmax(0, 1fr);
     align-items: center;
     gap: 0 12px;
     padding: 12px 14px;
     margin: 0;
     border-radius: 12px;
-    border: 1px solid #26314a;
-    background: #0f1524;
+    border: 1px solid #2d3a48;
+    background: #0f172a;
     transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .delivery-check--card .form-check-input {
     margin: 0;
-    align-self: start;
-    margin-top: 2px;
+    align-self: center;
 }
 
 .delivery-label-flex {
     display: flex;
+    flex-wrap: nowrap;
     width: 100%;
+    min-width: 0;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     padding: 0;
     margin: 0;
 }
@@ -2761,6 +2843,7 @@ html {
 .delivery-copy {
     min-width: 0;
     text-align: left;
+    flex: 1 1 auto;
 }
 
 .delivery-badge--free {
@@ -2790,11 +2873,11 @@ html {
 }
 
 .delivery-check--card:has(.form-check-input:checked) {
-    border-color: #3f7be8;
-    background: rgba(63, 123, 232, 0.08);
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.08);
     box-shadow:
-        0 0 0 1px rgba(63, 123, 232, 0.35),
-        0 8px 24px rgba(63, 123, 232, 0.12);
+        0 0 0 1px rgba(59, 130, 246, 0.35),
+        0 8px 24px rgba(59, 130, 246, 0.12);
 }
 
 .delivery-check--card:hover {
@@ -2805,47 +2888,74 @@ html {
     padding: 12px 14px;
 }
 
+/* Step 1 pricing — two bordered blocks + tagline (matches mockup) */
 .step1-price-hero {
-    background: linear-gradient(180deg, rgba(30, 40, 62, 0.95) 0%, rgba(22, 28, 44, 0.98) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 1.1rem 1.15rem 1.25rem;
+    background: transparent;
+    border: none;
+    padding: 0;
     margin-bottom: 1.35rem;
 }
 
-.step1-price-hero__label {
-    font-size: 0.88rem;
-    color: #a8b0c4;
+.step1-price-hero__standard-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.95rem 1.05rem;
+    border-radius: 10px;
+    border: 1px solid #2d3a48;
+    background: #0f172a;
 }
 
-.step1-price-hero__amount {
+.step1-price-hero__standard-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.step1-price-hero__standard-amount {
     font-size: 1.05rem;
-    color: #e8ecf5;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
 }
 
 .step1-price-hero__tagline {
-    font-size: 0.82rem;
-    color: #8b93a8;
-    margin-top: 0.5rem;
-    line-height: 1.45;
+    font-size: 0.9rem;
+    color: #e8edf5;
+    margin: 1rem 0 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.step1-price-hero__tagline-euro {
+    font-style: normal;
 }
 
 .step1-price-hero__highlight {
-    margin-top: 1rem;
-    padding: 0.85rem 1rem;
+    position: relative;
+    margin-top: 0;
+    padding: 2.35rem 1.1rem 1.15rem;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid #2d3a48;
+    background: #0a0e17;
     text-align: center;
 }
 
 .step1-price-hero__micro-label {
+    position: absolute;
+    top: 0.9rem;
+    left: 1.05rem;
+    right: auto;
     font-size: 0.72rem;
     font-weight: 500;
     font-style: italic;
-    color: #8b93a8;
+    color: #94a3b8;
     letter-spacing: 0.02em;
-    margin-bottom: 0.35rem;
+    margin: 0;
+    text-align: left;
 }
 
 .step1-adjust-hint {
@@ -2877,67 +2987,103 @@ html {
 .step1-price-hero__exp {
     margin-top: 0.65rem;
     font-size: 0.85rem;
-    color: #9aa3b8;
+    color: #94a3b8;
 }
 
 .step1-price-hero__exp strong {
-    color: #e8ecf5;
-    font-weight: 600;
+    color: #f4f6fb;
+    font-weight: 700;
 }
 
+/* Step 1 / 5 — bottom summary + Continue (matches mockup) */
 .step1-footer {
-    margin-top: 1.5rem;
+    margin-top: 1.75rem;
     padding-top: 0;
-    border-top: none;
+}
+
+.step1-footer__divider {
+    height: 1px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 999px;
+    margin-bottom: 1.15rem;
+    opacity: 0.9;
 }
 
 .step1-footer__card {
-    background: linear-gradient(180deg, rgba(22, 30, 48, 0.9) 0%, rgba(14, 18, 30, 0.95) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0f172a;
+    border: 1px solid #2d3a48;
     border-radius: 14px;
-    padding: 1.1rem 1.15rem 1.15rem;
-    margin-bottom: 1rem;
+    padding: 1.15rem 1.2rem 1.1rem;
+    margin-bottom: 1.1rem;
 }
 
-.step1-footer__compare {
-    font-size: 0.88rem;
-    color: #a8b0c4;
-    margin-bottom: 0.75rem;
+.step1-footer__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.step1-footer__row--standard {
+    margin-bottom: 0.85rem;
+}
+
+.step1-footer__std-label {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #e8ecf5;
 }
 
 .step1-footer__strike {
-    color: #6b7280;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #e8ecf5;
+    white-space: nowrap;
 }
 
-.step1-footer__total-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.35rem;
-    margin-bottom: 0.35rem;
+.step1-footer__row--grand {
+    margin-bottom: 0.5rem;
 }
 
 .step1-footer__total-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #8b93a8;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
 }
 
 .step1-footer__total-value {
-    font-size: clamp(1.65rem, 4.5vw, 2.1rem);
+    font-size: clamp(1.35rem, 4vw, 1.85rem);
     font-weight: 700;
-    color: #f4f6fb;
+    color: #ffffff;
+    white-space: nowrap;
+    line-height: 1.2;
 }
 
 .step1-footer__formula {
-    text-align: center;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: #94a3b8;
+    text-align: left;
 }
 
-.step1-continue-btn {
+#calculator .step1-continue-btn.btn-primary {
     border-radius: 999px;
     font-weight: 600;
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+#calculator .step1-continue-btn.btn-primary:hover,
+#calculator .step1-continue-btn.btn-primary:focus {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+#calculator .step1-continue-btn.btn-primary:active {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
 }
 
 .checkout-flow-nav .btn:disabled {
@@ -2945,65 +3091,30 @@ html {
     pointer-events: none;
 }
 
-/* Step 4 (i) compare modal (Step 4 left, Step 2 right) */
-.step-compare-modal.modal {
-    padding-left: 0 !important; /* avoid backdrop gap when scrollbar appears */
-}
-
-.step-compare-modal .modal-dialog {
-    max-width: 1100px;
-    width: min(1100px, 96vw);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.step-compare-modal__content {
-    background: radial-gradient(1200px 600px at 50% 0%, rgba(63, 123, 232, 0.18), transparent 60%),
-        linear-gradient(180deg, #0a0e18 0%, #070a11 100%);
+/* Step 5: inline compare — panel grows with cloned content; page scrolls (no fixed viewport trap) */
+.step-compare-panel {
+    display: flex;
+    flex-direction: column;
+    background: #0a0e18;
     border: 1px solid rgba(38, 49, 74, 0.9);
     border-radius: 16px;
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
-    height: min(90vh, 920px);
-    display: flex;
-    flex-direction: column;
 }
 
-.step-compare-modal__header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 14px 16px;
-}
-
-.step-compare-modal__title {
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-}
-
-.step-compare-modal__body {
+.step-compare-panel__body {
     padding: 16px;
-    flex: 1 1 auto;
-    overflow: hidden;
-    min-height: 0;
 }
 
 .step-compare-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    align-items: stretch;
-    height: 100%;
-    min-height: 0;
-}
-
-.step-compare-col {
-    min-height: 0;
+    align-items: start;
 }
 
 .step-compare-col > div {
-    height: 100%;
-    max-height: 100%;
-    overflow: auto;
     padding-right: 6px;
+    overflow-x: visible;
 }
 
 .pointer-events-none {
@@ -3013,10 +3124,6 @@ html {
 @media (max-width: 991px) {
     .step-compare-grid {
         grid-template-columns: 1fr;
-    }
-    .step-compare-col > div {
-        height: auto;
-        max-height: 70vh;
     }
 }
 

@@ -16,7 +16,7 @@ class CheckoutForm(forms.Form):
     contact_name = forms.CharField(max_length=255, required=True)
     contact_email = forms.EmailField(required=True)
     contact_phone = forms.CharField(max_length=50, required=False)
-    guests = forms.IntegerField(min_value=1)
+    guests = forms.IntegerField(min_value=1, initial=2500)
     shows = forms.IntegerField(min_value=1, initial=3)
     wristband_type = forms.ChoiceField(choices=WRISTBAND_CHOICES)
     experience = forms.ChoiceField(choices=[("essentials", "Essentials"), ("pro", "Pro")], required=False)

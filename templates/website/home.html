@@ -321,17 +321,19 @@ Do not delete; remove this comment wrapper to show the section again.
                 <div class="col-lg-4 col-xl-5">
                     <div class="panel h-100 panel--step1">
                         <div class="checkout-flow-heading checkout-flow-heading--in-panel position-relative text-center mb-3 px-1">
-                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 1 / 4</span>
+                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 1 / 5</span>
                             <h2 class="checkout-flow-main-title mb-0 px-2 mx-auto">Build Your Show</h2>
                         </div>
                         <div class="step1-price-hero">
-                            <div class="step1-price-hero__normal d-flex justify-content-between align-items-baseline gap-2">
-                                <span class="step1-price-hero__label" data-i18n="calc.standardShowPriceLabel">Standard show price:</span>
-                                <strong class="step1-price-hero__amount">€ <span data-sync-price="normal">0,00</span></strong>
+                            <div class="step1-price-hero__standard-box">
+                                <span class="step1-price-hero__standard-label" data-i18n="calc.standardShowPriceShort">Standard show price</span>
+                                <strong class="step1-price-hero__standard-amount">€ <span data-sync-price="normal">0,00</span></strong>
                             </div>
-                            <p class="step1-price-hero__tagline fst-italic mb-0" data-i18n="calc.step1Tagline">No need to pay the full show price upfront. Pay per guest instead.</p>
+                            <p class="step1-price-hero__tagline fst-italic mb-0">
+                                <span data-i18n="calc.step1TaglineBefore">No</span><span class="step1-price-hero__tagline-euro"> €</span><span data-sync-price="normal">0,00</span><span data-i18n="calc.step1TaglineAfter"> upfront. Just pay per guest instead.</span>
+                            </p>
                             <div class="step1-price-hero__highlight">
-                                <p class="step1-price-hero__micro-label mb-2" data-i18n="showPrice.title">Your Show Price</p>
+                                <p class="step1-price-hero__micro-label mb-0" data-i18n="showPrice.title">Your Show Price</p>
                                 <div class="step1-price-hero__per-wrap">
                                     <span class="step1-price-hero__per">€<span data-sync-price="perGuest">0,00</span></span>
                                     <span class="step1-price-hero__per-suffix" data-i18n="calc.perGuestShort">/ guest</span>
@@ -373,10 +375,10 @@ Do not delete; remove this comment wrapper to show the section again.
                                             data-i18n-attr-key="calc.guestsInfoTip"
                                     >i</button>
                                 </span>
-                                <span class="slider-value" id="guestsValue">1,000</span>
+                                <span class="slider-value" id="guestsValue">2,500</span>
                             </label>
-                            <input type="hidden" id="guests" name="guests" value="1000">
-                            <input required type="range" min="0" max="8" step="1" value="2" id="guestsSlider" class="form-range slider">
+                            <input type="hidden" id="guests" name="guests" value="2500">
+                            <input required type="range" min="0" max="8" step="1" value="3" id="guestsSlider" class="form-range slider">
                             <div class="slider-scale">
                                 <button type="button" class="slider-tick" data-for="guestsSlider" data-index="0">500</button>
                                 <button type="button" class="slider-tick" data-for="guestsSlider" data-index="1">750</button>
@@ -488,16 +490,19 @@ Do not delete; remove this comment wrapper to show the section again.
                         <input class="form-check-input d-none pricing-toggle" id="customSkin" type="checkbox" name="custom_skin">
 
                         <div class="step1-footer">
+                            <div class="step1-footer__divider" aria-hidden="true"></div>
                             <div class="step1-footer__card">
-                                <div class="step1-footer__compare d-flex justify-content-between align-items-baseline gap-2">
-                                    <span data-i18n="calc.standardShowPriceLabel">Standard show price:</span>
+                                <div class="step1-footer__row step1-footer__row--standard">
+                                    <span class="step1-footer__std-label" data-i18n="calc.standardShowPriceShort">Standard show price</span>
                                     <span class="step1-footer__strike text-decoration-line-through">€ <span data-sync-price="normal">0,00</span></span>
                                 </div>
-                                <div class="step1-footer__total-row">
+                                <div class="step1-footer__row step1-footer__row--grand">
                                     <span class="step1-footer__total-label" data-i18n="calc.yourTotal">Your Total</span>
-                                    <div class="step1-footer__total-value">€ <span data-sync-price="today">0,00</span></div>
+                                    <strong class="step1-footer__total-value">€ <span data-sync-price="today">0,00</span></strong>
                                 </div>
-                                <p class="step1-footer__formula text-muted small mb-0">(<span data-i18n="calc.formulaApprox">approx.</span> €<span data-sync-price="perGuest">0,00</span> <span data-i18n="calc.formulaTimes">×</span> <span data-sync-price="guestsCount">0</span> <span data-i18n="calc.guestsWord">guests</span>)</p>
+                                <p class="step1-footer__formula mb-0">
+                                    (€<span data-sync-price="perGuest">0,00</span> <span data-i18n="calc.formulaTimes">×</span> <span data-sync-price="guestsCount">0</span> <span data-i18n="calc.guestsWord">guests</span>)
+                                </p>
                             </div>
                             <button type="button" class="btn btn-primary btn-lg w-100 step1-continue-btn" id="step1ContinueBtn" data-i18n="calc.checkoutContinue">Continue →</button>
                         </div>
@@ -512,12 +517,13 @@ Do not delete; remove this comment wrapper to show the section again.
                 <div class="col-lg-4">
                     <div class="panel h-100 panel--what-you-get">
                         <div class="checkout-flow-heading checkout-flow-heading--in-panel position-relative text-center mb-3 px-1">
-                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 2 / 4</span>
+                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 2 / 5</span>
                             <h2 class="checkout-flow-main-title mb-0 px-2 mx-auto">What you get</h2>
                         </div>
                         <h4 class="what-you-get-title" data-i18n="whatYouGet.title">This is what you get</h4>
                         <p class="what-you-get-subtitle text-muted small mb-3" data-i18n="whatYouGet.subtitle">Everything below is included in your package</p>
                         <div class="feature-list">
+                            <div class="feature-list-group">
                             <div class="feature-box">
                                 <div class="feature-title">
                                     <strong data-i18n="whatYouGet.guarantee.title">100% Show Guarantee</strong>
@@ -538,26 +544,13 @@ Do not delete; remove this comment wrapper to show the section again.
                             <div class="feature-box feature-box--show-kit">
                                 <div class="feature-title">
                                     <strong data-i18n="whatYouGet.kit.title">Show Control Kit</strong>
-                                    <!-- <button
-                                            type="button"
-                                            class="info-icon"
-                                            aria-label="Show Control Kit info"
-                                            data-bs-toggle="tooltip"
-                                            data-bs-html="true"
-                                            data-bs-title="<strong>+5% extra wristbands included.</strong><br>Just in case."
-                                    >i</button> -->
                                 </div>
                                 <p class="feature-body-lg" data-i18n="whatYouGet.kit.b1">Perfect Color - Perfect Timing</p>
                                 <p class="feature-body-lg" data-i18n="whatYouGet.kit.b2">Controlled from your Lighting Desk</p>
                                 <p class="feature-foot feature-foot--show-kit-line" id="showControlKitFootLine" aria-live="polite"></p>
                             </div>
-                            <div class="feature-box">
-                                <div class="feature-title feature-title--plain">
-                                    <strong data-i18n="whatYouGet.blueprint.title">Motion Volume Viral Blueprint</strong>
-                                </div>
-                                <p class="feature-body-lg" data-i18n="whatYouGet.blueprint.b1">Your crowd lights up as part of the show</p>
-                                <p class="feature-foot fst-italic" data-i18n="whatYouGet.blueprint.foot">Creates moments people share &amp; remember</p>
                             </div>
+                            <div class="feature-list-group">
                             <div class="feature-box">
                                 <div class="feature-title">
                                     <strong data-i18n="whatYouGet.aftermovie.title">Aftermovie Content Pack</strong>
@@ -582,17 +575,6 @@ Do not delete; remove this comment wrapper to show the section again.
                                 <p class="feature-subhead" data-i18n="whatYouGet.failsafe.sub">Backup Antenna included</p>
                                 <p class="feature-tagline"><em data-i18n="whatYouGet.failsafe.tag">Your show never stops.</em></p>
                             </div>
-                            
-                            <div class="feature-box feature-box--stacked" data-show-when="essentials">
-                                <strong class="feature-headline" data-i18n="whatYouGet.essentials.title">Plug in. Go Live.</strong>
-                                <p class="feature-subhead" data-i18n="whatYouGet.essentials.sub">Works with any Lighting Desk</p>
-                                <p class="feature-tagline"><em data-i18n="whatYouGet.essentials.tag">Setup done in minutes.</em></p>
-                            </div>
-                            <div class="feature-box feature-box--stacked" data-show-when="pro">
-                                <strong class="feature-headline" data-i18n="whatYouGet.pro.title">Total Crowd Control</strong>
-                                <p class="feature-subhead" data-i18n="whatYouGet.pro.sub">Maximum crowd impact</p>
-                                <p class="feature-tagline"><em data-i18n="whatYouGet.pro.tag">Precision control</em></p>
-                            </div>
                             <div class="feature-box feature-box--stacked">
                                 <div class="feature-title d-flex align-items-center gap-2 flex-wrap mb-1">
                                     <strong class="feature-headline mb-0" data-i18n="whatYouGet.onsite.title">On-site Show Guidance</strong>
@@ -608,6 +590,25 @@ Do not delete; remove this comment wrapper to show the section again.
                                     >i</button>
                                 </div>
                                 <p class="feature-subhead" data-i18n="whatYouGet.onsite.sub">Your Lighting Operator gets the most out of every drop</p>
+                            </div>
+                            </div>
+                            <div class="feature-list-group">
+                            <div class="feature-box">
+                                <div class="feature-title feature-title--plain">
+                                    <strong data-i18n="whatYouGet.blueprint.title">Motion Volume Viral Blueprint</strong>
+                                </div>
+                                <p class="feature-body-lg" data-i18n="whatYouGet.blueprint.b1">Your crowd lights up as part of the show</p>
+                                <p class="feature-foot fst-italic" data-i18n="whatYouGet.blueprint.foot">Creates moments people share &amp; remember</p>
+                            </div>
+                            <div class="feature-box feature-box--stacked" data-show-when="essentials">
+                                <strong class="feature-headline" data-i18n="whatYouGet.essentials.title">Plug in. Go Live.</strong>
+                                <p class="feature-subhead" data-i18n="whatYouGet.essentials.sub">Works with any Lighting Desk</p>
+                                <p class="feature-tagline"><em data-i18n="whatYouGet.essentials.tag">Setup done in minutes.</em></p>
+                            </div>
+                            <div class="feature-box feature-box--stacked" data-show-when="pro">
+                                <strong class="feature-headline" data-i18n="whatYouGet.pro.title">Total Crowd Control</strong>
+                                <p class="feature-subhead" data-i18n="whatYouGet.pro.sub">Maximum crowd impact</p>
+                                <p class="feature-tagline"><em data-i18n="whatYouGet.pro.tag">Precision control</em></p>
                             </div>
                             <div class="feature-box feature-box--stacked">
                                 <div class="feature-title d-flex align-items-center gap-2 flex-wrap mb-1">
@@ -632,6 +633,7 @@ Do not delete; remove this comment wrapper to show the section again.
                                     </em>
                                 </p>
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -642,15 +644,20 @@ Do not delete; remove this comment wrapper to show the section again.
                 <div class="row g-4 justify-content-center">
                 <div class="col-lg-6 col-xl-6">
                     <div class="panel h-100 panel--step3">
-                        <div class="checkout-flow-heading checkout-flow-heading--in-panel position-relative text-center mb-3 px-1">
-                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 3 / 4</span>
+                        <div class="checkout-flow-heading checkout-flow-heading--in-panel checkout-flow-heading--step3 position-relative text-center px-1">
+                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 3 / 5</span>
                             <h2 class="checkout-flow-main-title mb-0 px-2 mx-auto">Choose Delivery & Timing</h2>
                         </div>
                         <div class="step3-price-summary">
                             <p class="step3-price-summary__micro" data-i18n="showPrice.title">Your Show Price</p>
-                            <div class="step3-price-summary__per">€<span data-sync-price="perGuest">0,00</span> <span class="step3-price-summary__per-suffix" data-i18n="calc.perGuestShort">/ guest</span></div>
+                            <div class="step3-price-summary__per-wrap">
+                                <div class="step3-price-summary__per">
+                                    <span class="step3-price-summary__per-amount">€<span data-sync-price="perGuest">0,00</span></span>
+                                    <span class="step3-price-summary__per-suffix" data-i18n="calc.perGuestShort">/ guest</span>
+                                </div>
+                            </div>
                             <p class="step3-price-summary__guests-line mb-0">
-                                <span class="feature-highlight-num step3-guests-count" data-sync-price="guestsCount">0</span><span data-i18n="calc.step3GuestsEq"> guests = €</span><span data-sync-price="today">0,00</span><span data-i18n="calc.step3TotalSuffix"> total</span>
+                                <span class="feature-highlight-num step3-guests-count" data-sync-price="guestsCount">0</span><span class="step3-price-summary__guests-tail"><span data-i18n="calc.step3GuestsEq"> guests = €</span><span data-sync-price="today">0,00</span><span data-i18n="calc.step3TotalSuffix"> total</span></span>
                             </p>
                         </div>
 
@@ -685,8 +692,8 @@ Do not delete; remove this comment wrapper to show the section again.
                                         <div class="delivery-copy">
                                             <span class="delivery-line" data-i18n="delivery.pickup">Pick up - Eindhoven</span>
                                             <span class="delivery-sub">(5653 NN, Sterkenburg 330)</span>
-                                            <span class="delivery-sub delivery-sub--pickup-fee" data-i18n="delivery.pickupFee">(Free)</span>
                                         </div>
+                                        <span class="delivery-badge--free" data-i18n="timing.free">Free</span>
                                     </label>
                                 </div>
                                 <input class="form-check-input d-none pricing-toggle" id="delivery" type="checkbox" name="delivery_to_venue">
@@ -745,7 +752,7 @@ Do not delete; remove this comment wrapper to show the section again.
                 <div class="col-lg-6 col-xl-6">
                     <div class="panel h-100 panel--show-price panel--step4">
                         <div class="checkout-flow-heading checkout-flow-heading--in-panel checkout-flow-heading--step4-title position-relative text-center mb-0 px-1">
-                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 4 / 4</span>
+                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Stap</span> 4 / 5</span>
                             <h2 class="checkout-flow-main-title mb-0 px-2 mx-auto">What you pay</h2>
                         </div>
                         <div class="show-price-title-rule mb-3" aria-hidden="true"></div>
@@ -821,8 +828,8 @@ Do not delete; remove this comment wrapper to show the section again.
                             </div>
                             <div class="show-price-detail-row">
                                 <div class="show-price-detail-row__left">
-                                    <span class="show-price-detail-row__title" id="step4SummaryTimingTitle">Express</span>
-                                    <span class="show-price-detail-row__meta text-muted" id="step4SummaryTimingSub">(14 days)</span>
+                                    <span class="show-price-detail-row__title" id="step4SummaryTimingTitle">Production Speed</span>
+                                    <span class="show-price-detail-row__meta text-muted" id="step4SummaryTimingSub">(Flexible Timing)</span>
                                 </div>
                                 <div class="show-price-detail-row__price" id="step4SummaryTimingPrice">€0,00</div>
                             </div>
@@ -898,10 +905,36 @@ Do not delete; remove this comment wrapper to show the section again.
                 </div>
                 </div>
 
+                <div class="checkout-step d-none" data-checkout-step="5" id="checkoutStepPanel5">
+                <div class="row g-4 justify-content-center">
+                <div class="col-12">
+                    <div class="panel step-compare-panel">
+                        <div class="checkout-flow-heading checkout-flow-heading--in-panel position-relative text-center mb-2 px-1">
+                            <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Step</span> 5 / 5</span>
+                            <!-- <h2 class="checkout-flow-main-title mb-1 px-2 mx-auto">Plan. Price. Pay.</h2> -->
+                            <p class="text-muted small mb-0" data-i18n="calc.stepCompareSub">Step 4 vs Step 2</p>
+                        </div>
+                        <div class="step-compare-panel__body">
+                            <div class="step-compare-grid">
+                                <div class="step-compare-col">
+                                    <div id="stepCompareLeft"></div>
+                                </div>
+                                <div class="step-compare-col">
+                                    <div id="stepCompareRight"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
                 <div class="checkout-flow-nav row justify-content-center mt-4">
-                    <div class="col-lg-8 d-flex flex-wrap gap-2 justify-content-between align-items-center">
-                        <button type="button" class="btn btn-outline-light" id="checkoutBack" data-i18n="calc.checkoutBack">← Back</button>
-                        <div class="d-flex gap-3 align-items-center ms-auto flex-wrap justify-content-end">
+                    <div class="col-lg-8 checkout-flow-nav__bar">
+                        <div class="checkout-flow-nav__side checkout-flow-nav__side--start">
+                            <button type="button" class="btn btn-outline-light" id="checkoutBack" data-i18n="calc.checkoutBack">← Back</button>
+                        </div>
+                        <div class="checkout-flow-nav__center">
                             <a
                                     href="https://drive.google.com/drive/folders/1skpPjpSQ1FbE8EYe1aOQ41po31gQdj5G"
                                     class="footer-terms-link checkout-flow-terms-link d-none"
@@ -909,6 +942,8 @@ Do not delete; remove this comment wrapper to show the section again.
                                     target="_blank"
                                     rel="noopener noreferrer"
                             >Terms of Services</a>
+                        </div>
+                        <div class="checkout-flow-nav__side checkout-flow-nav__side--end">
                             <button type="button" class="btn btn-primary rounded-pill px-4" id="checkoutNext" data-i18n="calc.checkoutContinue">Continue →</button>
                         </div>
                     </div>
@@ -917,31 +952,6 @@ Do not delete; remove this comment wrapper to show the section again.
         </form>
     </div>
 </section>
-
-<!-- Step 4 compare (i) modal: Step 4 (left) + Step 2 (right) -->
-<div class="modal fade step-compare-modal" id="stepCompareModal" tabindex="-1" aria-hidden="true" aria-label="Step compare">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content step-compare-modal__content">
-            <div class="modal-header step-compare-modal__header">
-                <div class="step-compare-modal__title-wrap">
-                    <div class="step-compare-modal__title">Plan. Price. Pay.</div>
-                    <div class="step-compare-modal__sub text-muted small">Step 4 vs Step 2</div>
-                </div>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body step-compare-modal__body">
-                <div class="step-compare-grid">
-                    <div class="step-compare-col">
-                        <div id="stepCompareLeft"></div>
-                    </div>
-                    <div class="step-compare-col">
-                        <div id="stepCompareRight"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <section id="contact" class="footer-section footer-section--brand py-5">
     <div class="container footer-brand-inner">

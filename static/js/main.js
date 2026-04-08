@@ -36,6 +36,8 @@ const I18N = {
     "calc.step3TotalSuffix": " total",
     "calc.perShowSuffix": " / show",
     "calc.step4Title": "What you pay",
+    "calc.stepCompareTitle": "Plan. Price. Pay.",
+    "calc.stepCompareSub": "Step 4 vs Step 2",
     "calc.step4SubtitleTip": "Everything in this step reflects your selections from the previous steps.",
     "calc.step4SubtitleInfoAria": "Package info",
     "showPrice.kitInfoAria": "Show Control Kit info",
@@ -45,6 +47,11 @@ const I18N = {
     "calc.checkoutContinue": "Continue →",
     "calc.buildYourShow": "Build Your Show",
     "calc.step1Tagline": "No need to pay the full show price upfront. Pay per guest instead.",
+    "calc.standardShowPriceShort": "Standard show price",
+    "calc.step1TaglineBefore": "No",
+    "calc.step1TaglineAfter": " upfront. Just pay per guest instead.",
+    "calc.step1ExperienceShortEssentials": "Essentials",
+    "calc.step1ExperienceShortPro": "Pro",
     "calc.showDaysQuestion": "How many show days are you planning?",
     "calc.customizeWristbands": "Customize Your Wristbands",
     "calc.selectedExperience": "Selected experience:",
@@ -127,7 +134,7 @@ const I18N = {
     "whatYouGet.failsafe.title": "Fail-safe Backup System",
     "whatYouGet.failsafe.sub": "Backup Antenna included",
     "whatYouGet.failsafe.tag": "Your show never stops.",
-    "whatYouGet.essentials.title": "Plug in. Go Live.",
+    "whatYouGet.essentials.title": "Plug & Play Setup",
     "whatYouGet.essentials.sub": "Works with any Lighting Desk",
     "whatYouGet.essentials.tag": "Setup done in minutes.",
     "whatYouGet.pro.title": "Total Crowd Control",
@@ -202,6 +209,8 @@ const I18N = {
     "calc.step3TotalSuffix": " totaal",
     "calc.perShowSuffix": " / show",
     "calc.step4Title": "Wat je betaalt",
+    "calc.stepCompareTitle": "Plan. Prijs. Betaal.",
+    "calc.stepCompareSub": "Stap 4 vs Stap 2",
     "calc.step4SubtitleTip": "Alles in deze stap sluit aan op je eerdere keuzes.",
     "calc.step4SubtitleInfoAria": "Pakket info",
     "showPrice.kitInfoAria": "Show Control Kit info",
@@ -211,6 +220,11 @@ const I18N = {
     "calc.checkoutContinue": "Verder →",
     "calc.buildYourShow": "Bouw je show",
     "calc.step1Tagline": "Je betaalt niet het volledige showbedrag vooraf. Je betaalt per bezoeker.",
+    "calc.standardShowPriceShort": "Standaard showprijs",
+    "calc.step1TaglineBefore": "Geen",
+    "calc.step1TaglineAfter": " vooraf. Betaal per bezoeker.",
+    "calc.step1ExperienceShortEssentials": "Essentials",
+    "calc.step1ExperienceShortPro": "Pro",
     "calc.showDaysQuestion": "Hoeveel showdagen plan je?",
     "calc.customizeWristbands": "Personaliseer je polsbanden",
     "calc.selectedExperience": "Gekozen ervaring:",
@@ -293,7 +307,7 @@ const I18N = {
     "whatYouGet.failsafe.title": "Fail-safe Backup Systeem",
     "whatYouGet.failsafe.sub": "Inclusief back-up antenne",
     "whatYouGet.failsafe.tag": "Je show stopt nooit.",
-    "whatYouGet.essentials.title": "Plug in. Go Live.",
+    "whatYouGet.essentials.title": "Plug & Play setup",
     "whatYouGet.essentials.sub": "Werkt met elke lichttafel",
     "whatYouGet.essentials.tag": "Binnen enkele minuten opgezet",
     "whatYouGet.pro.title": "Volledige publiek Control",
@@ -346,13 +360,19 @@ function t(key) {
   return (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]) || "";
 }
 
-const CHECKOUT_STEP_TITLE_KEYS = ["calc.buildYourShow", "calc.step2Title", "calc.step3Title", "calc.step4Title"];
+const CHECKOUT_STEP_TITLE_KEYS = [
+  "calc.buildYourShow",
+  "calc.step2Title",
+  "calc.step3Title",
+  "calc.step4Title",
+  "calc.stepCompareTitle",
+];
 let checkoutFlowStep = 1;
 
 function updateCheckoutFlowHeadingUI() {
   document.querySelectorAll(".checkout-step").forEach((panel) => {
     const s = Number(panel.getAttribute("data-checkout-step"));
-    if (!Number.isFinite(s) || s < 1 || s > 4) return;
+    if (!Number.isFinite(s) || s < 1 || s > 5) return;
     const mainHeading = panel.querySelector(".checkout-flow-main-title");
     if (mainHeading) {
       const key = CHECKOUT_STEP_TITLE_KEYS[s - 1];
@@ -396,7 +416,7 @@ function applyCheckoutStepUI(next) {
   const nextBtn = document.getElementById("checkoutNext");
   const step1ContinueBtn = document.getElementById("step1ContinueBtn");
   if (backBtn) backBtn.disabled = checkoutFlowStep === 1;
-  if (nextBtn) nextBtn.classList.toggle("d-none", checkoutFlowStep === 4 || checkoutFlowStep === 1);
+  if (nextBtn) nextBtn.classList.toggle("d-none", checkoutFlowStep === 4 || checkoutFlowStep === 5 || checkoutFlowStep === 1);
   if (step1ContinueBtn) step1ContinueBtn.classList.toggle("d-none", checkoutFlowStep !== 1);
   const termsLink = document.getElementById("checkoutFlowTerms");
   if (termsLink) termsLink.classList.toggle("d-none", checkoutFlowStep !== 4);
@@ -411,7 +431,7 @@ function applyCheckoutStepUI(next) {
 }
 
 function goToCheckoutStep(step, opts = {}) {
-  const next = Math.max(1, Math.min(4, step));
+  const next = Math.max(1, Math.min(5, step));
   const prev = checkoutFlowStep;
 
   const scrollAfter = () => {
@@ -756,7 +776,7 @@ function wireSliderTicks() {
   });
 }
 
-/** Reference amounts for Step 4 delivery/timing rows (visual strikethrough + Free; charges still follow API). */
+/** Reference strike + Free pill for Flexible timing row only (Express/Standard show API upsell_timing). */
 const STEP4_REF_STRIKE_EUR = 350;
 
 function updateStep4DeliveryTimingSummary(data) {
@@ -779,21 +799,20 @@ function updateStep4DeliveryTimingSummary(data) {
   timePrice.classList.remove("show-price-summary__timing--free", "show-price-detail-row__price--flex");
   if (timeSub) timeSub.classList.remove("d-none");
 
+  /* Same label as Step 3 section “Production Speed”; option name lives in the subtitle. */
+  timeTitle.textContent = t("deliverySpeed.title");
+
   if (timing14?.checked) {
-    timeTitle.textContent = t("timing.express");
-    if (timeSub) timeSub.textContent = `(${t("timing.days14")})`;
-    timePrice.classList.add("show-price-detail-row__price--flex");
-    timePrice.innerHTML = `${strikeHtml}${freePillHtml}`;
+    if (timeSub) timeSub.textContent = `(${t("timing.express")} · ${t("timing.days14")})`;
+    timePrice.textContent = `€ ${formatEURNumber(data.upsell_timing)}`;
   } else if (timing30?.checked) {
-    timeTitle.textContent = t("timing.standard");
-    if (timeSub) timeSub.textContent = `(${t("timing.days30")})`;
+    if (timeSub) timeSub.textContent = `(${t("timing.standard")} · ${t("timing.days30")})`;
     timePrice.textContent = `€ ${formatEURNumber(data.upsell_timing)}`;
   } else {
-    /* Flexible (default): same Step 4 line as Express — reference € + Free, not “Flexible Timing”. */
-    timeTitle.textContent = t("timing.express");
+    /* Flexible (default): reference € + Free pill */
     if (timeSub) {
       timeSub.classList.remove("d-none");
-      timeSub.textContent = `(${t("timing.days14")})`;
+      timeSub.textContent = `(${t("timing.flexible")})`;
     }
     timePrice.classList.add("show-price-detail-row__price--flex");
     timePrice.innerHTML = `${strikeHtml}${freePillHtml}`;
@@ -816,7 +835,9 @@ async function refreshPricing() {
   if (!guests || !shows || guests < 1 || shows < 1) {
     const step1Exp = document.getElementById("step1ExperienceLabel");
     if (step1Exp) {
-      step1Exp.textContent = experienceEssentials?.checked ? t("calc.essentialsTitle") : t("calc.proTitle");
+      step1Exp.textContent = experienceEssentials?.checked
+        ? t("calc.step1ExperienceShortEssentials")
+        : t("calc.step1ExperienceShortPro");
     }
     syncDataSyncPriceMirrors();
     return;
@@ -929,7 +950,9 @@ async function refreshPricing() {
 
   const step1Exp = document.getElementById("step1ExperienceLabel");
   if (step1Exp) {
-    step1Exp.textContent = experienceEssentials?.checked ? t("calc.essentialsTitle") : t("calc.proTitle");
+    step1Exp.textContent = experienceEssentials?.checked
+      ? t("calc.step1ExperienceShortEssentials")
+      : t("calc.step1ExperienceShortPro");
   }
   syncDataSyncPriceMirrors();
 }
@@ -1114,19 +1137,14 @@ function initTooltips() {
   });
 }
 
-function initStepCompareModal() {
+function initStepCompareStep() {
   const openBtn = document.getElementById("step4CompareOpen");
-  const modalEl = document.getElementById("stepCompareModal");
   const leftMount = document.getElementById("stepCompareLeft");
   const rightMount = document.getElementById("stepCompareRight");
-  if (!openBtn || !modalEl || !leftMount || !rightMount) return;
-  if (typeof bootstrap === "undefined" || !bootstrap.Modal) return;
-
-  const modal = bootstrap.Modal.getOrCreateInstance(modalEl, { focus: true });
+  if (!openBtn || !leftMount || !rightMount) return;
 
   const clonePanel = (panelEl) => {
     const clone = panelEl.cloneNode(true);
-    // Avoid duplicate IDs and interactive controls inside the modal.
     clone.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
     clone.querySelectorAll("button, input, select, textarea, a").forEach((n) => {
       n.setAttribute("tabindex", "-1");
@@ -1136,7 +1154,9 @@ function initStepCompareModal() {
     return clone;
   };
 
-  openBtn.addEventListener("click", () => {
+  openBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const step4Panel = document.querySelector("#checkoutStepPanel4 .panel--step4");
     const step2Panel = document.querySelector("#checkoutStepPanel2 .panel--what-you-get");
     if (!step4Panel || !step2Panel) return;
@@ -1144,7 +1164,7 @@ function initStepCompareModal() {
     leftMount.replaceChildren(clonePanel(step4Panel));
     rightMount.replaceChildren(clonePanel(step2Panel));
 
-    modal.show();
+    goToCheckoutStep(5);
   });
 }
 
@@ -1198,7 +1218,7 @@ function initCalculator() {
 function init() {
   initLanguageToggle();
   initTooltips();
-  initStepCompareModal();
+  initStepCompareStep();
   initTestimonialSwiper();
   initCrowdWays();
   initCalculator();
