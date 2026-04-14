@@ -8,8 +8,8 @@ EXPERIENCE_PRO_PER_SHOW = Decimal("5000")
 # Delivery speed is priced per guest (NOT flat)
 TIMING_14_DAYS_PER_GUEST = Decimal("0.90")
 TIMING_30_DAYS_PER_GUEST = Decimal("0.10")
-WHITE_LABEL_PER_GUEST = Decimal("2.25")
-CUSTOM_SKIN_PER_GUEST = Decimal("0.35")
+WHITE_LABEL_PER_GUEST = Decimal("0.05")
+CUSTOM_SKIN_PER_GUEST = Decimal("0.15")
 # Per show day: venue delivery = 249.99 × number of shows
 DELIVERY_TO_VENUE_PER_SHOW = Decimal("249.99")
 
