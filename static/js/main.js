@@ -72,7 +72,7 @@ const I18N = {
     "calc.adjustShowHint": "Adjust your show size to see your price",
     "calc.standardSkin": "Standard Skin",
     "calc.removeBranding": "Remove 'Powered By Motion Volume' logo",
-    "calc.removeBrandingSub": "(+ €2,25 per ticket)",
+    "calc.removeBrandingSub": "(+ €0,05 per ticket)",
     "calc.formulaTimes": "×",
     "calc.eventSetup": "Event Setup",
     "calc.showDays": "Show Days",
@@ -83,10 +83,10 @@ const I18N = {
     "calc.designInfoAria": "Design options info",
     "calc.designInfoTip": "Reusable wristbands.<br>No disposable festival locks.",
     "calc.included": "Included",
-    "calc.customDesignPrice": "(+ €0,35 per ticket)",
+    "calc.customDesignPrice": "(+ €0,15 per ticket)",
     "calc.downloadTemplate": "Download template",
     "calc.removeWatermark": "Remove 'Powered By Motion Volume' logo",
-    "calc.removeWatermarkSub": "(+ €2,25 per ticket)",
+    "calc.removeWatermarkSub": "(+ €0,05 per ticket)",
     "calc.chooseExperience": "Choose Your Experience",
     "calc.experienceInfoAria": "Explore Essentials vs Pro (jump to section)",
     "calc.experienceInfoTip": "Explore the difference",
@@ -95,6 +95,7 @@ const I18N = {
     "calc.recommended": "Recommended",
     "calc.proTitle": "Pro experience",
     "calc.proDesc": "Full control over your crowd lighting.",
+    "calc.proPerTicketUnit": "per ticket",
     "delivery.title": "Logistics",
     "delivery.infoAria": "Logistics info",
     "delivery.infoTip": "We coordinate delivery timing with your production schedule.",
@@ -254,7 +255,7 @@ const I18N = {
     "calc.adjustShowHint": "Pas je showgrootte aan om je prijs te zien",
     "calc.standardSkin": "Standaard skin",
     "calc.removeBranding": "Verwijder Motion Volume-branding",
-    "calc.removeBrandingSub": "(+ €2,25 per ticket)",
+    "calc.removeBrandingSub": "(+ €0,05 per ticket)",
     "calc.formulaTimes": "×",
     "calc.eventSetup": "Jouw event",
     "calc.showDays": "Aantal dagen",
@@ -265,10 +266,10 @@ const I18N = {
     "calc.designInfoAria": "Info design opties",
     "calc.designInfoTip": "Herbruikbare polsband locks.",
     "calc.included": "Inbegrepen",
-    "calc.customDesignPrice": "(+ €0,35 per ticket)",
+    "calc.customDesignPrice": "(+ €0,15 per ticket)",
     "calc.downloadTemplate": "Download Template",
     "calc.removeWatermark": "Verwijder Motion Volume-branding",
-    "calc.removeWatermarkSub": "(+ €2,25 per ticket)",
+    "calc.removeWatermarkSub": "(+ €0,05 per ticket)",
     "calc.chooseExperience": "Kies je ervaring",
     "calc.experienceInfoAria": "Bekijk het verschil",
     "calc.experienceInfoTip": "Bekijk het verschil!",
@@ -277,6 +278,7 @@ const I18N = {
     "calc.recommended": "Aanbevolen",
     "calc.proTitle": "Pro ervaring",
     "calc.proDesc": "Volledige belichting controle over het publiek",
+    "calc.proPerTicketUnit": "per ticket",
     "delivery.title": "Logistiek",
     "delivery.infoAria": "Logistiek info",
     "delivery.infoTip": "We stemmen de levering af op jullie productieschema.",
@@ -895,7 +897,7 @@ async function refreshPricing() {
   // Pro card display: (5000 * shows) / guests (per guest)
   if (proExperiencePrice) {
     const perGuest = guests > 0 ? (5000 * shows) / guests : 0;
-    proExperiencePrice.textContent = `+€${formatEURNumber(perGuest)} ${t("unit.perGuest")}`;
+    proExperiencePrice.textContent = `+€${formatEURNumber(perGuest)} ${t("calc.proPerTicketUnit")}`;
   }
 
   const query = new URLSearchParams({
@@ -917,7 +919,7 @@ async function refreshPricing() {
   // Normal show price breakdown (visual line items; sum -> #totalValue)
   // Show Control Kit (requested):
   // - Wristband total price = price per visitor * total guests (use API "revenue")
-  // - Add custom skin (0.35 * guests) and watermark removal (2.25 * guests) when selected
+  // - Add custom skin (0.15 * guests) and watermark removal (0.05 * guests) when selected
   // - Add Fail-safe Backup System (Essentials: 350 * shows, Pro: 5000 * shows)
   //
   // 100% Show Guarantee (requested):
@@ -932,8 +934,8 @@ async function refreshPricing() {
 
       if (derive === "show-control-kit") {
         const revenue = data && typeof data.revenue !== "undefined" ? Number(data.revenue) : 0;
-        const customSkin = customSkinInput?.checked ? 0.35 * guests : 0;
-        const whiteLabel = whiteLabelInput?.checked ? 2.25 * guests : 0;
+        const customSkin = customSkinInput?.checked ? 0.15 * guests : 0;
+        const whiteLabel = whiteLabelInput?.checked ? 0.05 * guests : 0;
         value = revenue + customSkin + whiteLabel + failBackupTotal;
       } else if (derive === "fail-backup") {
         value = failBackupTotal;
@@ -944,14 +946,14 @@ async function refreshPricing() {
         // guests * 0.05 * price_per_guest  == 0.05 * revenue
         // plus (custom skin and/or watermark) each also multiplied by 0.05
         const revenue = data && typeof data.revenue !== "undefined" ? Number(data.revenue) : 0;
-        const customSkin = customSkinInput?.checked ? 0.35 * guests : 0;
-        const whiteLabel = whiteLabelInput?.checked ? 2.25 * guests : 0;
+        const customSkin = customSkinInput?.checked ? 0.15 * guests : 0;
+        const whiteLabel = whiteLabelInput?.checked ? 0.05 * guests : 0;
         value = 0.05 * (revenue + customSkin + whiteLabel);
       } else if (derive === "show-guarantee") {
         // Use the same show control kit basis as above (but without re-reading DOM)
         const revenue = data && typeof data.revenue !== "undefined" ? Number(data.revenue) : 0;
-        const customSkin = customSkinInput?.checked ? 0.35 * guests : 0;
-        const whiteLabel = whiteLabelInput?.checked ? 2.25 * guests : 0;
+        const customSkin = customSkinInput?.checked ? 0.15 * guests : 0;
+        const whiteLabel = whiteLabelInput?.checked ? 0.05 * guests : 0;
         const showControlKit = revenue + customSkin + whiteLabel + failBackupTotal;
         value = 0.1 * showControlKit + 0.1 * (0.1 * failBackupTotal);
       } else {
@@ -1200,6 +1202,7 @@ function initStepCompareStep() {
     clone.querySelectorAll("[data-hide-in-step-compare]").forEach((n) => n.remove());
     clone.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
     clone.querySelectorAll("button, input, select, textarea, a").forEach((n) => {
+      if (n.classList && n.classList.contains("show-price-cta")) return;
       if (n.getAttribute("data-bs-toggle") === "tooltip") return;
       n.setAttribute("tabindex", "-1");
       n.setAttribute("aria-hidden", "true");
@@ -1217,6 +1220,21 @@ function initStepCompareStep() {
 
     leftMount.replaceChildren(clonePanel(step4Panel));
     rightMount.replaceChildren(clonePanel(step2Panel));
+
+    const checkoutForm = document.getElementById("checkoutForm");
+    leftMount.querySelectorAll(".show-price-cta").forEach((btn) => {
+      btn.removeAttribute("tabindex");
+      btn.removeAttribute("aria-hidden");
+      btn.classList.remove("pointer-events-none");
+      btn.addEventListener("click", (ev) => {
+        ev.preventDefault();
+        if (checkoutForm && typeof checkoutForm.requestSubmit === "function") {
+          checkoutForm.requestSubmit();
+        } else if (checkoutForm) {
+          checkoutForm.submit();
+        }
+      });
+    });
 
     initTooltipsInRoot(leftMount);
     initTooltipsInRoot(rightMount);
