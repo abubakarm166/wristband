@@ -27,8 +27,8 @@ revenue = guests * price_per_guest
 
 3) OPTIONAL ADD-ONS (what user selects)
 ---------------------------------------
-- Custom design skin:        + EUR 0.35 * guests
-- Remove branding:           + EUR 2.25 * guests
+- Custom design skin:        + EUR 0.15 * guests
+- Remove branding:           + EUR 0.05 * guests
 - Delivery to venue:         + EUR 249.99 * shows
 - Pro experience:            + EUR 5,000.00 * shows
 - Production speed:
@@ -91,5 +91,5 @@ If guests = 500 and no add-ons:
 - total = EUR 750.00
 
 If same setup + custom skin:
-- add-on = 500 * 0.35 = EUR 175.00
-- total = EUR 925.00
+- add-on = 500 * 0.15 = EUR 75.00
+- total = EUR 825.00
