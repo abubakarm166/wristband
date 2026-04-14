@@ -37,13 +37,13 @@ All other values are calculated from rules and toggles.
 
 ### 3) Upsells (updated to requested rules)
 
-- White label = `guests * 2.25`
+- White label = `guests * 0.05`
   - Formula meaning: if "Remove OneCrowd branding" is checked:
-    - `ANSWER = guests x 2.25`
+    - `ANSWER = guests x 0.05`
     - `Your Show Price Today = previous_total + ANSWER`
-- Custom skin = `guests * 0.35`
+- Custom skin = `guests * 0.15`
   - Formula meaning: if upload own skin option is selected:
-    - `ANSWER = guests x 0.35`
+    - `ANSWER = guests x 0.15`
     - `Your Show Price Today = previous_total + ANSWER`
 - Delivery to venue = `+60` (flat)
   - Formula meaning: if "Deliver to your venue" is selected:
