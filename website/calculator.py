@@ -8,6 +8,8 @@ EXPERIENCE_PRO_PER_SHOW = Decimal("5000")
 # Delivery speed is priced per guest (NOT flat)
 TIMING_14_DAYS_PER_GUEST = Decimal("0.90")
 TIMING_30_DAYS_PER_GUEST = Decimal("0.10")
+WHITE_LABEL_PER_GUEST = Decimal("2.25")
+CUSTOM_SKIN_PER_GUEST = Decimal("0.35")
 # Per show day: venue delivery = 249.99 × number of shows
 DELIVERY_TO_VENUE_PER_SHOW = Decimal("249.99")
 
@@ -65,8 +67,9 @@ def calculate_pricing(
     price_per_guest = _lookup(guests, PRICE_PER_GUEST_TABLE)
     revenue = Decimal(guests) * price_per_guest
 
-    upsell_white_label = Decimal(bands_needed) * Decimal("0.05") if white_label else Decimal("0")
-    upsell_custom_skin = Decimal(bands_needed) * Decimal("0.15") if custom_skin else Decimal("0")
+    upsell_white_label = Decimal(guests) * WHITE_LABEL_PER_GUEST if white_label else Decimal("0")
+    # Custom skin is priced per selected guest count (not buffered wristbands).
+    upsell_custom_skin = Decimal(guests) * CUSTOM_SKIN_PER_GUEST if custom_skin else Decimal("0")
     # Logistics:
     # - Pickup Eindhoven is free
     # - Venue delivery is charged per show day

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Motion Volume | Show Control for Crowds</title>
+    <title>Motion Volume | Crowd Lighting for Crowds</title>
     <link rel="icon" type="image/png" href="{% static 'images/favicon-mv.png' %}">
     <link rel="apple-touch-icon" href="{% static 'images/favicon-mv.png' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
     <div class="hero-bg-video-wrap" aria-hidden="true">
         <iframe
                 class="hero-bg-vimeo"
-                src="https://player.vimeo.com/video/1177364786?background=1&autoplay=1&loop=1&muted=1&autopause=0&byline=0&title=0&portrait=0&dnt=1"
+                src="https://player.vimeo.com/video/1181995678?background=1&autoplay=1&loop=1&muted=1&autopause=0&byline=0&title=0&portrait=0&dnt=1"
                 title=""
                 frameborder="0"
                 allow="autoplay; fullscreen; picture-in-picture"
@@ -85,35 +85,11 @@
     </div>
 </section>
 
-{% comment %}
-TEMP DISABLED: Partner logos / marquee — restore when real partner logos are available.
-Do not delete; remove this comment wrapper to show the section again.
-<section id="partners" class="section-dark partners-section py-4">
-    <div class="container text-center">
-        <h3 class="partners-title mb-3">Trusted by Events Like</h3>
-        <div class="partners-marquee mb-4">
-            <div class="partners-track">
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-                <div class="partner-logo"><img src="{% static 'images/Logo Placeholder.png' %}" alt="Partner logo placeholder"></div>
-            </div>
-        </div>
-        <div class="partners-banner">Built With Partners Across The Live Events Industry</div>
+<section id="partnerLogoBar" class="section-dark partner-logo-bar py-3 d-none" aria-label="Partner logos">
+    <div class="container">
+        <div class="partner-logo-bar__row" id="partnerLogoRow"></div>
     </div>
 </section>
-{% endcomment %}
 
 <section id="demo" class="section-dark py-5">
     <div class="container">
@@ -122,7 +98,7 @@ Do not delete; remove this comment wrapper to show the section again.
             <div class="ratio ratio-16x9 demo-video-wrap">
                 <iframe
                         class="w-100 h-100 demo-video"
-                        src="https://player.vimeo.com/video/1177364786?dnt=1&title=0&byline=0&portrait=0"
+                        src="https://player.vimeo.com/video/1182812998?dnt=1&title=0&byline=0&portrait=0"
                         title="Demo video"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture"
@@ -137,9 +113,9 @@ Do not delete; remove this comment wrapper to show the section again.
 <section id="bands" class="section-dark py-5">
     <div class="container">
         <div class="row g-4 mb-5">
-            <div class="col-md-4"><img class="gallery-img" src="{% static 'images/Gallary Image A.png' %}" alt="Event gallery A"></div>
-            <div class="col-md-4"><img class="gallery-img" src="{% static 'images/Gallary Image B.png' %}" alt="Event gallery B"></div>
-            <div class="col-md-4"><img class="gallery-img" src="{% static 'images/Gallary Image C.png' %}" alt="Event gallery C"></div>
+            <div class="col-md-4"><img class="gallery-img" src="{% static 'images/Final - Gallery A (1).jpg' %}" alt="Event gallery A"></div>
+            <div class="col-md-4"><img class="gallery-img" src="{% static 'images/Gallary Image C.png' %}" alt="Event gallery B"></div>
+            <div class="col-md-4"><img class="gallery-img" src="{% static 'images/Final - Gallery C.jpg' %}" alt="Event gallery C"></div>
         </div>
     </div>
 </section>
@@ -229,11 +205,12 @@ Do not delete; remove this comment wrapper to show the section again.
         <h2 class="how-it-works-title text-center mb-4 mb-lg-5" data-i18n="howItWorks.title">This is how it works.</h2>
         <div class="how-it-works-visual text-center">
             <img
-                    src="{% static 'images/how_it_work.jpeg' %}"
+                    src="{% static 'images/how_it_work.jpg' %}"
                     alt="Motion Volume: sync bands, venue coverage, and universal lighting desk integration"
                     class="img-fluid how-it-works-img"
                     loading="lazy"
             >
+            <p class="how-it-works-footnote mb-0" data-i18n="howItWorks.independent">Fully independent from WiFi and mobile networks</p>
         </div>
     </div>
 </section>
@@ -312,7 +289,7 @@ Do not delete; remove this comment wrapper to show the section again.
 
 <section id="calculator" class="section-dark pb-5">
     <div class="container">
-        <h2 id="calculatorSectionTitle" class="text-center mb-4" data-i18n="calc.title">Plan. Price. Pay.</h2>
+        <!-- <h2 id="calculatorSectionTitle" class="text-center mb-4" data-i18n="calc.title">What you pay</h2> -->
         <form action="{% url 'create_checkout_session' %}" method="post" enctype="multipart/form-data" id="checkoutForm">
             {% csrf_token %}
             <div class="checkout-flow">
@@ -327,10 +304,10 @@ Do not delete; remove this comment wrapper to show the section again.
                         <div class="step1-price-hero">
                             <div class="step1-price-hero__standard-box">
                                 <span class="step1-price-hero__standard-label" data-i18n="calc.standardShowPriceShort">Standard show price</span>
-                                <strong class="step1-price-hero__standard-amount">€ <span data-sync-price="normal">0,00</span></strong>
+                                <strong class="step1-price-hero__standard-amount">€ <span data-sync-price="normalNoCents">0</span></strong>
                             </div>
-                            <p class="step1-price-hero__tagline fst-italic mb-0">
-                                <span data-i18n="calc.step1TaglineBefore">No</span><span class="step1-price-hero__tagline-euro"> €</span><span data-sync-price="normal">0,00</span><span data-i18n="calc.step1TaglineAfter"> upfront. Just pay per guest instead.</span>
+                            <p class="step1-price-hero__tagline fst-italic ">
+                                <span data-i18n="calc.step1TaglineBefore">No</span><span class="step1-price-hero__tagline-euro"> €</span><span data-sync-price="normalNoCents">0</span><span data-i18n="calc.step1TaglineAfter"> upfront. Just pay per guest instead.</span>
                             </p>
                             <div class="step1-price-hero__highlight">
                                 <p class="step1-price-hero__micro-label mb-0" data-i18n="showPrice.title">Your Show Price</p>
@@ -473,8 +450,8 @@ Do not delete; remove this comment wrapper to show the section again.
                                     </div>
                                     <input id="wristbandUpload" name="upload_design" class="wristband-upload-input" type="file" accept="image/*">
                                     <div class="wristband-meta">
-                                        <div class="wristband-price" data-i18n="calc.customDesignPrice">(€0,15 / guest)</div>
-                                        <a class="wristband-template-link" href="https://drive.google.com/drive/folders/1WC4gaBupo-m8Rvrn_nJdYvfTjS4eYgnK" target="_blank" rel="noopener noreferrer" data-i18n="calc.downloadTemplate">Download template</a>
+                                        <div class="wristband-price" data-i18n="calc.customDesignPrice">(+ €0,35 per ticket)</div>
+                                        <a class="wristband-template-link" href="https://drive.google.com/drive/folders/1HT8k9CtHut-dv5xEaGt-dnR1GxYx-Z0d?usp=sharing" target="_blank" rel="noopener noreferrer" data-i18n="calc.downloadTemplate">Download template</a>
                                     </div>
                                 </label>
                             </div>
@@ -482,7 +459,7 @@ Do not delete; remove this comment wrapper to show the section again.
                                 <input class="form-check-input pricing-toggle" id="whiteLabel" type="checkbox" name="white_label">
                                 <label class="form-check-label" for="whiteLabel">
                                     <span class="watermark-label-main" data-i18n="calc.removeBranding">Remove Motion Volume Branding</span>
-                                    <span class="watermark-label-sub" data-i18n="calc.removeBrandingSub">(€0,05 / guest)</span>
+                                    <span class="watermark-label-sub" data-i18n="calc.removeBrandingSub">(+ €2,25 per ticket)</span>
                                 </label>
                             </div>
                         </div>
@@ -501,7 +478,7 @@ Do not delete; remove this comment wrapper to show the section again.
                                     <strong class="step1-footer__total-value">€ <span data-sync-price="today">0,00</span></strong>
                                 </div>
                                 <p class="step1-footer__formula mb-0">
-                                    (€<span data-sync-price="perGuest">0,00</span> <span data-i18n="calc.formulaTimes">×</span> <span data-sync-price="guestsCount">0</span> <span data-i18n="calc.guestsWord">guests</span>)
+                                    (€<span data-sync-price="perGuest">0,00</span> <span data-i18n="calc.formulaTimes">×</span> <span data-sync-price="guestsCount">0</span> <span data-i18n="calc.guestsWord">guests</span> <span data-i18n="calc.formulaOver">over</span> <span data-sync-price="showsCount">0</span> <span data-i18n="calc.formulaShowDaysSuffix">show day(s)</span>)
                                 </p>
                             </div>
                             <button type="button" class="btn btn-primary btn-lg w-100 step1-continue-btn" id="step1ContinueBtn" data-i18n="calc.checkoutContinue">Continue →</button>
@@ -546,7 +523,7 @@ Do not delete; remove this comment wrapper to show the section again.
                                     <strong data-i18n="whatYouGet.kit.title">Show Control Kit</strong>
                                 </div>
                                 <p class="feature-body-lg" data-i18n="whatYouGet.kit.b1">Perfect Color - Perfect Timing</p>
-                                <p class="feature-body-lg" data-i18n="whatYouGet.kit.b2">Controlled from your Lighting Desk</p>
+                                <p class="feature-body-lg m-0" data-i18n="whatYouGet.kit.b2">Controlled from your Lighting Desk</p>
                                 <p class="feature-foot feature-foot--show-kit-line" id="showControlKitFootLine" aria-live="polite"></p>
                             </div>
                             </div>
@@ -568,7 +545,7 @@ Do not delete; remove this comment wrapper to show the section again.
                                 </div>
                                 <p class="feature-body-lg" data-i18n="whatYouGet.aftermovie.b1">Your biggest crowd moment, captured</p>
                                 <p class="feature-foot feature-foot--film fst-italic" data-i18n="whatYouGet.aftermovie.filmNote">Filmed by our videographer</p>
-                                <p class="feature-foot" data-i18n="whatYouGet.aftermovie.foot">An upgrade on your Aftermovie &amp; Socials</p>
+                                <!-- <p class="feature-foot" data-i18n="whatYouGet.aftermovie.foot" >An upgrade on your Aftermovie &amp; Socials</p> -->
                             </div>
                             <div class="feature-box feature-box--stacked">
                                 <strong class="feature-headline" data-i18n="whatYouGet.failsafe.title">Fail-safe Backup System</strong>
@@ -625,13 +602,13 @@ Do not delete; remove this comment wrapper to show the section again.
                                     >i</button>
                                 </div>
                                 <p class="feature-subhead" data-i18n="whatYouGet.nmb.sub">Every visitor gets a wristband. Guaranteed.</p>
-                                <p class="feature-tagline">
+                                <!-- <p class="feature-tagline">
                                     <em>
                                         <span data-i18n="whatYouGet.nmb.prefix">NMB:</span>
                                         <span id="nmbValue">0</span>
                                         <span data-i18n="whatYouGet.nmb.suffix">extra bands</span>
                                     </em>
-                                </p>
+                                </p> -->
                             </div>
                             </div>
                         </div>
@@ -762,6 +739,7 @@ Do not delete; remove this comment wrapper to show the section again.
                                     type="button"
                                     class="info-icon align-middle ms-1"
                                     id="step4CompareOpen"
+                                    data-hide-in-step-compare="true"
                                     aria-label="Package info"
                                     data-i18n-attr="aria-label"
                                     data-i18n-attr-key="calc.step4SubtitleInfoAria"
@@ -803,7 +781,7 @@ Do not delete; remove this comment wrapper to show the section again.
                             <li class="list-group-item panel-item show-price-row--bonus d-flex justify-content-between align-items-center flex-wrap gap-2">
                                 <span data-i18n="showPrice.line.failsafe">Fail-Safe Backup System</span>
                                 <div class="show-price-bonus-value d-flex align-items-center gap-2 flex-wrap justify-content-end">
-                                    <span class="show-price-strike-wrap">€<span class="feat-cost" data-base="350" data-mult="shows" data-normal="true">0,00</span></span>
+                                    <span class="show-price-strike-wrap">€<span class="feat-cost" data-derive="fail-backup" data-normal="true">0,00</span></span>
                                     <span class="show-price-bonus-tag" data-i18n="showPrice.bonus">Bonus</span>
                                 </div>
                             </li>
@@ -858,35 +836,48 @@ Do not delete; remove this comment wrapper to show the section again.
                             </div>
                         </div> 
                         
-                        <div class="step4-client-info mt-3">
+                        <div class="step4-client-info my-3">
                             <div class="row g-2">
                                 <div class="col-12">
-                                    <label class="form-label mb-1">Specific event date*</label>
-                                    <input required type="date" name="event_date" class="form-control">
+                                    <label class="form-label mb-1">Event name*</label>
+                                    <input required type="text" name="event_name" class="form-control step4-client-field" placeholder="e.g. Summer Festival 2026">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label mb-1" data-i18n="calc.eventDatesLabel">Event date(s) (optional)</label>
+                                    <div class="step4-event-dates-input-wrap">
+                                        <input type="text" name="event_date" class="form-control step4-event-dates-input step4-client-field" maxlength="500" autocomplete="off" data-i18n-attr="placeholder" data-i18n-attr-key="calc.eventDatesPlaceholder" placeholder="e.g. 13 October, 20 December">
+                                        <span class="step4-event-dates-input__icon" aria-hidden="true">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                                                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                                <path d="M3 10h18" stroke="currentColor" stroke-width="1.5"/>
+                                                <path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                            </svg>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label mb-1">Event location* <span class="text-muted">(venue + city)</span></label>
-                                    <input required type="text" name="event_location" class="form-control" placeholder="e.g. Ziggo Dome, Amsterdam">
+                                    <input required type="text" name="event_location" class="form-control step4-client-field" placeholder="e.g. Ziggo Dome, Amsterdam">
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label mb-1">Venue <span class="text-muted">(optional)</span></label>
-                                    <input type="text" name="venue" class="form-control" placeholder="e.g. Loading dock / contact point">
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label mb-1">Event name*</label>
-                                    <input required type="text" name="event_name" class="form-control" placeholder="e.g. Summer Festival 2026">
+                                    <label class="form-label mb-1" data-i18n="calc.deliveryLocationLabel">Delivery location (optional)</label>
+                                    <input type="text" name="delivery_location" class="form-control step4-client-field" maxlength="255" autocomplete="off" data-i18n-attr="placeholder" data-i18n-attr-key="calc.deliveryLocationPlaceholder" placeholder="e.g. Loading dock / contact point">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label mb-1">Name*</label>
-                                    <input required type="text" name="contact_name" class="form-control">
+                                    <input required type="text" name="contact_name" class="form-control step4-client-field">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label mb-1">Email*</label>
-                                    <input required type="email" name="contact_email" class="form-control">
+                                    <input required type="email" name="contact_email" class="form-control step4-client-field">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label mb-1">Phone number <span class="text-muted">(optional)</span></label>
-                                    <input type="tel" name="contact_phone" class="form-control">
+                                    <input type="tel" name="contact_phone" class="form-control step4-client-field">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label mb-1" data-i18n="calc.additionalNoteLabel">Additional note (optional)</label>
+                                    <textarea name="additional_note" class="form-control step4-client-field step4-client-field--textarea" rows="3" maxlength="2000" autocomplete="off" data-i18n-attr="placeholder" data-i18n-attr-key="calc.additionalNotePlaceholder" placeholder="Anything we should know about your show or delivery?"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -911,8 +902,8 @@ Do not delete; remove this comment wrapper to show the section again.
                     <div class="panel step-compare-panel">
                         <div class="checkout-flow-heading checkout-flow-heading--in-panel position-relative text-center mb-2 px-1">
                             <span class="checkout-flow-step-badge text-muted small fst-italic position-absolute top-0 end-0 pt-0 pe-0"><span data-i18n="calc.stepPrefix">Step</span> 5 / 5</span>
-                            <!-- <h2 class="checkout-flow-main-title mb-1 px-2 mx-auto">Plan. Price. Pay.</h2> -->
-                            <p class="text-muted small mb-0" data-i18n="calc.stepCompareSub">Step 4 vs Step 2</p>
+                            <!-- <h2 class="checkout-flow-main-title mb-1 px-2 mx-auto">What you pay</h2> -->
+                            <!-- <p class="text-muted small mb-0" data-i18n="calc.stepCompareSub">Step 4 vs Step 2</p> -->
                         </div>
                         <div class="step-compare-panel__body">
                             <div class="step-compare-grid">
@@ -936,7 +927,7 @@ Do not delete; remove this comment wrapper to show the section again.
                         </div>
                         <div class="checkout-flow-nav__center">
                             <a
-                                    href="https://drive.google.com/drive/folders/1skpPjpSQ1FbE8EYe1aOQ41po31gQdj5G"
+                                    href="https://drive.google.com/drive/folders/1u4X74BAk4bT8oCK6W0rI5RAIDCB4-n6z?usp=sharing"
                                     class="footer-terms-link checkout-flow-terms-link d-none"
                                     id="checkoutFlowTerms"
                                     target="_blank"
@@ -958,7 +949,7 @@ Do not delete; remove this comment wrapper to show the section again.
         <div class="footer-terms-wrap">
             <a
                     class="footer-terms-link"
-                    href="https://drive.google.com/drive/folders/1skpPjpSQ1FbE8EYe1aOQ41po31gQdj5G"
+                    href="https://drive.google.com/drive/folders/1u4X74BAk4bT8oCK6W0rI5RAIDCB4-n6z?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
             >Terms of Services</a>
@@ -983,13 +974,13 @@ Do not delete; remove this comment wrapper to show the section again.
     <div class="crowd-ways-lightbox-inner">
         <button type="button" class="crowd-ways-lightbox-backdrop" aria-label="Close preview"></button>
         <div class="crowd-ways-lightbox-panel">
-            <img id="crowdWaysLightboxImg" src="" alt="">
+            <div id="crowdWaysLightboxGallery" class="crowd-ways-lightbox-gallery"></div>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/main.js' %}?v=20260414-2"></script>
 </body>
 </html>

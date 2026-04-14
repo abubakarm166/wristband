@@ -84,9 +84,11 @@ def create_checkout_session(request):
 
     cd = form.cleaned_data
     event_name = (cd.get("event_name") or "").strip()
-    event_date = cd.get("event_date")
+    event_date = (cd.get("event_date") or "").strip()
     event_location = (cd.get("event_location") or "").strip()
     venue = (cd.get("venue") or "").strip()
+    delivery_location = (cd.get("delivery_location") or "").strip()
+    additional_note = (cd.get("additional_note") or "").strip()
     contact_name = (cd.get("contact_name") or "").strip()
     contact_email = (cd.get("contact_email") or "").strip().lower()
     contact_phone = (cd.get("contact_phone") or "").strip()
@@ -107,6 +109,8 @@ def create_checkout_session(request):
         event_date=event_date,
         event_location=event_location,
         venue=venue,
+        delivery_location=delivery_location,
+        additional_note=additional_note,
         contact_name=contact_name,
         contact_email=contact_email,
         contact_phone=contact_phone,
@@ -161,9 +165,11 @@ def create_checkout_session(request):
         ],
         metadata={
             "event_name": event_name,
-            "event_date": event_date.isoformat() if event_date else "",
+            "event_date": event_date,
             "event_location": event_location,
-            "venue": venue,
+            "venue": venue or delivery_location,
+            "delivery_location": delivery_location,
+            "additional_note": additional_note[:500],
             "contact_name": contact_name,
             "contact_email": contact_email,
             "contact_phone": contact_phone,
@@ -265,6 +271,11 @@ def stripe_webhook(request):
                     if checkout_request.event_date:
                         insert_at = 2 if checkout_request.event_name else 1
                         lines.insert(insert_at, f"Date: {checkout_request.event_date}")
+                    if checkout_request.delivery_location:
+                        lines.append(f"Delivery location: {checkout_request.delivery_location}")
+                    note = (checkout_request.additional_note or "").strip()
+                    if note:
+                        lines.append(f"Note: {note}")
                     message = "\n".join(lines)
                     try:
                         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [to_email], fail_silently=True)

@@ -6,11 +6,12 @@ const I18N = {
     "nav.howItWorks": "How it works",
     "nav.experience": "Experience",
     "nav.pricing": "Pricing",
-    "hero.headline": "Most Dutch Events are missing this.",
+    "hero.headline": "Most Dutch Events are missing this",
     "hero.cta": "Turn your crowd into the show",
     "demo.title": "Concert & Festival Organisers. This is for you.",
     "demo.ps": "PS: Give it 30 seconds.",
     "howItWorks.title": "This is how it works.",
+    "howItWorks.independent": "Fully independent from WiFi and mobile networks",
     "crowdWays.title": "Two ways to light up your crowd",
     "crowdWays.essentialsTitle": "Essentials (Included)",
     "crowdWays.essentialsLead": "Plug In. Go Live.",
@@ -28,7 +29,7 @@ const I18N = {
     "crowdWays.pro.b5": "Built for high-impact shows",
     "crowdWays.play": "Play animation",
     "crowdWays.pause": "Pause animation",
-    "calc.title": "Plan. Price. Pay.",
+    "calc.title": "What you pay",
     "calc.stepPrefix": "Step",
     "calc.step2Title": "What you get",
     "calc.step3Title": "Choose Delivery & Timing",
@@ -36,7 +37,7 @@ const I18N = {
     "calc.step3TotalSuffix": " total",
     "calc.perShowSuffix": " / show",
     "calc.step4Title": "What you pay",
-    "calc.stepCompareTitle": "Plan. Price. Pay.",
+    "calc.stepCompareTitle": "What you pay",
     "calc.stepCompareSub": "Step 4 vs Step 2",
     "calc.step4SubtitleTip": "Everything in this step reflects your selections from the previous steps.",
     "calc.step4SubtitleInfoAria": "Package info",
@@ -59,11 +60,19 @@ const I18N = {
     "calc.yourTotal": "Your Total",
     "calc.guestsWord": "guests",
     "calc.formulaApprox": "approx.",
+    "calc.formulaOver": "over",
+    "calc.formulaShowDaysSuffix": "show day(s)",
     "calc.standardShowPriceLabel": "Standard show price:",
+    "calc.eventDatesLabel": "Event date(s) (optional)",
+    "calc.eventDatesPlaceholder": "e.g. 13 October, 20 December",
+    "calc.deliveryLocationLabel": "Delivery location (optional)",
+    "calc.deliveryLocationPlaceholder": "e.g. Loading dock / contact point",
+    "calc.additionalNoteLabel": "Additional note (optional)",
+    "calc.additionalNotePlaceholder": "Anything we should know about your show or delivery?",
     "calc.adjustShowHint": "Adjust your show size to see your price",
     "calc.standardSkin": "Standard Skin",
-    "calc.removeBranding": "Remove Motion Volume Branding",
-    "calc.removeBrandingSub": "(€0,05 / guest)",
+    "calc.removeBranding": "Remove 'Powered By Motion Volume' logo",
+    "calc.removeBrandingSub": "(+ €2,25 per ticket)",
     "calc.formulaTimes": "×",
     "calc.eventSetup": "Event Setup",
     "calc.showDays": "Show Days",
@@ -74,15 +83,15 @@ const I18N = {
     "calc.designInfoAria": "Design options info",
     "calc.designInfoTip": "Reusable wristbands.<br>No disposable festival locks.",
     "calc.included": "Included",
-    "calc.customDesignPrice": "(€0,15 / guest)",
+    "calc.customDesignPrice": "(+ €0,35 per ticket)",
     "calc.downloadTemplate": "Download template",
-    "calc.removeWatermark": "Remove Motion Volume Watermark",
-    "calc.removeWatermarkSub": "(€0,05 per guest)",
+    "calc.removeWatermark": "Remove 'Powered By Motion Volume' logo",
+    "calc.removeWatermarkSub": "(+ €2,25 per ticket)",
     "calc.chooseExperience": "Choose Your Experience",
     "calc.experienceInfoAria": "Explore Essentials vs Pro (jump to section)",
     "calc.experienceInfoTip": "Explore the difference",
     "calc.essentialsTitle": "Essentials",
-    "calc.essentialsDesc": "Simple plug & play setup",
+    "calc.essentialsDesc": "Static, Strobe, Rainbow & Sparkle effects with a plug & play setup",
     "calc.recommended": "Recommended",
     "calc.proTitle": "Pro experience",
     "calc.proDesc": "Full control over your crowd lighting.",
@@ -179,11 +188,12 @@ const I18N = {
     "nav.howItWorks": "Zo werkt het live",
     "nav.experience": "Ervaring",
     "nav.pricing": "Prijzen",
-    "hero.headline": "Dit is wat jouw event compleet maakt.",
+    "hero.headline": "Dit is wat jouw event compleet maakt",
     "hero.cta": "Activeer je publiek",
     "demo.title": "Als je events organiseert, kijk 30 seconden.",
     "demo.ps": "PS: Je snapt het in 30 seconden.",
     "howItWorks.title": "Zo werkt het.",
+    "howItWorks.independent": "Volledig onafhankelijk van wifi en mobiele netwerken",
     "crowdWays.title": "Twee manieren om je publiek te activeren",
     "crowdWays.essentialsTitle": "Essentials (inbegrepen)",
     "crowdWays.essentialsLead": "Plug & Play",
@@ -201,7 +211,7 @@ const I18N = {
     "crowdWays.pro.b5": "Gebouwd voor impact",
     "crowdWays.play": "Animatie afspelen",
     "crowdWays.pause": "Animatie pauzeren",
-    "calc.title": "Plan. Prijs. Betaal.",
+    "calc.title": "Wat je betaalt",
     "calc.stepPrefix": "Stap",
     "calc.step2Title": "Wat je krijgt",
     "calc.step3Title": "Kies levering & timing",
@@ -209,7 +219,7 @@ const I18N = {
     "calc.step3TotalSuffix": " totaal",
     "calc.perShowSuffix": " / show",
     "calc.step4Title": "Wat je betaalt",
-    "calc.stepCompareTitle": "Plan. Prijs. Betaal.",
+    "calc.stepCompareTitle": "Wat je betaalt",
     "calc.stepCompareSub": "Stap 4 vs Stap 2",
     "calc.step4SubtitleTip": "Alles in deze stap sluit aan op je eerdere keuzes.",
     "calc.step4SubtitleInfoAria": "Pakket info",
@@ -232,11 +242,19 @@ const I18N = {
     "calc.yourTotal": "Jouw totaal",
     "calc.guestsWord": "bezoekers",
     "calc.formulaApprox": "ca.",
+    "calc.formulaOver": "over",
+    "calc.formulaShowDaysSuffix": "showdag(en)",
     "calc.standardShowPriceLabel": "Standaard showprijs:",
+    "calc.eventDatesLabel": "Eventdatum(s) (optioneel)",
+    "calc.eventDatesPlaceholder": "bijv. 13 oktober, 20 december",
+    "calc.deliveryLocationLabel": "Afleverlocatie (optioneel)",
+    "calc.deliveryLocationPlaceholder": "bijv. Laadperron / contactpersoon",
+    "calc.additionalNoteLabel": "Extra opmerking (optioneel)",
+    "calc.additionalNotePlaceholder": "Iets dat we moeten weten over je show of levering?",
     "calc.adjustShowHint": "Pas je showgrootte aan om je prijs te zien",
     "calc.standardSkin": "Standaard skin",
     "calc.removeBranding": "Verwijder Motion Volume-branding",
-    "calc.removeBrandingSub": "(€0,05 / bezoeker)",
+    "calc.removeBrandingSub": "(+ €2,25 per ticket)",
     "calc.formulaTimes": "×",
     "calc.eventSetup": "Jouw event",
     "calc.showDays": "Aantal dagen",
@@ -247,15 +265,15 @@ const I18N = {
     "calc.designInfoAria": "Info design opties",
     "calc.designInfoTip": "Herbruikbare polsband locks.",
     "calc.included": "Inbegrepen",
-    "calc.customDesignPrice": "(€0,15 / bezoeker)",
+    "calc.customDesignPrice": "(+ €0,35 per ticket)",
     "calc.downloadTemplate": "Download Template",
-    "calc.removeWatermark": "Verwijder Motion Volume-logo",
-    "calc.removeWatermarkSub": "(€0,05 per bezoeker)",
+    "calc.removeWatermark": "Verwijder Motion Volume-branding",
+    "calc.removeWatermarkSub": "(+ €2,25 per ticket)",
     "calc.chooseExperience": "Kies je ervaring",
     "calc.experienceInfoAria": "Bekijk het verschil",
     "calc.experienceInfoTip": "Bekijk het verschil!",
     "calc.essentialsTitle": "Essentials",
-    "calc.essentialsDesc": "Simpele Plug & Play setup",
+    "calc.essentialsDesc": "Statische, Strobe, Rainbow- en Sparkle-effecten met een plug & play setup",
     "calc.recommended": "Aanbevolen",
     "calc.proTitle": "Pro ervaring",
     "calc.proDesc": "Volledige belichting controle over het publiek",
@@ -349,6 +367,19 @@ const I18N = {
   },
 };
 
+// Partner logo bar: keep disabled until partners are approved.
+// To enable later: set `enabled: true` and replace logo paths/alts below.
+const PARTNER_LOGO_BAR = {
+  enabled: false,
+  logos: [
+    { src: "/static/images/Logo Placeholder.png", alt: "Partner logo 1" },
+    { src: "/static/images/Logo Placeholder.png", alt: "Partner logo 2" },
+    { src: "/static/images/Logo Placeholder.png", alt: "Partner logo 3" },
+    { src: "/static/images/Logo Placeholder.png", alt: "Partner logo 4" },
+    { src: "/static/images/Logo Placeholder.png", alt: "Partner logo 5" },
+  ],
+};
+
 function getLang() {
   const saved = (window.localStorage && window.localStorage.getItem("lang")) || "";
   if (saved === "en" || saved === "nl") return saved;
@@ -385,11 +416,16 @@ function updateCheckoutFlowHeadingUI() {
 
 function syncDataSyncPriceMirrors() {
   const normal = totalValueEl?.textContent?.trim() || "0,00";
+  const normalNoCents = normal.split(",")[0] || normal;
   const today = showPriceTodayEl?.textContent?.trim() || "0,00";
   const perGuest = outputs.pricePerGuest?.textContent?.trim() || "0,00";
   const gc = guestsInput ? formatInt(parseInt(guestsInput.value || "0", 10)) : "0";
+  const sc = showsInput ? formatInt(parseInt(showsInput.value || "0", 10)) : "0";
   document.querySelectorAll('[data-sync-price="normal"]').forEach((el) => {
     el.textContent = normal;
+  });
+  document.querySelectorAll('[data-sync-price="normalNoCents"]').forEach((el) => {
+    el.textContent = normalNoCents;
   });
   document.querySelectorAll('[data-sync-price="today"]').forEach((el) => {
     el.textContent = today;
@@ -399,6 +435,9 @@ function syncDataSyncPriceMirrors() {
   });
   document.querySelectorAll('[data-sync-price="guestsCount"]').forEach((el) => {
     el.textContent = gc;
+  });
+  document.querySelectorAll('[data-sync-price="showsCount"]').forEach((el) => {
+    el.textContent = sc;
   });
 }
 
@@ -776,9 +815,6 @@ function wireSliderTicks() {
   });
 }
 
-/** Reference strike + Free pill for Flexible timing row only (Express/Standard show API upsell_timing). */
-const STEP4_REF_STRIKE_EUR = 350;
-
 function updateStep4DeliveryTimingSummary(data) {
   const delTitle = document.getElementById("step4SummaryDeliveryTitle");
   const delPrice = document.getElementById("step4SummaryDeliveryPrice");
@@ -787,8 +823,6 @@ function updateStep4DeliveryTimingSummary(data) {
   const timePrice = document.getElementById("step4SummaryTimingPrice");
   if (!delTitle || !delPrice || !timeTitle || !timePrice || !data) return;
 
-  const refStrike = formatEURNumber(STEP4_REF_STRIKE_EUR);
-  const strikeHtml = `<span class="show-price-strike-wrap">€ ${refStrike}</span>`;
   const freePillHtml = `<span class="step4-free-pill">${t("timing.free")}</span>`;
 
   delPrice.classList.remove("d-none", "show-price-summary__timing--free", "show-price-detail-row__price--flex");
@@ -809,13 +843,13 @@ function updateStep4DeliveryTimingSummary(data) {
     if (timeSub) timeSub.textContent = `(${t("timing.standard")} · ${t("timing.days30")})`;
     timePrice.textContent = `€ ${formatEURNumber(data.upsell_timing)}`;
   } else {
-    /* Flexible (default): reference € + Free pill */
+    /* Flexible (default): show Free only (no strike reference). */
     if (timeSub) {
       timeSub.classList.remove("d-none");
       timeSub.textContent = `(${t("timing.flexible")})`;
     }
     timePrice.classList.add("show-price-detail-row__price--flex");
-    timePrice.innerHTML = `${strikeHtml}${freePillHtml}`;
+    timePrice.innerHTML = freePillHtml;
   }
 }
 
@@ -858,9 +892,9 @@ async function refreshPricing() {
     customSkinInput.checked = bandPink.checked;
   }
 
-  // Pro card display: 5000 / guests (per guest)
+  // Pro card display: (5000 * shows) / guests (per guest)
   if (proExperiencePrice) {
-    const perGuest = guests > 0 ? 5000 / guests : 0;
+    const perGuest = guests > 0 ? (5000 * shows) / guests : 0;
     proExperiencePrice.textContent = `+€${formatEURNumber(perGuest)} ${t("unit.perGuest")}`;
   }
 
@@ -883,12 +917,14 @@ async function refreshPricing() {
   // Normal show price breakdown (visual line items; sum -> #totalValue)
   // Show Control Kit (requested):
   // - Wristband total price = price per visitor * total guests (use API "revenue")
-  // - Add custom skin (0.15 * guests) and watermark removal (0.05 * guests) when selected
-  // - Add Fail-safe Backup System (350 * shows)
+  // - Add custom skin (0.35 * guests) and watermark removal (2.25 * guests) when selected
+  // - Add Fail-safe Backup System (Essentials: 350 * shows, Pro: 5000 * shows)
   //
   // 100% Show Guarantee (requested):
   // - 10% of show control kit + 10% of (10% of fail-safe backup)
   if (totalValueEl) {
+    const failBackupPerShow = experienceEssentials?.checked ? 350 : 5000;
+    const failBackupTotal = failBackupPerShow * shows;
     let total = 0;
     document.querySelectorAll(".feat-cost").forEach((el) => {
       const derive = el.getAttribute("data-derive");
@@ -896,10 +932,11 @@ async function refreshPricing() {
 
       if (derive === "show-control-kit") {
         const revenue = data && typeof data.revenue !== "undefined" ? Number(data.revenue) : 0;
-        const customSkin = customSkinInput?.checked ? 0.15 * guests : 0;
-        const whiteLabel = whiteLabelInput?.checked ? 0.05 * guests : 0;
-        const failBackup = 350 * shows;
-        value = revenue + customSkin + whiteLabel + failBackup;
+        const customSkin = customSkinInput?.checked ? 0.35 * guests : 0;
+        const whiteLabel = whiteLabelInput?.checked ? 2.25 * guests : 0;
+        value = revenue + customSkin + whiteLabel + failBackupTotal;
+      } else if (derive === "fail-backup") {
+        value = failBackupTotal;
       } else if (derive === "upsell-experience") {
         value = data && typeof data.upsell_experience !== "undefined" ? Number(data.upsell_experience) : 0;
       } else if (derive === "no-shortages") {
@@ -907,17 +944,16 @@ async function refreshPricing() {
         // guests * 0.05 * price_per_guest  == 0.05 * revenue
         // plus (custom skin and/or watermark) each also multiplied by 0.05
         const revenue = data && typeof data.revenue !== "undefined" ? Number(data.revenue) : 0;
-        const customSkin = customSkinInput?.checked ? 0.15 * guests : 0;
-        const whiteLabel = whiteLabelInput?.checked ? 0.05 * guests : 0;
+        const customSkin = customSkinInput?.checked ? 0.35 * guests : 0;
+        const whiteLabel = whiteLabelInput?.checked ? 2.25 * guests : 0;
         value = 0.05 * (revenue + customSkin + whiteLabel);
       } else if (derive === "show-guarantee") {
         // Use the same show control kit basis as above (but without re-reading DOM)
         const revenue = data && typeof data.revenue !== "undefined" ? Number(data.revenue) : 0;
-        const customSkin = customSkinInput?.checked ? 0.15 * guests : 0;
-        const whiteLabel = whiteLabelInput?.checked ? 0.05 * guests : 0;
-        const failBackup = 350 * shows;
-        const showControlKit = revenue + customSkin + whiteLabel + failBackup;
-        value = 0.1 * showControlKit + 0.1 * (0.1 * failBackup);
+        const customSkin = customSkinInput?.checked ? 0.35 * guests : 0;
+        const whiteLabel = whiteLabelInput?.checked ? 2.25 * guests : 0;
+        const showControlKit = revenue + customSkin + whiteLabel + failBackupTotal;
+        value = 0.1 * showControlKit + 0.1 * (0.1 * failBackupTotal);
       } else {
         const base = Number(el.getAttribute("data-base") || "0");
         const multType = el.getAttribute("data-mult");
@@ -1087,21 +1123,28 @@ function wireCrowdWayGifs() {
 
 function wireCrowdWaysLightbox() {
   const lb = document.getElementById("crowdWaysLightbox");
-  const lbImg = document.getElementById("crowdWaysLightboxImg");
+  const lbGallery = document.getElementById("crowdWaysLightboxGallery");
   const backdrop = document.querySelector(".crowd-ways-lightbox-backdrop");
-  if (!lb || !lbImg || !backdrop) return;
+  if (!lb || !lbGallery || !backdrop) return;
 
   const closeLightbox = () => {
     lb.classList.add("d-none");
-    lbImg.removeAttribute("src");
+    lbGallery.replaceChildren();
     lb.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   };
 
-  const openLightbox = (src, alt) => {
-    if (!src) return;
-    lbImg.src = src;
-    lbImg.alt = alt || "";
+  const openLightbox = (images, alt) => {
+    const list = Array.isArray(images) ? images.filter(Boolean) : [];
+    if (!list.length) return;
+    lbGallery.replaceChildren();
+    list.slice(0, 4).forEach((src, idx) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt ? `${alt} ${idx + 1}` : `Preview ${idx + 1}`;
+      img.loading = "lazy";
+      lbGallery.appendChild(img);
+    });
     lb.classList.remove("d-none");
     lb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -1120,21 +1163,30 @@ function wireCrowdWaysLightbox() {
     img.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const src = img.currentSrc || img.src;
-      if (!src) return;
-      openLightbox(src, img.getAttribute("alt") || "");
+      const current = img.currentSrc || img.src;
+      const srcA = img.getAttribute("data-src-a") || current;
+      const gallery = [srcA, srcA, srcA, srcA].filter(Boolean);
+      openLightbox(gallery, img.getAttribute("alt") || "");
     });
   });
 }
 
-function initTooltips() {
+function initTooltipsInRoot(root) {
   if (typeof bootstrap === "undefined" || !bootstrap.Tooltip) return;
-  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+  const nodes =
+    root && typeof root.querySelectorAll === "function"
+      ? root.querySelectorAll('[data-bs-toggle="tooltip"]')
+      : document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  nodes.forEach((el) => {
     const existing = bootstrap.Tooltip.getInstance(el);
     if (existing) existing.dispose();
     const useHtml = el.getAttribute("data-bs-html") === "true";
     new bootstrap.Tooltip(el, { html: useHtml, sanitize: false });
   });
+}
+
+function initTooltips() {
+  initTooltipsInRoot(document);
 }
 
 function initStepCompareStep() {
@@ -1145,8 +1197,10 @@ function initStepCompareStep() {
 
   const clonePanel = (panelEl) => {
     const clone = panelEl.cloneNode(true);
+    clone.querySelectorAll("[data-hide-in-step-compare]").forEach((n) => n.remove());
     clone.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
     clone.querySelectorAll("button, input, select, textarea, a").forEach((n) => {
+      if (n.getAttribute("data-bs-toggle") === "tooltip") return;
       n.setAttribute("tabindex", "-1");
       n.setAttribute("aria-hidden", "true");
       n.classList.add("pointer-events-none");
@@ -1163,6 +1217,14 @@ function initStepCompareStep() {
 
     leftMount.replaceChildren(clonePanel(step4Panel));
     rightMount.replaceChildren(clonePanel(step2Panel));
+
+    initTooltipsInRoot(leftMount);
+    initTooltipsInRoot(rightMount);
+    try {
+      applyShowControlKitFootline();
+    } catch (_) {
+      // keep compare usable if foot line deps missing
+    }
 
     goToCheckoutStep(5);
   });
@@ -1215,7 +1277,41 @@ function initCalculator() {
   wireWristbandUpload();
 }
 
+function initPartnerLogoBar() {
+  const bar = document.getElementById("partnerLogoBar");
+  const row = document.getElementById("partnerLogoRow");
+  if (!bar || !row) return;
+
+  if (!PARTNER_LOGO_BAR.enabled) {
+    bar.classList.add("d-none");
+    row.replaceChildren();
+    return;
+  }
+
+  const logos = Array.isArray(PARTNER_LOGO_BAR.logos) ? PARTNER_LOGO_BAR.logos.filter(Boolean) : [];
+  if (!logos.length) {
+    bar.classList.add("d-none");
+    return;
+  }
+
+  row.replaceChildren();
+  logos.forEach((logo) => {
+    if (!logo.src) return;
+    const item = document.createElement("div");
+    item.className = "partner-logo-bar__item";
+    const img = document.createElement("img");
+    img.src = logo.src;
+    img.alt = logo.alt || "Partner logo";
+    img.loading = "lazy";
+    item.appendChild(img);
+    row.appendChild(item);
+  });
+
+  if (row.children.length) bar.classList.remove("d-none");
+}
+
 function init() {
+  initPartnerLogoBar();
   initLanguageToggle();
   initTooltips();
   initStepCompareStep();

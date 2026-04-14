@@ -1,0 +1,95 @@
+MOTION VOLUME - CALCULATION FLOW (CURRENT)
+=========================================
+
+1) BASE PRICE PER GUEST (by total guests)
+-----------------------------------------
+The system uses this tier table:
+
+- 500       -> EUR 1.50 per guest
+- 750       -> EUR 1.50 per guest
+- 1,000     -> EUR 1.50 per guest
+- 2,500     -> EUR 1.50 per guest
+- 5,000     -> EUR 1.30 per guest
+- 10,000    -> EUR 1.20 per guest
+- 20,000    -> EUR 1.10 per guest
+- 40,000    -> EUR 1.00 per guest
+- 80,000    -> EUR 0.90 per guest
+
+Notes:
+- Internally, lookup thresholds include intermediate cutoffs (for example 3,000 -> 1.40),
+  but with the current slider values above, users see the pricing points listed here.
+
+
+2) CORE TOTAL BEFORE ADD-ONS
+----------------------------
+revenue = guests * price_per_guest
+
+
+3) OPTIONAL ADD-ONS (what user selects)
+---------------------------------------
+- Custom design skin:        + EUR 0.35 * guests
+- Remove branding:           + EUR 2.25 * guests
+- Delivery to venue:         + EUR 249.99 * shows
+- Pro experience:            + EUR 5,000.00 * shows
+- Production speed:
+  - Express (14 days):       + EUR 0.90 * guests
+  - Standard (30 days):      + EUR 0.10 * guests
+  - Flexible timing:         + EUR 0.00
+
+Step 4 line-item rules (as displayed):
+- Aftermovie Content Pack:    EUR 400 * show days
+- Fail-Safe Backup System:
+  - Essentials selected:      EUR 350 * show days
+  - Pro selected:             EUR 5,000 * show days
+- On-site Show Guidance:      EUR 400 * show days
+- Delivery to venue line:     EUR 749.97 means 3 * EUR 249.99 (show-day based)
+- Production Speed line:
+  - Standard (30 days):       EUR 0.10 * total guests
+  - Express (14 days):        EUR 0.90 * total guests
+  - Flexible timing:          EUR 0.00
+
+
+4) FINAL PRICE
+--------------
+upsell_total = sum(all selected add-ons)
+total_cost   = revenue + upsell_total
+
+Displayed formula interpretation:
+
+Standard show price (Step 4 strike/reference):
+- Show Control Kit Price
+- + Original Aftermovie Content Pack Price
+- + Original Fail-safe Backup System Price
+- + Original On-site Show Guidance Price
+- + Delivery type price
+- + Production speed price
+
+Your total (Step 4 blue total):
+- Show Control Kit Price
+- + Delivery price
+- + Production type price
+
+
+5) DISPLAY RULES CONFIRMED
+--------------------------
+- Flexible timing in Step 4 shows "Free" only (no EUR 350 strike shown).
+- Custom skin is calculated per guest (not buffered wristbands).
+- In the Step 4 breakdown, "Fail-Safe Backup System" shows:
+  - Essentials: EUR 350 per show
+  - Pro:        EUR 5,000 per show
+- Pro card label in Step 1 ("+EUR ... per guest") is shown as:
+  - (EUR 5,000 * shows) / guests
+- Step 1 footer formula includes show days:
+  - EUR per_guest * guests over X show day(s)
+
+
+6) EXAMPLE (SIMPLE)
+-------------------
+If guests = 500 and no add-ons:
+- price_per_guest = EUR 1.50
+- revenue = 500 * 1.50 = EUR 750.00
+- total = EUR 750.00
+
+If same setup + custom skin:
+- add-on = 500 * 0.35 = EUR 175.00
+- total = EUR 925.00

@@ -10,9 +10,11 @@ WRISTBAND_CHOICES = [
 class CheckoutForm(forms.Form):
     # Client tracking fields (sent to Stripe metadata)
     event_name = forms.CharField(max_length=255, required=True)
-    event_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}), required=True)
+    event_date = forms.CharField(max_length=500, required=False)
     event_location = forms.CharField(max_length=255, required=True)
     venue = forms.CharField(max_length=255, required=False)
+    delivery_location = forms.CharField(max_length=255, required=False)
+    additional_note = forms.CharField(max_length=2000, required=False)
     contact_name = forms.CharField(max_length=255, required=True)
     contact_email = forms.EmailField(required=True)
     contact_phone = forms.CharField(max_length=50, required=False)

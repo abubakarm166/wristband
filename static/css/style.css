@@ -125,6 +125,36 @@ body {
     pointer-events: none; /* ensure clicks register on the <button> */
 }
 
+/* Partner logo bar (disabled by default via JS flag). */
+.partner-logo-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0d1320;
+}
+
+.partner-logo-bar__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.85rem;
+    align-items: center;
+}
+
+.partner-logo-bar__item {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+}
+
+.partner-logo-bar__item img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.78;
+}
+
 .hero-section {
     min-height: 92vh;
     position: relative;
@@ -269,6 +299,15 @@ body {
     height: auto;
     display: inline-block;
     vertical-align: middle;
+}
+
+.how-it-works-footnote {
+    margin-top: 0.9rem;
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    font-weight: 700;
+    color: #f4f6fb;
+    letter-spacing: -0.01em;
+    text-align: center;
 }
 
 /* Two ways to light up your crowd */
@@ -472,21 +511,32 @@ body {
 .crowd-ways-lightbox-panel {
     position: relative;
     z-index: 1;
-    max-width: 75vw;
-    max-height: 75vh;
+    width: min(92vw, 980px);
+    max-height: 85vh;
     pointer-events: none;
 }
 
-.crowd-ways-lightbox-panel img {
-    max-width: 75vw;
-    max-height: 75vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+.crowd-ways-lightbox-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.crowd-ways-lightbox-gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
     pointer-events: auto;
     display: block;
+}
+
+@media (max-width: 768px) {
+    .crowd-ways-lightbox-gallery {
+        gap: 0.75rem;
+    }
 }
 
 .partners-title {
@@ -2007,6 +2057,67 @@ a.info-icon--link:hover {
     white-space: nowrap;
 }
 
+/* Step 4 — optional multi-date text field + calendar affordance */
+.step4-event-dates-input-wrap {
+    position: relative;
+}
+
+.step4-event-dates-input {
+    padding-right: 2.65rem;
+    border-radius: 10px;
+    background: #0f141c;
+    border: 1px solid #2d3a48;
+    color: #f4f6fb;
+}
+
+.step4-event-dates-input::placeholder {
+    color: #6b7289;
+}
+
+.step4-event-dates-input:focus {
+    background: #0f141c;
+    border-color: #4a5f78;
+    color: #f4f6fb;
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.15);
+}
+
+.step4-event-dates-input__icon {
+    position: absolute;
+    right: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    color: #8b95a8;
+    opacity: 0.85;
+}
+
+/* Step 4 — client info fields (match dark inputs / mockup) */
+#calculator .panel--step4 .step4-client-field {
+    border-radius: 10px;
+    background: #0f141c;
+    border: 1px solid #2d3a48;
+    color: #f4f6fb;
+}
+
+#calculator .panel--step4 .step4-client-field::placeholder {
+    color: #6b7289;
+}
+
+#calculator .panel--step4 .step4-client-field:focus {
+    background: #0f141c;
+    border-color: #4a5f78;
+    color: #f4f6fb;
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.15);
+}
+
+#calculator .panel--step4 .step4-client-field--textarea {
+    min-height: 5.5rem;
+    resize: vertical;
+}
+
 #calculator .panel--show-price.panel--step4 .investment-pill-row--step4-totals {
     margin-bottom: 0;
 }
@@ -2026,7 +2137,7 @@ a.info-icon--link:hover {
 }
 
 #calculator .panel--show-price.panel--step4 .investment-pill--final-total strong {
-    font-size: 1.35rem;
+    font-size: 1.05rem;
     font-weight: 800;
 }
 
@@ -2731,7 +2842,7 @@ html {
 }
 
 .step3-price-summary__micro {
-    font-size: 0.82rem;
+    font-size: 1.02rem;
     font-style: italic;
     color: #8b95a8;
     margin: 0 0 1rem;
@@ -2902,21 +3013,21 @@ html {
     align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
-    padding: 0.95rem 1.05rem;
+    padding: 0.55rem 1.05rem;
     border-radius: 10px;
     border: 1px solid #2d3a48;
     background: #0f172a;
 }
 
 .step1-price-hero__standard-label {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #ffffff;
     letter-spacing: -0.01em;
 }
 
 .step1-price-hero__standard-amount {
-    font-size: 1.05rem;
+    font-size: clamp(1.15rem, 2.9vw, 1.35rem);
     font-weight: 700;
     color: #ffffff;
     white-space: nowrap;
@@ -2973,7 +3084,7 @@ html {
 }
 
 .step1-price-hero__per {
-    font-size: clamp(1.75rem, 5vw, 2.35rem);
+    font-size: xxx-large;
     font-weight: 700;
     color: #f4f6fb;
     letter-spacing: -0.03em;
@@ -3030,13 +3141,13 @@ html {
 }
 
 .step1-footer__std-label {
-    font-size: 0.92rem;
+    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
     font-weight: 500;
     color: #e8ecf5;
 }
 
 .step1-footer__strike {
-    font-size: 0.92rem;
+    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
     font-weight: 500;
     color: #e8ecf5;
     white-space: nowrap;
@@ -3047,7 +3158,7 @@ html {
 }
 
 .step1-footer__total-label {
-    font-size: 0.95rem;
+    font-size: 1.65rem;
     font-weight: 700;
     color: #ffffff;
     letter-spacing: -0.01em;
